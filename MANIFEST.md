@@ -1,6 +1,6 @@
 # Manifest
 
-Generated 2026-10-21T04:28:52Z by `make_manifest.py`.
+Generated 2026-10-21T04:36:34Z by `make_manifest.py`.
 
 ## Files in this repository (256)
 
@@ -250,8 +250,8 @@ Generated 2026-10-21T04:28:52Z by `make_manifest.py`.
 | `output/life/summary_by_cohort_decade_variable.csv` | 745 | `69987ee051aa853c009e3543f50ded0123781eeb81ffb69fff24cea8bd61fd53` |
 | `output/life/summary_by_country.csv` | 1,613 | `37148c4ddb5cce584bbbfa91a0bc69a9206c82c06a1d90b20ca163a04a913893` |
 | `output/life/summary_payg_variants.csv` | 595 | `1d1ddbaf767b4cac550304968bb461e2efb2ce0c99c1afbbcd917ec701cfb41d` |
-| `output/paper/household.html` | 140,312 | `a57ee645027b88a398bb7287d5b6788c4e4dfa24723c381b3ed7365948f63e39` |
-| `output/paper/household.pdf` | 2,415,471 | `e6be8531de6b7bed93d76d56184f3d903e9f0fe96366b93e2f3fa65436f689c3` |
+| `output/paper/household.html` | 137,196 | `9863a15bd8d753a10a1c4e0fdaf748e4c12e0d457cefb71643ae4a1e4b092eb7` |
+| `output/paper/household.pdf` | 2,408,669 | `77950c25f2aaab4594e956bc86dbb1a1034d0addb361294862f37b3ec65d8fbb` |
 | `output/paper/img/h_fig1.png` | 112,916 | `8730fc4c14a85e1d5d529a8092329d1c9b46b980027135c5fd7595a764531475` |
 | `output/paper/img/h_fig2.png` | 38,729 | `a48c2178e653bd615b339baf494589b078e523b60045159b38a1cc622019b5b5` |
 | `output/paper/img/h_fig3.png` | 54,110 | `e2cf5f247ccecc8a49b4f978f5136aafb287fd0e91f34725646fd72581d69fce` |
@@ -259,9 +259,9 @@ Generated 2026-10-21T04:28:52Z by `make_manifest.py`.
 | `output/paper/img/h_fig5.png` | 63,236 | `a634b214ef1ed7b24038fa66b7bbbbaa20c8db68ff48285e6d3fe3dcea451e86` |
 | `output/paper/img/h_fig6.png` | 137,214 | `777922704db98a117f630a98a2467cd010efae15964de7c78465c7ba5eea264b` |
 | `output/paper/img/h_fig7.png` | 180,626 | `7ab928dbeac0f64d4ebc99aabdbc31d47d949b2157a80c5c4806dc30bbf07210` |
-| `output/paper/numbers_in_text.json` | 8,409 | `f756f46e8c81f418313feda382c4503317ff8d3735e2b47d53f14249fe6d696e` |
+| `output/paper/numbers_in_text.json` | 8,359 | `551feefd595134da32e93f133e2f1693e1877c6eded693d4d4798d823397922a` |
 | `output/paper/style.css` | 2,498 | `23101d46174ac28f836b91204245d2787c527f54d1b81efd21bb7850a9b1e037` |
-| `paper_template.html` | 67,944 | `9a6bd17fd91837ed188ad6bd004dc92668f13a2ee803b4370ae67f158e3a032c` |
+| `paper_template.html` | 64,552 | `14a48758cd301821024260d1bae4454783577f02627da9ab304ee353038fb9e0` |
 
 ## Inputs recorded in the build logs (58; labels are paths in the author's working tree, as in Appendix B of the note)
 
