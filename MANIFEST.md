@@ -1,15 +1,15 @@
 # Manifest
 
-Generated 2026-10-21T04:36:34Z by `make_manifest.py`.
+Generated 2026-10-21T05:04:51Z by `make_manifest.py`.
 
 ## Files in this repository (256)
 
 | file | bytes | sha256 |
 |---|---|---|
 | `.gitignore` | 139 | `35629b21a6f9600b16ef5564e5d7de73ea22c2d9d27f614454f90fe481919441` |
-| `CITATION.cff` | 1,097 | `544d04226e6fbaaa9dd777cee63d19265e0f478cf5e40f87b64592d1633936df` |
+| `CITATION.cff` | 1,153 | `0ee80f1c8108936e1bd8f767adda7fe7423b6ae173085d57c1c81f96eff605f3` |
 | `LICENSE.md` | 8,323 | `51da6bf8f737ad8aefca1e00b00a2d535f8a947cb2e71444b7985fb7d031e9fe` |
-| `README.md` | 10,785 | `4e2fa572a9c6cf3fec17c444c773ba053717442493f88d50324b617b1ba2a948` |
+| `README.md` | 10,896 | `25c5b9cd4902df67bc9340eb3c804fa6563379a26a09fe2070662c8fcfeac1cf` |
 | `code/build_balance.py` | 39,376 | `7c793de4ab1c329202eac31c8aeea1016905453fc652af58a9b676dc7c4b4ef2` |
 | `code/build_extras.py` | 6,108 | `d095cfd917d917d40c9fbc3e25f7ea75fb80ae45080edbad834800dfd57af9b5` |
 | `code/build_housing.py` | 26,206 | `d40d21e9fdc81ff49416ef015dd95b2e0f4a0259168c72cac458e0913e0ab256` |
@@ -250,8 +250,8 @@ Generated 2026-10-21T04:36:34Z by `make_manifest.py`.
 | `output/life/summary_by_cohort_decade_variable.csv` | 745 | `69987ee051aa853c009e3543f50ded0123781eeb81ffb69fff24cea8bd61fd53` |
 | `output/life/summary_by_country.csv` | 1,613 | `37148c4ddb5cce584bbbfa91a0bc69a9206c82c06a1d90b20ca163a04a913893` |
 | `output/life/summary_payg_variants.csv` | 595 | `1d1ddbaf767b4cac550304968bb461e2efb2ce0c99c1afbbcd917ec701cfb41d` |
-| `output/paper/household.html` | 137,196 | `9863a15bd8d753a10a1c4e0fdaf748e4c12e0d457cefb71643ae4a1e4b092eb7` |
-| `output/paper/household.pdf` | 2,408,669 | `77950c25f2aaab4594e956bc86dbb1a1034d0addb361294862f37b3ec65d8fbb` |
+| `output/paper/household.html` | 137,333 | `03f228d969de952e11a231b0028930390b6c514894f6517230fd8a1c2df1757b` |
+| `output/paper/household.pdf` | 2,409,159 | `937b298c0120fa32d814a3b33b6f0530a8549773c63c68756aea54df3c4b59b3` |
 | `output/paper/img/h_fig1.png` | 112,916 | `8730fc4c14a85e1d5d529a8092329d1c9b46b980027135c5fd7595a764531475` |
 | `output/paper/img/h_fig2.png` | 38,729 | `a48c2178e653bd615b339baf494589b078e523b60045159b38a1cc622019b5b5` |
 | `output/paper/img/h_fig3.png` | 54,110 | `e2cf5f247ccecc8a49b4f978f5136aafb287fd0e91f34725646fd72581d69fce` |
@@ -261,7 +261,7 @@ Generated 2026-10-21T04:36:34Z by `make_manifest.py`.
 | `output/paper/img/h_fig7.png` | 180,626 | `7ab928dbeac0f64d4ebc99aabdbc31d47d949b2157a80c5c4806dc30bbf07210` |
 | `output/paper/numbers_in_text.json` | 8,359 | `551feefd595134da32e93f133e2f1693e1877c6eded693d4d4798d823397922a` |
 | `output/paper/style.css` | 2,498 | `23101d46174ac28f836b91204245d2787c527f54d1b81efd21bb7850a9b1e037` |
-| `paper_template.html` | 64,552 | `14a48758cd301821024260d1bae4454783577f02627da9ab304ee353038fb9e0` |
+| `paper_template.html` | 64,689 | `7a831178082a72ea0667c5398950338d7788879612db0fa6ffb2bcc393f23eca` |
 
 ## Inputs recorded in the build logs (58; labels are paths in the author's working tree, as in Appendix B of the note)
 
