@@ -1,0 +1,7 @@
+vehicle,payg_claim,n,median_payg_claim_years_final_pay,median_funded_years_final_pay,median_funded_over_payg,p25_funded_over_payg,p75_funded_over_payg,share_funded_beats_payg
+6040,payg_wagebill,476,4.2782,11.0892,2.4409,1.8649,3.169,0.9517
+6040,payg_avg_pay_per_worker,476,3.7545,11.0892,2.9493,2.1235,3.7962,0.9727
+gmp,payg_wagebill,476,4.2782,8.2007,1.8811,1.5003,2.1441,0.9748
+gmp,payg_avg_pay_per_worker,476,3.7545,8.2007,2.1975,1.8134,2.4935,0.9853
+bills,payg_wagebill,476,4.2782,3.9154,0.9146,0.8101,1.0208,0.2731
+bills,payg_avg_pay_per_worker,476,3.7545,3.9154,1.0489,0.917,1.2331,0.5798

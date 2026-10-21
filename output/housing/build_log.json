@@ -1,0 +1,592 @@
+{
+ "inputs_sha256": {
+  "EMPENGAUA148NRUG.csv": "a81406e2ac0f56c42231f5c73e78dc4ef6f14e8e09e012e8942bee03ca210aea",
+  "AVHWPEAUA065NRUG.csv": "9e54068e0fc755f87dcdcf7a3dd9eeff7e1230f027457f9dbaefa7b7bde137a2",
+  "EMPENGBEA148NRUG.csv": "39b78d2edd0ea0052f5d00964deb5a9621fcf8222a7273842fb08baaae114bd5",
+  "AVHWPEBEA065NRUG.csv": "b2c23f195cf4294f175e70ad598fca6e2ae8259db9940908a4f25cbb1dbd3184",
+  "EMPENGCHA148NRUG.csv": "9d0ec4c02c53752268f69ef1075073f92dedd5701a4713c6b37c72eb55d4004e",
+  "AVHWPECHA065NRUG.csv": "cbf527a0cb121b77b8460c0dc0bc2e6d22b7dbe62beaacc6954acfa64fd3ac5d",
+  "EMPENGDEA148NRUG.csv": "cfe07fa9b1684d9a3b068b2fd3a007b352636d8578e07bc440c4c5c08b694fca",
+  "AVHWPEDEA065NRUG.csv": "06eb807c06240d6e06522eed825c7fb25723e41f42053efc6fb86a17556dd003",
+  "EMPENGDKA148NRUG.csv": "08461a40536c4f0473e9c574defbbd11447bcd9aca120587b8788ea6ce5610d5",
+  "AVHWPEDKA065NRUG.csv": "764fc879b90c9ecdc25bb19ea4f46a257dc174396487a3a2baf916bc4ef6c549",
+  "EMPENGESA148NRUG.csv": "b0ddf42f6fd6a78704c3785d03f213cb596bc7e41a8f5962bfeea90f015e3752",
+  "AVHWPEESA065NRUG.csv": "55826ff1a00d1335ae8da9487766b47765a806c1696a14553d1364285314e239",
+  "EMPENGFIA148NRUG.csv": "1ef45c91ba847cfd40752937a582006d7e99e817628c6b1a1af046931de76b6c",
+  "AVHWPEFIA065NRUG.csv": "b0e4f02671c57fad401b17f738cf46ea61c1743e141e1d322913103885a5c98b",
+  "EMPENGFRA148NRUG.csv": "5f8d328828e3bde661ab99b8e0295204f6ad1c55995f5a1fe3408ab645c4eb5e",
+  "AVHWPEFRA065NRUG.csv": "436358fd8657cd9fa46c0525114892e57d86870106acb9fae610be557e71ba09",
+  "EMPENGGBA148NRUG.csv": "aeecae49d8ff9495dea161cb1c3642d340540bbc90f257b1301f3fc8eacf96c4",
+  "AVHWPEGBA065NRUG.csv": "35db60e5be6c66d1872f9dc39a4f68bf1e4ab309177934e115104f2d95fa65fc",
+  "EMPENGITA148NRUG.csv": "899eefd6ddb7176c6b9abdd0c32df99395ace5d73a95aa5fc5c2dfc0f0805e4f",
+  "AVHWPEITA065NRUG.csv": "ff969e60cf8ecd952f819af43c91be9c5ce8bb2d391467f76cf0ae64a4bb7613",
+  "EMPENGJPA148NRUG.csv": "b623eac0b24d088bf9ffa49a727a1d59db3fb449bab6c31b442b85aaea61276b",
+  "AVHWPEJPA065NRUG.csv": "3671fc737e65fd7950e5ceaef0cb19bec1d6c4b377346334f788c2fe9fbdbf58",
+  "EMPENGNLA148NRUG.csv": "70912cacc6231ad73a3f0bdb193d3c30f15a234d718866f2a4ca202caffaa038",
+  "AVHWPENLA065NRUG.csv": "22f16a4d81ee474468bede77e4f0d0970dfd1130392f405bd341e1e884a50674",
+  "EMPENGNOA148NRUG.csv": "c0b06d78839f056d34882918c2a498f4884ff6376a53b865202c33b33e9f4a62",
+  "AVHWPENOA065NRUG.csv": "d662b4e106d0c8016e5d6062737d0265e0d6fda9ef2bcf52d4e206c73ff46954",
+  "EMPENGPTA148NRUG.csv": "c627d9bfdf656a7a34fe911045dcfc0ad3805a8d5c20c8173ac8b325e9547f19",
+  "AVHWPEPTA065NRUG.csv": "7ec2a76ce54e37f5618c3cbcce806c4d7b9b437c18cab7fccf80d8bdf73ef03d",
+  "EMPENGSEA148NRUG.csv": "0327ae9ec6fbebccfbd6ef6133cd541169289e87f3ff0c89c18409770f6d844f",
+  "AVHWPESEA065NRUG.csv": "2647e99228205ebafaaed3d2b4cb7384520bdca96304fefc49d33bde6900cf80",
+  "EMPENGUSA148NRUG.csv": "1941dcf33667d08a63ae432687003c8f3ccb858304acdad0e4a75d208601cfab",
+  "AVHWPEUSA065NRUG.csv": "973e041b40e049fb5c40c02f53d80783d03c17e69a12cab4afa8b8dd1d0e8d8f",
+  "gmp_income/data/JSTdatasetR6.xlsx": "c1bb91fe56ea50d4f27af5c0fc897d481e89ae38ce41eaecab62134c9354981d",
+  "gmp_income/output_v2/gmp_components_monthly.csv": "e552afeef9a3270caa378d7d0668d1ba1a667b21b19c29bbffa1e4b9e4621b49",
+  "gmp_bt_b61/four_series_returns_corrected.csv": "5008fbf33d85807290d9d18ef2ccf77c26c83584c2ecb359b2b9b0d4632aa708",
+  "composite_numeraire/output/world_yardsticks_usd.csv": "9e77d22d4d71802a3e8c6af447b9a5cc79b738ef3b145a77a43d9d655ca4d790",
+  "composite_numeraire/output/world_q_gdp_per_hour_level_usd.csv": "893baf577a76f297aa46dad27b2c530c6defcbc69b5dd3efe772774fe3f9eed9",
+  "composite_numeraire/data/wb_ngdp_lcu.json": "771e525220a5e69b4026e4cfd5012e242c7881d7bd44ee38afba2d5fcd84763b"
+ },
+ "rent_rtn_identity_outliers": {
+  "AUS 1950": 0.0504
+ },
+ "identity_source": {
+  "max_abs_housing_tr_minus_capgain_plus_rent_rtn": 3.3527612686157227e-08,
+  "max_abs_rent_rtn_minus_rent_yd_t_x_1plus_capgain": 0.050366968482629115,
+  "reading": "housing_tr = capgain + rent_rtn; rent_rtn = rent_t / price_{t-1} (rent_yd is rent_t / price_t, net of maintenance, depreciation and other costs per Jorda et al. 2019)"
+ },
+ "xrusd_timing": {
+  "JPN_1985": 200.5,
+  "JPN_1986": 159.1,
+  "conclusion": "end-of-year (matches year-end yen 200.5 and 159.1; annual averages were 238.5 and 168.5)"
+ },
+ "identity_components": {
+  "total_minus_(cash+val+pxv)_max": 0.0,
+  "pxv_minus_dlog_rent_mean_pct_1976_2020": -0.2387935656463093,
+  "pxv_minus_dlog_rent_maxabs_pct_1976_2020": 1.7726400688149901,
+  "note": "price = log(1+tr) - log(1+rent_rtn) differs from log(1+capgain) by a cross term; so price ex valuation = rent growth only approximately"
+ },
+ "gmp_components_check_max_abs_ltr_vs_log1p_TR": 4.9975483265574105e-08,
+ "jst_gdp_unit_log10": {
+  "AUS": 6.002,
+  "BEL": 5.998,
+  "CAN": 9.004,
+  "CHE": 5.994,
+  "DEU": 9.003,
+  "DNK": 8.997,
+  "ESP": 5.997,
+  "FIN": 5.998,
+  "FRA": 8.996,
+  "GBR": 8.999,
+  "IRL": 5.999,
+  "ITA": 9.003,
+  "JPN": 12.011,
+  "NLD": 6.0,
+  "NOR": 6.0,
+  "PRT": 5.997,
+  "SWE": 5.996,
+  "USA": 9.0
+ },
+ "jst_gdp_unit_residual_sd_log10_max": 0.05067388999069716,
+ "note3_rent_weight_bug": {
+  "unscaled_weights_mean_1976_2020": {
+   "AUS": 0.167,
+   "BEL": 0.093,
+   "CHE": 0.113,
+   "DEU": 0.001,
+   "DNK": 0.0,
+   "ESP": 0.219,
+   "FIN": 0.049,
+   "FRA": 0.001,
+   "GBR": 0.001,
+   "ITA": 0.0,
+   "JPN": 0.0,
+   "NLD": 0.156,
+   "NOR": 0.063,
+   "PRT": 0.037,
+   "SWE": 0.098,
+   "USA": 0.003
+  },
+  "rent_yield_unscaled_pct": {
+   "1976": 5.52,
+   "2000": 4.28,
+   "2020": 2.73
+  }
+ },
+ "housing_logavg_minus_portfolio_total_pct_1976_2020": -0.3439232563104971,
+ "housing_countries_1976_2020": {
+  "min": 15,
+  "max": 16
+ },
+ "housing_usa_weight_1976_2020_mean": 0.4057105012424022,
+ "national_hour_coverage": {
+  "AUS": {
+   "WB_PWT_from": 1961,
+   "JST_PWT_from": 1951,
+   "WB_PWT_to": 2023
+  },
+  "BEL": {
+   "WB_PWT_from": 1961,
+   "JST_PWT_from": 1951,
+   "WB_PWT_to": 2023
+  },
+  "CHE": {
+   "WB_PWT_from": 1961,
+   "JST_PWT_from": 1951,
+   "WB_PWT_to": 2023
+  },
+  "DEU": {
+   "WB_PWT_from": 1961,
+   "JST_PWT_from": 1951,
+   "WB_PWT_to": 2023
+  },
+  "DNK": {
+   "WB_PWT_from": 1961,
+   "JST_PWT_from": 1951,
+   "WB_PWT_to": 2023
+  },
+  "ESP": {
+   "WB_PWT_from": 1961,
+   "JST_PWT_from": 1951,
+   "WB_PWT_to": 2023
+  },
+  "FIN": {
+   "WB_PWT_from": 1961,
+   "JST_PWT_from": 1951,
+   "WB_PWT_to": 2023
+  },
+  "FRA": {
+   "WB_PWT_from": 1961,
+   "JST_PWT_from": 1951,
+   "WB_PWT_to": 2023
+  },
+  "GBR": {
+   "WB_PWT_from": 1961,
+   "JST_PWT_from": 1951,
+   "WB_PWT_to": 2023
+  },
+  "ITA": {
+   "WB_PWT_from": 1961,
+   "JST_PWT_from": 1951,
+   "WB_PWT_to": 2023
+  },
+  "JPN": {
+   "WB_PWT_from": 1961,
+   "JST_PWT_from": 1951,
+   "WB_PWT_to": 2023
+  },
+  "NLD": {
+   "WB_PWT_from": 1961,
+   "JST_PWT_from": 1951,
+   "WB_PWT_to": 2023
+  },
+  "NOR": {
+   "WB_PWT_from": 1961,
+   "JST_PWT_from": 1951,
+   "WB_PWT_to": 2023
+  },
+  "PRT": {
+   "WB_PWT_from": 1961,
+   "JST_PWT_from": 1951,
+   "WB_PWT_to": 2023
+  },
+  "SWE": {
+   "WB_PWT_from": 1961,
+   "JST_PWT_from": 1951,
+   "WB_PWT_to": 2023
+  },
+  "USA": {
+   "WB_PWT_from": 1961,
+   "JST_PWT_from": 1951,
+   "WB_PWT_to": 2023
+  }
+ },
+ "gdph_vs_proxies": {
+  "WB_PWT_vs_JST_per_capita_1961_2020": {
+   "n": 958,
+   "corr": 0.901,
+   "mean_diff_pct": 0.243
+  },
+  "WB_PWT_vs_JST_PWT_1961_2020": {
+   "n": 958,
+   "corr": 0.979,
+   "mean_diff_pct": -0.087
+  },
+  "JST_PWT_vs_JST_per_capita_1951_2020": {
+   "n": 1118,
+   "corr": 0.922,
+   "mean_diff_pct": 0.349
+  },
+  "country_mean_diff_WB_PWT_minus_per_capita_1976_2020_pct": {
+   "AUS": -0.19,
+   "BEL": 0.24,
+   "CHE": -0.15,
+   "DEU": 0.78,
+   "DNK": 0.3,
+   "ESP": 0.24,
+   "FIN": 0.43,
+   "FRA": 0.56,
+   "GBR": 0.26,
+   "ITA": 0.06,
+   "JPN": 0.35,
+   "NLD": -0.34,
+   "NOR": 0.08,
+   "PRT": -0.52,
+   "SWE": -0.27,
+   "USA": -0.12
+  }
+ },
+ "transaction_cost_hours_per_year": {
+  "10y": 8.0,
+  "20y": 4.0
+ },
+ "corr_annual_net_housing_gmp_1976_2020": -0.048,
+ "vol_annual_net_pct": {
+  "housing": 3.32,
+  "gmp": 8.19
+ },
+ "headline_1976_2020_per_1000h": {
+  "housing": {
+   "total": 89.5,
+   "cash": 44.0,
+   "price": 45.5,
+   "valuation": 4.1,
+   "price_ex_valuation": 41.4,
+   "needed": 49.5,
+   "net": 40.0,
+   "net_ex_valuation": 35.9
+  },
+  "gmp": {
+   "total": 87.6,
+   "cash": 52.8,
+   "price": 34.8,
+   "valuation": 13.4,
+   "price_ex_valuation": 21.4,
+   "needed": 49.5,
+   "net": 38.0,
+   "net_ex_valuation": 24.7
+  }
+ },
+ "national_1976_2020": {
+  "total": 85.9,
+  "cash": 44.0,
+  "valuation": 4.1,
+  "price_ex_valuation": 37.8,
+  "needed": 46.3,
+  "net": 39.6,
+  "net_ex_valuation": 35.5,
+  "net_country_min": 21.5,
+  "net_country_median": 47.5,
+  "net_country_max": 63.9,
+  "net_ex_val_country_median": 29.2,
+  "countries": 16.0
+ },
+ "national_1951_2020": {
+  "total": 92.5,
+  "cash": 46.2,
+  "valuation": 1.7,
+  "price_ex_valuation": 44.6,
+  "needed": 56.6,
+  "net": 35.9,
+  "net_ex_valuation": 34.2,
+  "net_country_min": 18.9,
+  "net_country_median": 40.1,
+  "net_country_max": 64.8,
+  "net_ex_val_country_median": 33.3,
+  "countries": 16.0
+ },
+ "rent_yield": {
+  "1950": 4.35,
+  "1976": 4.61,
+  "2000": 4.47,
+  "2020": 3.72
+ },
+ "gmp_cash_yield": {
+  "1976": 7.15,
+  "2000": 4.48,
+  "2020": 1.94
+ },
+ "rolling20_housing_beats_gmp": "13 of 26",
+ "extension_2021_2025": {
+  "inputs_sha256": {
+   "gmp_household/data/clean/oecd_house_prices.csv": "cb3c440f2e0d1e1cb284c9ca9a6f4d340f94350c9c1c1a593122633ea44b1951",
+   "gmp_household/data/clean/worldbank_gdp.csv": "132b59943f3e3edb41e2453c067a8fc05c4a66b57d92149de9c47db644d4c134",
+   "gmp_household/output/housing/ext_inputs/CUUR0000SEHA.csv": "a0d7d1f3d58f9dd8d7e4b498dd7e4a5972c760087c0f3ea79e7394fe9c5c6108",
+   "composite_numeraire/data/bis_xru.csv": "9174846bd226d04e497db31c10a4f0e29984a2c17ecf4edb9f1818086d23494f",
+   "composite_numeraire/data/wb_lf.json": "c4a77eb3a20812e7ef0da3176f71e89c625318e7f56dd28c8381e6230f51a5b6"
+  },
+  "oecd_2025_fills": {
+   "HPI": {},
+   "RPI": {
+    "AUS": "2025 from Q1-Q3 vs same quarters of 2024",
+    "USA": "2025 from BLS CPI rent of primary residence (FRED CUUR0000SEHA, annual mean) growth"
+   },
+   "HPI_RPI": {
+    "AUS": "2025 from Q1-Q3 vs same quarters of 2024"
+   }
+  },
+  "fx_check_2020_JST_vs_BIS_dec_logdiff_maxabs": 0.022948439526437825,
+  "weights_2020_jst_vs_wb_usd_ratio_range": [
+   0.9774701909181919,
+   1.1470715726993073
+  ],
+  "national_hour_2021_2025": "World Bank NY.GDP.MKTP.CN (clean file) / PWT hours (FRED vintage to 2023; 2024-25 by WB labour-force growth)",
+  "world_hour_provisional_note": "world hour hard data to 2025-06 (note 3); Dec-2025 value uses provisional months",
+  "jst_hpnom_vs_capgain_maxabs": 0.16967431888576878,
+  "oecd_rent_country_years_used_1976_2020": 714,
+  "mean_pxv_jst_minus_oecd_rent_world_wtd_pt_1976_2020": -0.164,
+  "headline_world_per_1000h": {
+   "housing": {
+    "1976-1981": {
+     "total": 141.0,
+     "cash": 46.7,
+     "price": 94.3,
+     "valuation": 10.8,
+     "price_ex_valuation": 83.5,
+     "needed": 95.4,
+     "net": 45.6,
+     "net_ex_valuation": 34.7
+    },
+    "1982-2000": {
+     "total": 85.9,
+     "cash": 45.9,
+     "price": 40.0,
+     "valuation": -4.0,
+     "price_ex_valuation": 44.1,
+     "needed": 42.8,
+     "net": 43.1,
+     "net_ex_valuation": 47.1
+    },
+    "2001-2020": {
+     "total": 77.5,
+     "cash": 41.4,
+     "price": 36.0,
+     "valuation": 9.9,
+     "price_ex_valuation": 26.2,
+     "needed": 42.1,
+     "net": 35.4,
+     "net_ex_valuation": 25.5
+    },
+    "2021-2025": {
+     "total": 81.9,
+     "cash": 34.2,
+     "price": 47.8,
+     "valuation": 24.4,
+     "price_ex_valuation": 23.4,
+     "needed": 36.1,
+     "net": 45.8,
+     "net_ex_valuation": 21.5
+    },
+    "1976-2020": {
+     "total": 89.5,
+     "cash": 44.0,
+     "price": 45.5,
+     "valuation": 4.1,
+     "price_ex_valuation": 41.4,
+     "needed": 49.5,
+     "net": 40.0,
+     "net_ex_valuation": 35.9
+    },
+    "1976-2025": {
+     "total": 88.8,
+     "cash": 43.0,
+     "price": 45.7,
+     "valuation": 6.2,
+     "price_ex_valuation": 39.6,
+     "needed": 48.2,
+     "net": 40.6,
+     "net_ex_valuation": 34.4
+    }
+   },
+   "gmp": {
+    "1976-1981": {
+     "total": 89.0,
+     "cash": 78.9,
+     "price": 10.2,
+     "valuation": -25.5,
+     "price_ex_valuation": 35.6,
+     "needed": 95.4,
+     "net": -6.4,
+     "net_ex_valuation": 19.1
+    },
+    "1982-2000": {
+     "total": 116.1,
+     "cash": 64.5,
+     "price": 51.6,
+     "valuation": 35.7,
+     "price_ex_valuation": 15.9,
+     "needed": 42.8,
+     "net": 73.3,
+     "net_ex_valuation": 37.5
+    },
+    "2001-2020": {
+     "total": 60.0,
+     "cash": 33.9,
+     "price": 26.1,
+     "valuation": 3.8,
+     "price_ex_valuation": 22.3,
+     "needed": 42.1,
+     "net": 17.9,
+     "net_ex_valuation": 14.1
+    },
+    "2021-2025": {
+     "total": 41.4,
+     "cash": 29.2,
+     "price": 12.3,
+     "valuation": -10.3,
+     "price_ex_valuation": 22.6,
+     "needed": 36.1,
+     "net": 5.3,
+     "net_ex_valuation": 15.7
+    },
+    "1976-2020": {
+     "total": 87.6,
+     "cash": 52.8,
+     "price": 34.8,
+     "valuation": 13.4,
+     "price_ex_valuation": 21.4,
+     "needed": 49.5,
+     "net": 38.0,
+     "net_ex_valuation": 24.7
+    },
+    "1976-2025": {
+     "total": 83.0,
+     "cash": 50.4,
+     "price": 32.5,
+     "valuation": 11.0,
+     "price_ex_valuation": 21.5,
+     "needed": 48.2,
+     "net": 34.8,
+     "net_ex_valuation": 23.8
+    }
+   }
+  },
+  "national_per_1000h": {
+   "1976-1981": {
+    "total": 141.3,
+    "cash": 46.7,
+    "valuation": 10.8,
+    "price_ex_valuation": 83.8,
+    "needed": 101.3,
+    "net": 39.9,
+    "net_ex_valuation": 29.1,
+    "net_country_min": -26.4,
+    "net_country_median": 35.9,
+    "net_country_max": 72.1,
+    "net_ex_val_country_median": 26.6
+   },
+   "1982-2000": {
+    "total": 84.1,
+    "cash": 45.9,
+    "valuation": -4.0,
+    "price_ex_valuation": 42.3,
+    "needed": 50.1,
+    "net": 34.1,
+    "net_ex_valuation": 38.1,
+    "net_country_min": 2.6,
+    "net_country_median": 46.3,
+    "net_country_max": 86.5,
+    "net_ex_val_country_median": 42.6
+   },
+   "2001-2020": {
+    "total": 71.0,
+    "cash": 41.4,
+    "valuation": 9.9,
+    "price_ex_valuation": 19.7,
+    "needed": 26.2,
+    "net": 44.8,
+    "net_ex_valuation": 34.9,
+    "net_country_min": 28.6,
+    "net_country_median": 48.1,
+    "net_country_max": 66.6,
+    "net_ex_val_country_median": 30.4
+   },
+   "2021-2025": {
+    "total": 91.8,
+    "cash": 34.2,
+    "valuation": 24.4,
+    "price_ex_valuation": 33.3,
+    "needed": 45.6,
+    "net": 46.2,
+    "net_ex_valuation": 21.8,
+    "net_country_min": 4.3,
+    "net_country_median": 35.5,
+    "net_country_max": 67.1,
+    "net_ex_val_country_median": 16.9
+   },
+   "1976-2020": {
+    "total": 85.9,
+    "cash": 44.0,
+    "valuation": 4.1,
+    "price_ex_valuation": 37.8,
+    "needed": 46.3,
+    "net": 39.6,
+    "net_ex_valuation": 35.5,
+    "net_country_min": 21.5,
+    "net_country_median": 47.5,
+    "net_country_max": 63.9,
+    "net_ex_val_country_median": 29.2
+   },
+   "1976-2025": {
+    "total": 86.5,
+    "cash": 43.0,
+    "valuation": 6.2,
+    "price_ex_valuation": 37.3,
+    "needed": 46.2,
+    "net": 40.3,
+    "net_ex_valuation": 34.1,
+    "net_country_min": 25.0,
+    "net_country_median": 47.5,
+    "net_country_max": 58.9,
+    "net_ex_val_country_median": 28.7
+   }
+  },
+  "robustness_ext": {
+   "Baseline, world hours, 1976-2020": {
+    "net_per_1000h": 40.0,
+    "net_ex_valuation_per_1000h": 35.9
+   },
+   "Baseline, world hours, 1976-2025": {
+    "net_per_1000h": 40.6,
+    "net_ex_valuation_per_1000h": 34.4
+   },
+   "OECD rent growth for JST implied rent growth, world, 1976-2020": {
+    "net_per_1000h": 41.7,
+    "net_ex_valuation_per_1000h": 37.5
+   },
+   "OECD rent growth for JST implied rent growth, world, 1976-2025": {
+    "net_per_1000h": 42.3,
+    "net_ex_valuation_per_1000h": 36.1
+   },
+   "OECD rent growth, national-hour country median, 1976-2020": {
+    "net_per_1000h": 45.8,
+    "net_ex_valuation_per_1000h": 28.7
+   },
+   "JST baseline, national-hour country median, 1976-2020": {
+    "net_per_1000h": 47.5,
+    "net_ex_valuation_per_1000h": 29.2
+   },
+   "Equal weights, 1976-2025": {
+    "net_per_1000h": 46.2,
+    "net_ex_valuation_per_1000h": 34.5
+   },
+   "Ex-USA, 1976-2025": {
+    "net_per_1000h": 33.0,
+    "net_ex_valuation_per_1000h": 27.6
+   },
+   "Property tax 1 pt + 7.7% costs over 10 years, 1976-2025": {
+    "net_per_1000h": 22.6,
+    "net_ex_valuation_per_1000h": 16.4
+   },
+   "GMP, world hours, 1976-2025": {
+    "net_per_1000h": 34.8,
+    "net_ex_valuation_per_1000h": 23.8
+   }
+  },
+  "crosscheck_median": {
+   "price_n": 45.0,
+   "price_corr": 0.976,
+   "price_gap_jst_minus_oecd_pt": 0.093,
+   "price_rent_n": 45.0,
+   "price_rent_corr": 0.921,
+   "price_rent_gap_jst_minus_oecd_pt": -0.118,
+   "rent_n": 45.0,
+   "rent_corr": 0.931,
+   "rent_gap_jst_minus_oecd_pt": 0.061
+  },
+  "rent_yield_2025_gdpw_pct": 3.26,
+  "gmp_cash_yield_2025_pct": 3.23
+ }
+}

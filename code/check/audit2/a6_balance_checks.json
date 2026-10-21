@@ -1,0 +1,56 @@
+{
+ "world_hour_last_month": [
+  "2026-03",
+  21.319487405091074
+ ],
+ "z1_last": "2026:Q2",
+ "balanced_panel_n_by_year_min_max": [
+  26,
+  26
+ ],
+ "balanced_panel_years_with_n_lt_max": [],
+ "S13PS_pct_gdp_2021_median_eurostat_gdp": 270.2,
+ "S13PS_pct_gdp_2021_median_output": 271.5,
+ "S13PS_pct_gdp_countries_eurostat_gdp": 30,
+ "BF90_S14_over_S1M_2021_median_range": [
+  0.984,
+  0.863,
+  1.013,
+  36
+ ],
+ "labour_share": {
+  "years": [
+   1976,
+   2019
+  ],
+  "level_start": 0.6428385205661814,
+  "level_end": 0.5981468324906476,
+  "change_pts": -4.46916880755338,
+  "effect_per_1000h_per_year": -1.6757510507567317,
+  "countries": 16,
+  "note": "GDP-weighted (PWT cgdpo) mean of PWT labsh; effect = annual log change x 1000, the gap between wage-bill growth and GDP growth"
+ },
+ "labsh_cgdpo_weights_1976_2019": [
+  64.3,
+  59.8,
+  -1.68
+ ],
+ "labsh_usd_weights_1976_2019": [
+  64.5,
+  59.8,
+  -1.78
+ ],
+ "labsh_cgdpo_fixed_1976_1976_2019": [
+  64.3,
+  59.8,
+  -1.68
+ ],
+ "labsh_equal_1976_2019": [
+  66.3,
+  59.9,
+  -2.33
+ ],
+ "labsh_countries_1976": 16,
+ "W_payg_avg_median": 3.755,
+ "note_consistent_framing": "if own pay per worker = GDP/hour x avh (contributions scale with avh too), an average-pay-indexed claim is exactly tau x 40 = 4.00 years of final pay per worker"
+}

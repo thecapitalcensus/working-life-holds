@@ -1,0 +1,698 @@
+{
+ "inputs_sha256": {
+  "gmp_income/data/JSTdatasetR6.xlsx": "c1bb91fe56ea50d4f27af5c0fc897d481e89ae38ce41eaecab62134c9354981d",
+  "gmp_bt_b61/four_series_returns_corrected.csv": "5008fbf33d85807290d9d18ef2ccf77c26c83584c2ecb359b2b9b0d4632aa708",
+  "gmp_household/data/clean/pwt110_hours.csv": "917a7632a5ab40342f234913adf4d9cebaa982e2bc2f8e17eacde18aa443d76f",
+  "gmp_household/data/clean/worldbank_gdp.csv": "132b59943f3e3edb41e2453c067a8fc05c4a66b57d92149de9c47db644d4c134",
+  "composite_numeraire/output/world_yardsticks_usd.csv": "9e77d22d4d71802a3e8c6af447b9a5cc79b738ef3b145a77a43d9d655ca4d790",
+  "composite_numeraire/output/world_q_gdp_per_hour_level_usd.csv": "893baf577a76f297aa46dad27b2c530c6defcbc69b5dd3efe772774fe3f9eed9",
+  "gmp_household/output/balance/table_payg_return_by_decade_world.csv": "f5d1f8d1268f582bb25ddf518a94a79417dc2db4d9ca7941bb89c9f1ed1ea2db"
+ },
+ "notes": [
+  "Vehicle default: domestic 60/40 of JST eq_tr and bond_tr (LCU, rebalanced yearly). GMP variant: note-3 GMP TR in USD, unhedged, converted with JST end-year xrusd, from 1976; domestic 60/40 for 1951-75 (no GMP before 1976).",
+  "Revision 2 (design correction after seeing the 2000-anchor results): baseline home priced at M x pay in the first working year; negative account balances allowed, charged bill rate + 1 pt.",
+  "P-payg-avg: claim revalued with national GDP per hour x PWT avh (average pay per worker); pre-1960 avh growth held at 0."
+ ],
+ "price_backfilled_years_with_capgain": {
+  "ESP": 26,
+  "ITA": 25,
+  "PRT": 43
+ },
+ "rent_yield_interpolated": {
+  "BEL": [
+   1965,
+   1966,
+   1967,
+   1968,
+   1969,
+   1970,
+   1971,
+   1972,
+   1973,
+   1974,
+   1975
+  ]
+ },
+ "bill_rate_interpolated": {
+  "ESP": [
+   2018
+  ]
+ },
+ "pwt_hours_interpolated": {
+  "NLD": [
+   1969
+  ]
+ },
+ "pwt_avh_interpolated": {
+  "NLD": [
+   1969
+  ]
+ },
+ "pre1960_pay_growth_percap_minus_JST_GDP_per_PWT_hour_pct_mean": -0.541,
+ "xrusd_end_year_over_WB_implied_avg_fx_1990_2020": {
+  "median": 0.997,
+  "min": 0.777,
+  "max": 1.292
+ },
+ "q_endyear_over_q_avg_1990_2020_median": 0.994,
+ "gmp_annual_vs_section4_maxabs": 6.020949580437529e-07,
+ "cohorts": {
+  "possible": 496,
+  "with_data": 476,
+  "dropped": {
+   "DEU": [
+    1950,
+    1951,
+    1952,
+    1953,
+    1954,
+    1955,
+    1956,
+    1957,
+    1958,
+    1959,
+    1960
+   ],
+   "JPN": [
+    1950,
+    1951,
+    1952,
+    1953,
+    1954,
+    1955,
+    1956,
+    1957,
+    1958
+   ]
+  }
+ },
+ "decade_O_vs_R": {
+  "O_over_R|baseline": {
+   "1950s": 1.268,
+   "1960s": 1.018,
+   "1970s": 0.867,
+   "1980s": 0.762
+  },
+  "O_over_R|variable": {
+   "1950s": 1.172,
+   "1960s": 1.039,
+   "1970s": 0.976,
+   "1980s": 0.947
+  },
+  "O_over_R|bills": {
+   "1950s": 1.431,
+   "1960s": 1.504,
+   "1970s": 1.488,
+   "1980s": 1.461
+  },
+  "O_minus_R|baseline": {
+   "1950s": 2.675,
+   "1960s": 0.278,
+   "1970s": -1.469,
+   "1980s": -3.325
+  },
+  "O_minus_R|variable": {
+   "1950s": 2.034,
+   "1960s": 0.41,
+   "1970s": -0.258,
+   "1980s": -0.915
+  },
+  "O_minus_R|bills": {
+   "1950s": 2.562,
+   "1960s": 3.077,
+   "1970s": 2.407,
+   "1980s": 1.582
+  },
+  "O_beats_R_share|baseline": {
+   "1950s": 0.702,
+   "1960s": 0.541,
+   "1970s": 0.288,
+   "1980s": 0.312
+  },
+  "O_beats_R_share|variable": {
+   "1950s": 0.681,
+   "1960s": 0.553,
+   "1970s": 0.381,
+   "1980s": 0.438
+  },
+  "O_beats_R_share|bills": {
+   "1950s": 0.752,
+   "1960s": 0.881,
+   "1970s": 0.781,
+   "1980s": 0.625
+  }
+ },
+ "price_to_pay_drift": {
+  "median_1950": 6.49,
+  "median_1960": 5.96,
+  "median_1980": 4.75,
+  "median_2020": 5.05,
+  "median_log_change_per_year_1950_2020_pct_balanced": -0.36,
+  "countries_balanced": [
+   "AUS",
+   "BEL",
+   "CHE",
+   "DNK",
+   "ESP",
+   "FIN",
+   "FRA",
+   "GBR",
+   "ITA",
+   "JPN",
+   "NLD",
+   "NOR",
+   "PRT",
+   "SWE",
+   "USA"
+  ]
+ },
+ "payg_variants": [
+  {
+   "vehicle": "6040",
+   "payg_claim": "payg_wagebill",
+   "n": 476,
+   "median_payg_claim_years_final_pay": 4.2782,
+   "median_funded_years_final_pay": 11.0892,
+   "median_funded_over_payg": 2.4409,
+   "p25_funded_over_payg": 1.8649,
+   "p75_funded_over_payg": 3.169,
+   "share_funded_beats_payg": 0.9517
+  },
+  {
+   "vehicle": "6040",
+   "payg_claim": "payg_avg_pay_per_worker",
+   "n": 476,
+   "median_payg_claim_years_final_pay": 3.7545,
+   "median_funded_years_final_pay": 11.0892,
+   "median_funded_over_payg": 2.9493,
+   "p25_funded_over_payg": 2.1235,
+   "p75_funded_over_payg": 3.7962,
+   "share_funded_beats_payg": 0.9727
+  },
+  {
+   "vehicle": "gmp",
+   "payg_claim": "payg_wagebill",
+   "n": 476,
+   "median_payg_claim_years_final_pay": 4.2782,
+   "median_funded_years_final_pay": 8.2007,
+   "median_funded_over_payg": 1.8811,
+   "p25_funded_over_payg": 1.5003,
+   "p75_funded_over_payg": 2.1441,
+   "share_funded_beats_payg": 0.9748
+  },
+  {
+   "vehicle": "gmp",
+   "payg_claim": "payg_avg_pay_per_worker",
+   "n": 476,
+   "median_payg_claim_years_final_pay": 3.7545,
+   "median_funded_years_final_pay": 8.2007,
+   "median_funded_over_payg": 2.1975,
+   "p25_funded_over_payg": 1.8134,
+   "p75_funded_over_payg": 2.4935,
+   "share_funded_beats_payg": 0.9853
+  },
+  {
+   "vehicle": "bills",
+   "payg_claim": "payg_wagebill",
+   "n": 476,
+   "median_payg_claim_years_final_pay": 4.2782,
+   "median_funded_years_final_pay": 3.9154,
+   "median_funded_over_payg": 0.9146,
+   "p25_funded_over_payg": 0.8101,
+   "p75_funded_over_payg": 1.0208,
+   "share_funded_beats_payg": 0.2731
+  },
+  {
+   "vehicle": "bills",
+   "payg_claim": "payg_avg_pay_per_worker",
+   "n": 476,
+   "median_payg_claim_years_final_pay": 3.7545,
+   "median_funded_years_final_pay": 3.9154,
+   "median_funded_over_payg": 1.0489,
+   "p25_funded_over_payg": 0.917,
+   "p75_funded_over_payg": 1.2331,
+   "share_funded_beats_payg": 0.5798
+  }
+ ],
+ "world_avh_growth": {
+  "1951-2023": {
+   "world_gdp_weighted_avh_per_1000h": -3.36,
+   "jst16_gdp_weighted_avh_per_1000h": -3.6,
+   "balance_table_avh_all": -3.4,
+   "balance_table_avh_drag_hours_minus_emp": -4.0
+  },
+  "1976-2020": {
+   "world_gdp_weighted_avh_per_1000h": -3.57,
+   "jst16_gdp_weighted_avh_per_1000h": -3.5,
+   "balance_table_avh_all": -3.6,
+   "balance_table_avh_drag_hours_minus_emp": -4.4
+  }
+ },
+ "checks": {
+  "zero_return_R_wealth_minus_contrib_maxabs_all_lives": 0.0,
+  "zero_return_R_equals_sum_b_pay_minus_rent_maxabs": 0.0,
+  "zero_return_funded_equals_tau_sum_pay_maxabs": 1.3322676295501878e-15,
+  "payg_equals_tau_sum_hours_growth_factors_maxabs": 5.329070518200751e-15,
+  "payg_avg_equals_tau_sum_avh_growth_factors_maxabs": 3.552713678800501e-15,
+  "O_decomposition_identity_maxabs": 7.105427357601002e-15,
+  "O_minus_R_decomposition_identity_maxabs": 7.105427357601002e-15,
+  "R_decomposition_identity_maxabs": 3.552713678800501e-15,
+  "entry_price_to_pay_equals_M_maxabs": 8.881784197001252e-16,
+  "annuity_25y_5pct_residual": 8.326672684688674e-17,
+  "payg_hours_return_note": "PAYG claim / final pay = tau x sum_t (N_65 / N_t): its hour return is the growth of total hours worked"
+ },
+ "design": {
+  "base": {
+   "M": 4.0,
+   "c": 0.02,
+   "b": 0.35,
+   "veh": "6040",
+   "mort": "fixed",
+   "tau": 0.1,
+   "anchor": "entry"
+  },
+  "deposit": 0.2,
+  "buy_cost": 0.0385,
+  "sell_cost": 0.0385,
+  "ltv": 0.8,
+  "term": 25,
+  "spread": 0.01,
+  "borrow_spread_over_bill": 0.01,
+  "timing": "age 25 at end of year s; flows t=s+1..s+40; wealth at end of s+40 (retire year)"
+ },
+ "headline": {
+  "W_R": {
+   "n": 476.0,
+   "median": 12.0641,
+   "p25": 8.0441,
+   "p75": 18.0961,
+   "min": -12.8691,
+   "max": 33.8388,
+   "mean": 12.9617,
+   "gdp_weighted_mean": 12.6429
+  },
+  "W_O": {
+   "n": 476.0,
+   "median": 12.7876,
+   "p25": 7.9245,
+   "p75": 17.7048,
+   "min": -12.8691,
+   "max": 33.288,
+   "mean": 12.8845,
+   "gdp_weighted_mean": 12.8445
+  },
+  "W_O_net_sell": {
+   "n": 476.0,
+   "median": 12.6434,
+   "p25": 7.8455,
+   "p75": 17.574,
+   "min": -12.8691,
+   "max": 33.138,
+   "mean": 12.7592,
+   "gdp_weighted_mean": 12.7278
+  },
+  "O_over_R": {
+   "n": 476.0,
+   "median": 1.0,
+   "p25": 0.7779,
+   "p75": 1.2904,
+   "min": 0.1878,
+   "max": 3.4473,
+   "mean": 1.0638,
+   "gdp_weighted_mean": 1.0175
+  },
+  "O_minus_R": {
+   "n": 476.0,
+   "median": 0.0,
+   "p25": -2.9477,
+   "p75": 3.3359,
+   "min": -17.1764,
+   "max": 11.5181,
+   "mean": -0.0772,
+   "gdp_weighted_mean": 0.2015
+  },
+  "W_payg": {
+   "n": 476.0,
+   "median": 4.2782,
+   "p25": 4.0042,
+   "p75": 4.7327,
+   "min": 3.2215,
+   "max": 5.9636,
+   "mean": 4.4072,
+   "gdp_weighted_mean": 4.6103
+  },
+  "W_funded": {
+   "n": 476.0,
+   "median": 11.0892,
+   "p25": 7.8624,
+   "p75": 14.248,
+   "min": 1.981,
+   "max": 28.4261,
+   "mean": 11.5713,
+   "gdp_weighted_mean": 10.6689
+  },
+  "funded_over_payg": {
+   "n": 476.0,
+   "median": 2.4409,
+   "p25": 1.8649,
+   "p75": 3.169,
+   "min": 0.3753,
+   "max": 7.5586,
+   "mean": 2.6493,
+   "gdp_weighted_mean": 2.3056
+  },
+  "O_valuation_share": {
+   "n": 459.0,
+   "median": 0.0205,
+   "p25": -0.0147,
+   "p75": 0.0825,
+   "min": -0.7381,
+   "max": 0.8663,
+   "mean": 0.0334,
+   "gdp_weighted_mean": 0.0136
+  },
+  "buy_age": {
+   "n": 459.0,
+   "median": 35.0,
+   "p25": 35.0,
+   "p75": 39.5,
+   "min": 35.0,
+   "max": 64.0,
+   "mean": 38.427,
+   "gdp_weighted_mean": 36.5507
+  },
+  "W_R_worldhr": {
+   "n": 476.0,
+   "median": 57.0874,
+   "p25": 32.665,
+   "p75": 82.016,
+   "min": -73.5965,
+   "max": 211.1453,
+   "mean": 60.5441,
+   "gdp_weighted_mean": 56.2373
+  },
+  "W_O_worldhr": {
+   "n": 476.0,
+   "median": 57.1523,
+   "p25": 31.9413,
+   "p75": 84.167,
+   "min": -73.5965,
+   "max": 177.1244,
+   "mean": 59.8854,
+   "gdp_weighted_mean": 57.5506
+  },
+  "q_final": {
+   "n": 476.0,
+   "median": 4.6191,
+   "p25": 3.9451,
+   "p75": 5.5922,
+   "min": 1.6884,
+   "max": 9.8291,
+   "mean": 4.7076,
+   "gdp_weighted_mean": 4.499
+  },
+  "price_to_pay_at_65": {
+   "n": 476.0,
+   "median": 3.0904,
+   "p25": 2.2237,
+   "p75": 4.5036,
+   "min": 1.0631,
+   "max": 9.3787,
+   "mean": 3.4655,
+   "gdp_weighted_mean": 3.221
+  },
+  "R_min_balance": {
+   "n": 476.0,
+   "median": 0.0,
+   "p25": -0.0096,
+   "p75": 0.0,
+   "min": -12.8691,
+   "max": 0.0,
+   "mean": -0.235,
+   "gdp_weighted_mean": -0.235
+  },
+  "O_min_balance": {
+   "n": 476.0,
+   "median": 0.0,
+   "p25": -0.1199,
+   "p75": 0.0,
+   "min": -12.8691,
+   "max": 0.0,
+   "mean": -0.2987,
+   "gdp_weighted_mean": -0.2947
+  }
+ },
+ "headline_never_negative": {
+  "W_R": {
+   "n": 300.0,
+   "median": 14.0495,
+   "p25": 10.093,
+   "p75": 19.9872,
+   "min": 3.6506,
+   "max": 33.8388,
+   "mean": 15.1052,
+   "gdp_weighted_mean": 14.5085
+  },
+  "W_O": {
+   "n": 300.0,
+   "median": 15.5917,
+   "p25": 11.4954,
+   "p75": 19.2022,
+   "min": 4.8768,
+   "max": 33.288,
+   "mean": 15.8087,
+   "gdp_weighted_mean": 15.2373
+  },
+  "W_O_net_sell": {
+   "n": 300.0,
+   "median": 15.5108,
+   "p25": 11.3346,
+   "p75": 19.1488,
+   "min": 4.731,
+   "max": 33.138,
+   "mean": 15.6801,
+   "gdp_weighted_mean": 15.1243
+  },
+  "O_over_R": {
+   "n": 300.0,
+   "median": 1.0983,
+   "p25": 0.8334,
+   "p75": 1.3294,
+   "min": 0.3606,
+   "max": 3.1976,
+   "mean": 1.1499,
+   "gdp_weighted_mean": 1.0803
+  },
+  "O_minus_R": {
+   "n": 300.0,
+   "median": 1.5234,
+   "p25": -2.1987,
+   "p75": 4.1508,
+   "min": -17.1764,
+   "max": 11.5181,
+   "mean": 0.7035,
+   "gdp_weighted_mean": 0.7289
+  },
+  "W_payg": {
+   "n": 300.0,
+   "median": 4.3528,
+   "p25": 4.0138,
+   "p75": 4.8294,
+   "min": 3.5048,
+   "max": 5.9636,
+   "mean": 4.4697,
+   "gdp_weighted_mean": 4.5792
+  },
+  "W_funded": {
+   "n": 300.0,
+   "median": 10.7274,
+   "p25": 7.4417,
+   "p75": 13.6535,
+   "min": 1.981,
+   "max": 28.4261,
+   "mean": 10.9894,
+   "gdp_weighted_mean": 10.3136
+  },
+  "funded_over_payg": {
+   "n": 300.0,
+   "median": 2.4108,
+   "p25": 1.7787,
+   "p75": 2.9605,
+   "min": 0.3753,
+   "max": 6.3658,
+   "mean": 2.4824,
+   "gdp_weighted_mean": 2.2455
+  },
+  "O_valuation_share": {
+   "n": 300.0,
+   "median": 0.0172,
+   "p25": -0.0146,
+   "p75": 0.0587,
+   "min": -0.1491,
+   "max": 0.296,
+   "mean": 0.0312,
+   "gdp_weighted_mean": 0.0061
+  },
+  "buy_age": {
+   "n": 300.0,
+   "median": 35.0,
+   "p25": 35.0,
+   "p75": 36.0,
+   "min": 35.0,
+   "max": 45.0,
+   "mean": 35.94,
+   "gdp_weighted_mean": 35.5767
+  },
+  "W_R_worldhr": {
+   "n": 300.0,
+   "median": 62.7638,
+   "p25": 36.5447,
+   "p75": 85.7406,
+   "min": 8.174,
+   "max": 211.1453,
+   "mean": 68.0527,
+   "gdp_weighted_mean": 63.7324
+  },
+  "W_O_worldhr": {
+   "n": 300.0,
+   "median": 66.1931,
+   "p25": 46.5312,
+   "p75": 90.5353,
+   "min": 8.3352,
+   "max": 177.1244,
+   "mean": 70.1638,
+   "gdp_weighted_mean": 67.4819
+  },
+  "q_final": {
+   "n": 300.0,
+   "median": 4.4033,
+   "p25": 3.5608,
+   "p75": 5.3089,
+   "min": 1.6884,
+   "max": 9.5818,
+   "mean": 4.4054,
+   "gdp_weighted_mean": 4.37
+  },
+  "price_to_pay_at_65": {
+   "n": 300.0,
+   "median": 2.9896,
+   "p25": 2.2233,
+   "p75": 4.4925,
+   "min": 1.0631,
+   "max": 8.2261,
+   "mean": 3.3404,
+   "gdp_weighted_mean": 2.9363
+  },
+  "R_min_balance": {
+   "n": 300.0,
+   "median": 0.0,
+   "p25": 0.0,
+   "p75": 0.0,
+   "min": 0.0,
+   "max": 0.0,
+   "mean": 0.0,
+   "gdp_weighted_mean": 0.0
+  },
+  "O_min_balance": {
+   "n": 300.0,
+   "median": 0.0,
+   "p25": 0.0,
+   "p75": 0.0,
+   "min": 0.0,
+   "max": 0.0,
+   "mean": 0.0,
+   "gdp_weighted_mean": 0.0
+  }
+ },
+ "counts": {
+  "n": 476,
+  "O_beats_R": 236,
+  "funded_beats_payg": 453,
+  "R_negative": 128,
+  "O_negative": 176,
+  "any_negative": 176,
+  "never_negative": 300,
+  "median_min_balance_negative_lives_years_of_pay": -0.2645,
+  "R_median_min_if_negative": -0.2042,
+  "O_median_min_if_negative": -0.2645,
+  "never_buy": 17,
+  "negative_W_R": 12,
+  "negative_W_O": 12
+ },
+ "anchor2000_robustness": {
+  "medians": {
+   "W_R": 3.7708,
+   "W_O": 4.2341,
+   "W_O_net_sell": 4.0559,
+   "O_over_R": 1.0,
+   "O_minus_R": 0.0,
+   "W_payg": 4.2782,
+   "W_funded": 11.0892,
+   "funded_over_payg": 2.4409,
+   "O_valuation_share": 0.1159,
+   "buy_age": 41.0,
+   "W_R_worldhr": 16.2698,
+   "W_O_worldhr": 16.8285,
+   "q_final": 4.6191,
+   "price_to_pay_at_65": 4.2567,
+   "R_min_balance": -0.1995,
+   "O_min_balance": -0.459
+  },
+  "R_negative": 303,
+  "O_negative": 346,
+  "never_buy": 158,
+  "O_beats_R": 144
+ },
+ "own_minus_rent_decomposition_median_all_buyers": {
+  "OR_price_gain": 2.2,
+  "OR_gross_rent_saved": 3.159,
+  "OR_running_costs": 0.9396,
+  "OR_net_rent_saved": 2.1345,
+  "OR_interest": 1.1011,
+  "OR_buycost": 0.0277,
+  "OR_forgone_return": 2.7562,
+  "O_minus_R": 0.083
+ },
+ "usa_1970": {
+  "country": "USA",
+  "cohort": 1970,
+  "retire_year": 2010,
+  "W_R": 9.6012,
+  "W_O": 4.7547,
+  "W_O_net_sell": 4.6302,
+  "W_payg": 4.6648,
+  "W_funded": 11.4623,
+  "funded_over_payg": 2.4572,
+  "W_payg_avg": 3.8447,
+  "funded_over_payg_avg": 2.9813,
+  "buy_age": 37,
+  "R_min_balance": 0.0,
+  "O_min_balance": -0.5243,
+  "R_contrib": 1.8286,
+  "R_return": 7.7726,
+  "O_contrib": 2.4875,
+  "O_acct_return": 0.1389,
+  "O_price_gain": 2.1284,
+  "O_interest": 2.3354,
+  "O_buycost": 0.0426,
+  "O_loan_left": -0.0,
+  "O_home": 3.2351,
+  "O_account": 1.5196,
+  "price_to_pay_at_entry": 4.0,
+  "price_to_pay_at_65": 3.2351,
+  "mort_rate_at_buy": 0.14,
+  "payg_contrib": 1.928,
+  "q_final": 4.2734,
+  "gdp_usd_retire": 15048971000000.0,
+  "OR_price_gain": 2.1284,
+  "OR_gross_rent_saved": 4.2874,
+  "OR_net_rent_saved": 3.0369,
+  "OR_running_costs": 1.2506,
+  "OR_interest": 2.3354,
+  "OR_buycost": 0.0426,
+  "OR_forgone_return": 7.6337,
+  "O_identity_gap": 0.0,
+  "OR_identity_gap": -0.0,
+  "O_valuation_part_of_price": 0.2287
+ }
+}

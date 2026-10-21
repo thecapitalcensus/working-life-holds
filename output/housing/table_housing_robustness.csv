@@ -1,0 +1,17 @@
+case,net_per_1000h,net_ex_valuation_per_1000h
+"Baseline: world hours, GDP weights",40.0,35.9
+Property tax 1 pt a year,30.0,25.9
+"Transaction costs 7.7% round trip, 10-year hold",32.0,27.9
+"Transaction costs 7.7% round trip, 20-year hold",36.0,31.9
+Property tax 1 pt + costs over 10 years,22.0,17.9
+Equal weights,48.2,37.3
+Ex-USA (GDP weights),35.3,31.2
+World hour on annual-average timing,41.1,36.9
+"National hours, GDP weights, 1976-2020",39.6,35.5
+"National hours, country median, 1976-2020",47.5,29.2
+"National hours, Dec-to-Dec interpolated hour, median, 1976-2019",48.2,31.5
+"Baseline national hour, median, same window 1976-2019",47.5,29.8
+"National hours from GDP per head (JST), median",46.8,33.1
+"National hours, GDP weights, 1951-2020",35.9,34.2
+"National hours, country median, 1951-2020",40.1,33.3
+"GMP, world hours (for comparison)",38.0,24.7

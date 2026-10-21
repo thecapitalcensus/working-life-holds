@@ -1,0 +1,62 @@
+{
+ "inputs_sha256": {
+  "gmp_income/data/JSTdatasetR6.xlsx": "c1bb91fe56ea50d4f27af5c0fc897d481e89ae38ce41eaecab62134c9354981d",
+  "composite_numeraire/output/world_yardsticks_usd.csv": "9e77d22d4d71802a3e8c6af447b9a5cc79b738ef3b145a77a43d9d655ca4d790",
+  "composite_numeraire/output/world_q_gdp_per_hour_level_usd.csv": "893baf577a76f297aa46dad27b2c530c6defcbc69b5dd3efe772774fe3f9eed9",
+  "composite_numeraire/data/wb_gdp.json": "337b37071281a128340331068a39abae870868ab49c4032b56e17b89871deed1",
+  "gmp_household/data/raw/pwt/pwt110.xlsx": "7b337e94f39dfe304bc459e433f8ce0624496c812707ae0c924888f5142b3ab3"
+ },
+ "world_1976_2020_start_of_year_weights": {
+  "total": 89.53097926037755,
+  "valuation_country_mean": 4.134325975703677,
+  "valuation_portfolio_yield": 3.8800299368162032,
+  "net": 40.013639181613414,
+  "net_ex_valuation_country_mean": 35.879313205909746,
+  "net_ex_valuation_portfolio_yield": 36.133609244797206
+ },
+ "world_1976_2020_same_year_weights": {
+  "total": 94.86415931608997,
+  "valuation_country_mean": 4.426210501324027,
+  "valuation_portfolio_yield": 4.199964873368975,
+  "net": 45.346819237325846,
+  "net_ex_valuation_country_mean": 40.92060873600181,
+  "net_ex_valuation_portfolio_yield": 41.14685436395687
+ },
+ "world_1976_2020_same_year_weights_wb_avg_fx": {
+  "total": 92.11236747367269,
+  "valuation_country_mean": 4.329888697733785,
+  "valuation_portfolio_yield": 4.092398379264456,
+  "net": 42.59502739490854,
+  "net_ex_valuation_country_mean": 38.26513869717476,
+  "net_ex_valuation_portfolio_yield": 38.50262901564409
+ },
+ "world_1976_2020_start_of_year_weights_wb_avg_fx": {
+  "total": 89.07019752089036,
+  "valuation_country_mean": 4.059426914372757,
+  "valuation_portfolio_yield": 3.8179010989461895,
+  "net": 39.55285744212622,
+  "net_ex_valuation_country_mean": 35.493430527753446,
+  "net_ex_valuation_portfolio_yield": 35.73495634318002
+ },
+ "valuation_gap_country_mean_minus_portfolio": 0.2542960388874742,
+ "net_ex_valuation_change_portfolio_vs_baseline": 0.25429603888746044,
+ "note": "per 1,000 world hours a year; baseline weights are start-of-year USD GDP as in build_housing.py; confirmed by check/check_housing.py",
+ "labour_share_jst16": {
+  "years": [
+   1976,
+   2019
+  ],
+  "level_start": 0.6428385205661814,
+  "level_end": 0.5981468324906476,
+  "change_pts": -4.46916880755338,
+  "effect_per_1000h_per_year": -1.6757510507567317,
+  "countries": 16,
+  "usd_weights_level_start": 0.6450143462297266,
+  "usd_weights_level_end": 0.5975827178344174,
+  "usd_weights_effect_per_1000h_per_year": -1.7762754570014352,
+  "mean_level_1951_2019_ppp_weights": 0.6186235301354994,
+  "home_4x_pay_in_years_of_earnings": 6.465968080981118,
+  "budget_35pct_of_pay_in_pct_of_earnings": 56.57722070858478,
+  "note": "GDP-weighted (PWT cgdpo) mean of PWT labsh; effect = annual log change x 1000, the gap between wage-bill growth and GDP growth"
+ }
+}

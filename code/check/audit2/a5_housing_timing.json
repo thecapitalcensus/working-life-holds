@@ -1,0 +1,73 @@
+{
+ "dec_row_median_1976_2019": 48.216986187586706,
+ "baseline_median_1976_2019": 47.531329161942956,
+ "baseline_median_1976_2020": 47.49389229295166,
+ "NEED_N_DEC_2020_available": 0,
+ "national_hour_source_1950": {
+  "JST per capita": 16
+ },
+ "national_hour_source_1951_1960": {
+  "JST/PWT": 160
+ },
+ "housing_1950_return_countries": 14,
+ "housing_gdpw_1950_2020": 35.49,
+ "housing_gdpw_1951_2020": 35.96,
+ "housing_median_1950_2020": 39.93,
+ "housing_median_1951_2020": 40.14,
+ "equities_gdpw_1950_2020": 37.28,
+ "equities_gdpw_1951_2020": 36.13,
+ "equities_median_1950_2020": 35.17,
+ "equities_median_1951_2020": 34.2,
+ "gov_bonds_gdpw_1950_2020": -0.35,
+ "gov_bonds_gdpw_1951_2020": 0.76,
+ "gov_bonds_median_1950_2020": -2.5,
+ "gov_bonds_median_1951_2020": -1.85,
+ "deposits_bills_gdpw_1950_2020": -12.94,
+ "deposits_bills_gdpw_1951_2020": -12.15,
+ "deposits_bills_median_1950_2020": -19.93,
+ "deposits_bills_median_1951_2020": -19.89,
+ "T3_net_1950_2020": 35.42,
+ "T3_net_1951_2020": 35.89,
+ "A1_net_1951col_maxabs_change_if_1951": 9.82,
+ "A1_net_1951col_median_1950_vs_1951": [
+  39.93,
+  40.14
+ ],
+ "A1_first_year_used": {
+  "AUS": 1950,
+  "BEL": 1950,
+  "CHE": 1950,
+  "DEU": 1963,
+  "DNK": 1950,
+  "ESP": 1950,
+  "FIN": 1950,
+  "FRA": 1950,
+  "GBR": 1950,
+  "ITA": 1950,
+  "JPN": 1960,
+  "NLD": 1950,
+  "NOR": 1950,
+  "PRT": 1950,
+  "SWE": 1950,
+  "USA": 1950
+ },
+ "USA_2021_capgain_vs_OECD": [
+  0.16508643268727474,
+  0.16508643268727474
+ ],
+ "yd_2020_continuity_JST_vs_chain": 0.0,
+ "oecd_fills": {
+  "HPI": {},
+  "RPI": {
+   "AUS": "2025 from Q1-Q3 vs same quarters of 2024",
+   "USA": "2025 from BLS CPI rent of primary residence (FRED CUUR0000SEHA, annual mean) growth"
+  },
+  "HPI_RPI": {
+   "AUS": "2025 from Q1-Q3 vs same quarters of 2024"
+  }
+ },
+ "corr_JST_hp_growth_vs_OECD_annual_avg_lead0": 0.972,
+ "corr_JST_hp_growth_vs_OECD_annual_avg_lead1": 0.697,
+ "world_net_7620_dec": 40.01,
+ "world_net_7620_need_shift_half": 40.15
+}

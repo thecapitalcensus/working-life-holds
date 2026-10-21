@@ -1,0 +1,11 @@
+case,net_per_1000h,net_ex_valuation_per_1000h
+"Baseline, world hours, 1976-2020",40.0,35.9
+"Baseline, world hours, 1976-2025",40.6,34.4
+"OECD rent growth for JST implied rent growth, world, 1976-2020",41.7,37.5
+"OECD rent growth for JST implied rent growth, world, 1976-2025",42.3,36.1
+"OECD rent growth, national-hour country median, 1976-2020",45.8,28.7
+"JST baseline, national-hour country median, 1976-2020",47.5,29.2
+"Equal weights, 1976-2025",46.2,34.5
+"Ex-USA, 1976-2025",33.0,27.6
+"Property tax 1 pt + 7.7% costs over 10 years, 1976-2025",22.6,16.4
+"GMP, world hours, 1976-2025",34.8,23.8

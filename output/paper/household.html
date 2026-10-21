@@ -1,0 +1,1018 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What a Working Life Holds &middot; The Capital Census</title>
+<link rel="stylesheet" href="style.css">
+<style>
+figure { margin: 1.5rem 0; } figure img { width: 100%; height: auto; border: 1px solid var(--rule); border-radius: 4px; }
+figcaption { color: var(--muted); font-size: .9rem; margin-top: .4rem; }
+td.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+tr.bold td { font-weight: 600; }
+header.site nav { gap: 1rem; }
+table.small { font-size: .85rem; }
+.box.correction { border-left: 4px solid #8c4a3c; }
+@media print { @page { size: A4; margin: 13mm 15mm; } header.site nav { display: none; } header.site { margin-bottom: 1rem; } body { max-width: none; padding: 0; font-size: 9pt; line-height: 1.38; } p { margin: .45em 0; } caption { break-after: avoid; } h1 { font-size: 17pt; } h2 { font-size: 11.5pt; margin: 1.6rem 0 .5rem; } th { white-space: normal; } figure { break-inside: avoid; margin: .9rem 0; } figure img { width: auto; max-width: 100%; max-height: 60mm; display: block; margin: 0 auto; } h2, h3 { break-after: avoid; } h3 + figure, h2 + figure, h3 + p, h2 + p { break-before: avoid; } .scroll { overflow: visible; } table { font-size: 8pt; } table.small { font-size: 6.9pt; } th, td { padding: .22rem .4rem; } table.small th, table.small td { padding: .16rem .28rem; } .box { padding: .6rem .8rem; break-inside: avoid; } .scroll { break-inside: avoid; } #country-tables ~ .scroll { break-inside: auto; } tr { break-inside: avoid; } pre code.hash { font-size: 5pt; line-height: 1.1; } #appendix ~ .scroll table { font-size: 7pt; } footer.site h2, footer.site p:not(:last-child) { display: none; } footer.site { margin-top: .5rem; font-size: 7.5pt; } footer.site p { margin: 0 !important; } #country-tables ~ .scroll table { font-size: 6.6pt; } #country-tables ~ .scroll td, #country-tables ~ .scroll th { padding: .1rem .25rem; } }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <a class="wordmark" href="index.html">The Capital Census</a>
+  <nav>
+    <a href="index.html">Monthly Index</a>
+    <a href="methodology.html">Methodology</a>
+    <a href="ledger.html">Verification Ledger</a>
+    <a href="data.html">Data</a>
+    <a href="hours.html">World Hour</a>
+    <a href="income.html">Earns and Pays</a>
+    <a href="household.html" aria-current="page">Household</a>
+    <a href="compare.html">Compare</a>
+  </nav>
+</header>
+
+<h1>What a Working Life Holds: The Home, the Pension and the Portfolio in Hours of the World&rsquo;s Work</h1>
+<p class="lede">The household balance sheet measured in hours of work. Research note, v1.0, 21 October 2026. Keisuke Nakanishi.</p>
+
+<div class="box">
+  <p style="margin:0">This is a review-style note intended for open publication, not a journal submission. All series were
+  built by the author from free public data: the Jord&agrave;&ndash;Schularick&ndash;Taylor Macrohistory Database, OECD
+  analytical house price indicators and household balance sheets, the Federal Reserve&rsquo;s Financial Accounts of the
+  United States (Z.1), Eurostat&rsquo;s national-accounts pension table, the Penn World Table, the World Bank, the UN World
+  Population Prospects, BIS exchange rates and FRED, together with the frozen engine and the world hour behind the first
+  three notes. No third-party proprietary data is redistributed, no index-vendor data is used, and no tables or figures
+  from other publications are reproduced. Generative AI tools (Claude, Anthropic) were used for drafting, editorial review
+  and writing analysis code, and as a discussion partner in analysis design. The author specified the questions, reviewed
+  and ran all code, checked the outputs against the source data, and is responsible for all results. The analysis is
+  exploratory: it was not pre-registered, and it was run with the results visible; the life-cycle design was corrected
+  once after seeing results (Section 7). Sections 4&ndash;7 were each checked by a separate script written before reading
+  the code that produced them. SSRN identifier: to be assigned. Code and derived data:
+  <a href="https://github.com/thecapitalcensus/working-life-holds">https://github.com/thecapitalcensus/working-life-holds</a>.</p>
+  <p style="margin:0.6em 0 0">Licence: the text of this note, as published on this site, is
+  <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">CC BY-NC-ND 4.0</a>; any SSRN posting is governed by
+  SSRN&rsquo;s terms, with copyright retained by the author. The Macrohistory Database is used under its
+  <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> licence (non-commercial, share-alike,
+  cited as its authors require): every series derived from it here &mdash; including housing returns and rent yields, equity, bond and bill returns, the national
+  hour before 1961, the stylised lives of Section 7 &mdash; can be released only on those same terms and is not offered
+  under any commercial licence. The Penn World Table, World Bank and Eurostat data are used under
+  <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>, UN World Population Prospects under CC BY 3.0 IGO,
+  OECD data under the OECD terms and conditions, and Federal Reserve and FRED data with attribution to their publishers.
+  Series that depend only on the frozen engine and the world hour follow the terms of the CC-GMP TR and CC-WH series
+  (<a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a>). See the
+  <a href="index.html#licence">Licence</a> section on the home page.</p>
+</div>
+
+<h2 id="summary">Summary</h2>
+<p>The first note in this series built an index of the investable global market portfolio (GMP) (Nakanishi 2026a). The
+second built a unit of account, nominal GDP per hour worked across 43 countries, the <em>world hour</em> (Nakanishi
+2026b). The third asked what the GMP generates and pays in hours of the world&rsquo;s work (Nakanishi 2026d). This note
+takes the same unit to the household. A household holds four kinds of claim: a home, a pension, a portfolio and some
+deposits. <strong>How many hours of work does each claim earn a year, and what does a working life end up holding?</strong>
+The note measures the home in 16 countries from 1950 to 2025, the household balance sheet in 31 countries, the
+pay-as-you-go pension in every country with hours data, and 476 stylised working lives.</p>
+<p>Five results follow.</p>
+<ol type="1">
+<li><strong>Before taxes and costs, the home earned about as much as the world&rsquo;s capital, by another route; after them,
+less.</strong> Per 1,000 world hours of housing, 1976&ndash;2025, housing gained a net 41 hours a year after
+keeping pace with the hour. The GMP gained 35. Excluding changes in valuation, the figures are
+34 and 24. Housing&rsquo;s gain over the hour comes from its net rent; rents themselves grew
+more slowly than the hour. A property tax of one point a year takes housing&rsquo;s 1976&ndash;2020 net from 40.0 to
+30.0; adding the costs of buying and selling every ten years takes it to 22.0, against 38.0 for the
+GMP, whose own fees and withholding taxes are also not deducted but are much smaller. Housing&rsquo;s measured path was far
+smoother (annual standard deviation 3.3% against 8.2%, 1976&ndash;2020), but much of that smoothness is in the index.
+In 2021&ndash;2025, 24.4 of housing&rsquo;s 45.8 net hours a year were valuation.</li>
+<li><strong>Note 3&rsquo;s rent yields used wrong weights.</strong> Its Section 7 (v1.4) gave the net rent yield on housing as
+5.5, 4.3 and 2.7% for 1976, 2000 and 2020. The GDP weights behind them were wrong,
+because the Macrohistory Database records GDP in millions, billions or trillions depending on the country. The corrected
+yields are 4.6, 4.5 and 3.7%. The rent yield fell by about a fifth over 1976&ndash;2020,
+not by half, and in 2020 it was 1.78 points above the GMP&rsquo;s cash yield. Note 3 v1.5 carries the correction (Section 4.4).</li>
+<li><strong>Dwellings and land are the largest household asset; the pay-as-you-go pension claim is left off the balance
+sheet.</strong> In 2023, across 31 countries in the OECD household accounts weighted by GDP, dwellings and land
+were 41.6% of households&rsquo; gross assets. Equity and fund shares were 23.3%, pension and insurance claims
+16.0%, and deposits and debt securities 14.2%. Liabilities were 11.7% of gross assets. Net worth per
+worker in years of the country&rsquo;s own work is, by an identity, net worth divided by GDP: a median 3.6 years. In
+the United States it rose from 3.64 years in 1952 to 6.09 in 2026. In 2021 the accrued pay-as-you-go
+pension claim was a median 270% of GDP across 30 European countries, and a median 78% of household
+net worth in the 24 where net worth is known.</li>
+<li><strong>The pension earns the growth of hours worked, or less.</strong> A pay-as-you-go system whose claims grow with the
+wage bill can pay the growth of the wage bill (Samuelson 1958; Aaron 1966). In national hours that is the growth of total
+hours worked, if pay per hour keeps pace with GDP per hour: 6.6 hours per 1,000 a year in 1976&ndash;2020 across all
+countries, 4.4 across the 16 Macrohistory countries, and negative in Germany, Japan and Finland. An individual claim revalued with average pay per
+worker earns instead the growth of hours per worker, which was negative: &minus;3.6 per 1,000 a year. Over a working life,
+10% of pay builds a claim worth a median 4.28 years of final pay when indexed to the wage bill and 3.75 when
+indexed to average pay; the same contributions in a domestic 60/40 portfolio build 11.09, a median 2.44 and
+2.95 times as much. With bills as the saving vehicle the funded claim is 0.91 times the wage-bill claim.
+The UN projects that the population aged 20&ndash;64, weighted by GDP, will shrink after 2030; that is a projection, not data.</li>
+<li><strong>Over a life, buying a home and renting while investing come out about even.</strong> Of 476 stylised lives,
+459 buy a home. Among them, the owner&rsquo;s median lead at 65 is 0.08 years of final pay (interquartile range
+&minus;3.10 to 3.48; mean &minus;0.08), and the owner comes out ahead in 236 (51%).
+The other 17 never buy. Early cohorts gained by buying (median ratio of owner&rsquo;s to renter&rsquo;s wealth
+1.27 for the 1950s) and later ones lost (0.76 for the 1980 cohort), because renters&rsquo; 60/40 did well after 1980
+and later buyers locked in high fixed rates. Valuation changes account for a median 2.1% of the owner&rsquo;s wealth.
+Across 162 variants of the assumptions, the share of lives in which the owner wins ranges from 2% to
+95%: the answer depends on the assumptions.</li>
+</ol>
+<p>What a working life holds depends less on which asset it holds than on what each claim is indexed to. Compared on the same
+basis &mdash; national hours, the 16 Macrohistory countries, 1976&ndash;2020, before taxes and costs &mdash; housing earned
+3.96% a year more than the growth of the hour, and a claim on the wage bill 0.44%. A claim indexed to work
+keeps pace with work by design. Beyond that, it earns only the growth of hours worked if it follows the wage bill, and it loses
+the decline in hours per worker if it follows average pay.</p>
+
+<h2 id="question">1. The question</h2>
+<p>Note 3 asked three questions of a market: what a unit of capital generates in hours of work, what it pays out, and what
+it needs to stand still. This note asks the same questions of a household. A household does not hold the GMP alone. In
+most rich countries its largest asset is its home. Its largest claim is often a promise from the state to pay a pension
+that grows with the wage bill or with average pay, which does not appear on its balance sheet at all. Its portfolio and its deposits come after those.</p>
+<p>Each of these claims has its own return in hours of work:</p>
+<ul>
+<li><em>The portfolio</em> earns its total return less the growth of the hour. Note 3 measured this for the GMP.</li>
+<li><em>The home</em> earns its net rent yield plus the growth of rents plus any change in the price paid per unit of rent,
+less the growth of the hour. Note 3 left this open.</li>
+<li><em>A pay-as-you-go pension whose claims grow with the wage bill</em> &mdash; the return a balanced system can pay (Samuelson
+1958; Aaron 1966) &mdash; earns the growth of the wage bill. Measured in hours, the growth of pay per hour cancels, and what is
+left is the growth of the number of hours worked: demography, participation and working time. A claim revalued with average pay
+per worker earns instead the growth of hours per worker.</li>
+<li><em>Deposits and bonds</em> earn interest less the growth of the hour.</li>
+</ul>
+<p>The pension point is the note&rsquo;s main conceptual step. A claim indexed to the wage bill is the one asset that is denominated in
+hours by construction. Its return in hours is not a market outcome; it is the change in how much work is done.</p>
+<p>The note proceeds in four steps. Section 4 measures the home as note 3 measured the GMP. Section 5 sets out the household
+balance sheet. Section 6 measures the pension. Section 7 follows stylised lives from age 25 to 65 that hold all of these
+together.</p>
+
+<h2 id="definitions">2. Definitions</h2>
+<p><strong>The world hour.</strong> The CC-WH series of Nakanishi (2026b): nominal GDP per hour worked, chained at GDP weights
+across 43 countries, in US dollars. It is hard data to June 2025 and provisional after. It is used as in note 3: December to
+December, anchored to the panel&rsquo;s dollars per hour in 2014&nbsp;Q1.</p>
+<p><strong>The national hour.</strong> A country&rsquo;s nominal GDP in local currency divided by its total hours worked (World
+Bank GDP over Penn World Table employment &times; average annual hours, from 1961; Macrohistory Database GDP over Penn World
+Table hours for 1951&ndash;1960). A return &ldquo;in national hours&rdquo; is a local-currency return less the growth of this
+series. It answers a resident&rsquo;s question: does my claim command more of my own country&rsquo;s work?</p>
+<p><strong>Hours generated, needed and net.</strong> As in note 3: capital worth 1,000 hours that returns <em>TR</em> (log)
+generates 1,000 &times; <em>TR</em> hours&rsquo; worth of currency in a year; 1,000 &times; <em>g</em> of those are needed to
+keep pace with an hour growing at <em>g</em>; the net gain is the difference. Every return in Sections 4&ndash;6 is in these
+units, hours a year per 1,000 hours of the claim. Ten hours per 1,000 is 1% a year (log).</p>
+<p><strong>Housing&rsquo;s parts.</strong> The total return on housing is the net rent yield (cash) plus the price change. The
+price change is split into a valuation change, minus the change in the log of the net rent yield, and the rest, &ldquo;price
+excluding valuation&rdquo;, which is close to the growth of rents. Across countries, valuation is the GDP-weighted mean of each
+country&rsquo;s change in log rent yield, not the change in the yield of the 16-country portfolio as a whole (Section 4.1).</p>
+<p><strong>Years of own work, years of own pay.</strong> Net worth per worker measured in national hours, divided by annual hours
+per worker, equals net worth divided by GDP. The workers, the hours and the currency cancel. So &ldquo;years of a
+country&rsquo;s own work&rdquo; is simply the wealth-to-GDP ratio (checked to machine precision). In Section 7, &ldquo;pay&rdquo; is
+the national hour with hours per worker held fixed. Wealth divided by pay at 65 is therefore &ldquo;years of own final
+pay&rdquo;, and equals wealth in national hours up to a constant. It is not years of measured earnings.</p>
+<p><strong>Two pension indexations.</strong> A claim <em>indexed to the wage bill</em> grows with pay per hour times total hours
+worked; this is the return a pay-as-you-go system can sustain. Notional defined-contribution schemes credit accounts with
+wage-bill, average-income or GDP growth, depending on the country. A claim <em>indexed to average pay</em> grows with pay per worker, as many national revaluation rules do. In national
+hours the first earns the growth of total hours worked, the second the growth of hours per worker.</p>
+
+<h2 id="data">3. Data and construction</h2>
+<div class="scroll"><table>
+<caption style="text-align:left;caption-side:top;font-size:.93rem;color:var(--muted);padding:.3rem 0">Table 1. Data (all free and public; retrieved September&ndash;October 2026)</caption>
+<thead><tr><th>Source</th><th>Used for</th><th>Coverage</th><th>Terms</th></tr></thead><tbody>
+<tr><td>Jord&agrave;&ndash;Schularick&ndash;Taylor Macrohistory Database, release 6</td><td>House prices, housing returns and net rent yields; equity, bond and bill returns; long rates; GDP; exchange rates</td><td>16 countries with housing data, to 2020</td><td>CC BY-NC-SA 4.0</td></tr>
+<tr><td>OECD analytical house price indicators</td><td>House price and rent indices chained onto 2020; cross-check</td><td>1970s&ndash;2025</td><td>OECD terms (reuse with attribution)</td></tr>
+<tr><td>OECD household balance sheets: Table 720 (financial) and Table 9B (non-financial)</td><td>Composition of household assets and liabilities</td><td>31 countries with both sides in 2023</td><td>OECD terms</td></tr>
+<tr><td>Federal Reserve, Financial Accounts of the United States (Z.1), table B.101</td><td>US household balance sheet</td><td>1952&ndash;2026&nbsp;Q2</td><td>Public domain, attribution</td></tr>
+<tr><td>Eurostat, pension entitlements in national accounts (Table 29: nasa_10_pens1)</td><td>Accrued pay-as-you-go and funded pension entitlements</td><td>30 countries, 2021</td><td>CC BY 4.0</td></tr>
+<tr><td>Penn World Table 11.0 (also via FRED; the two copies are identical)</td><td>Persons engaged, average annual hours, labour share</td><td>1950&ndash;2023</td><td>CC BY 4.0</td></tr>
+<tr><td>World Bank, World Development Indicators</td><td>GDP in local currency and US dollars; labour force (to extend hours to 2024&ndash;2025)</td><td>1960&ndash;2025</td><td>CC BY 4.0</td></tr>
+<tr><td>UN World Population Prospects 2024</td><td>Population aged 20&ndash;64 (estimates and medium-variant projection)</td><td>1950&ndash;2100</td><td>CC BY 3.0 IGO</td></tr>
+<tr><td>BIS exchange rates; FRED (BLS CPI rent of primary residence; US GDP; nonfarm business hours)</td><td>Exchange rates after 2020; US 2025 rent; US hours after 2023</td><td>to 2026</td><td>Public, attribution</td></tr>
+<tr><td>Notes 1&ndash;3 and the GMP weight history (Nakanishi 2026a&ndash;d)</td><td>GMP total return and cash yield; the world hour</td><td>1976&ndash;2026</td><td>CC BY-NC 4.0 (CC-GMP TR, CC-WH)</td></tr>
+</tbody></table></div>
+<p><strong>Housing, to 2020.</strong> The Macrohistory Database, release 6 (Jord&agrave;, Schularick and Taylor 2017), gives annual housing total returns,
+capital gains and net rent yields for 16 countries (Jord&agrave;, Knoll, Kuvshinov, Schularick and Taylor 2019), built on the
+house price series of Knoll, Schularick and Steger (2017). Its net rent yield is rent less maintenance, management,
+insurance and depreciation, imputed for owners. The total return equals the capital gain plus the rent return to
+machine precision. The rent return equals this year&rsquo;s rent yield times one plus the capital gain, i.e. rent
+over the start-of-year price, to machine precision; Australia 1950 is the one exception. Countries are weighted by
+start-of-year US-dollar GDP. The US weight averages 41% over 1976&ndash;2020. Returns in US dollars use the
+database&rsquo;s exchange rate, <code>xrusd</code>, which is an end-of-year rate: Japan reads 200.5 for 1985 and
+159.1 for 1986, the year-end rates, not the annual averages. December-to-December exchange rates therefore line up
+with the December-to-December world hour.</p>
+<p><strong>A unit problem in the database&rsquo;s GDP.</strong> The database&rsquo;s nominal GDP, <code>gdp</code>, is in
+millions, billions or trillions of local currency, depending on the country. Dividing it by the exchange rate does not give
+US dollars. Here each country&rsquo;s series is rescaled by a power of ten fitted to World Bank US-dollar GDP; the largest
+residual standard deviation, in log<sub>10</sub>, is 0.05. Note 3 did not do this (Section 4.4).</p>
+<p><strong>Housing, 2021&ndash;2025.</strong> The database ends in 2020. The OECD analytical house price indicators give a
+nominal house price index and a rent index for every one of the 16 countries. The price is chained onto the database&rsquo;s
+2020 level with the OECD index (annual average). The rent yield is the database&rsquo;s 2020 yield times the growth of the rent
+index divided by the price index. Two gaps are filled: Australia&rsquo;s 2025 rent from the first three quarters, and US 2025
+rent from the BLS consumer-price index for rent of primary residence. Exchange rates after 2020 are BIS December averages,
+within 2.3% of the database&rsquo;s 2020 rates. The OECD rent index measures rents paid by sitting tenants, not new
+leases; it lags market rents, so part of the 2021&ndash;2025 valuation change may be that lag.</p>
+<p><strong>Cross-check.</strong> Over 1976&ndash;2020, for each country, the database and the OECD indices agree closely:
+median correlations of annual growth are 0.98 for prices, 0.92 for the price&ndash;rent ratio and 0.93 for
+rents, and the median gap in price growth is +0.09 points a year. Substituting OECD rent growth for the
+database&rsquo;s implied rent growth (714 country-years) moves the 1976&ndash;2020 world-hour net from
+40.0 to 41.7 (Table A5).</p>
+<p><strong>Balance sheets.</strong> OECD Table 720 (financial assets and liabilities) and Table 9B (non-financial assets), for
+households and the non-profit institutions serving them, in national currency at year-end. Gross assets are financial assets
+plus all non-financial assets: dwellings, all land held by households, and other produced assets. &ldquo;Dwellings + land&rdquo;
+therefore includes all household land, not only the land under homes. The latest year with at least 90% of the full country
+count is 2023. The US balance sheet from 1952 is the Federal Reserve&rsquo;s Z.1 table B.101; OECD US net worth is
+1.07 times the Z.1 figure in 2023.</p>
+<p><strong>Pension entitlements.</strong> Eurostat&rsquo;s Table 29 records the accrued-to-date value of pension promises,
+including the social-security schemes that the core accounts leave out, every three years (Eurostat and ECB 2020). These are
+present values under each country&rsquo;s own discount rate and indexation assumptions, so levels differ for reasons other than
+the promises themselves.</p>
+<p><strong>Hours worked and population.</strong> Penn World Table 11.0 (Feenstra, Inklaar and Timmer 2015) gives persons engaged
+and average annual hours to 2023; their product is total hours. Sections 4 and 7 read them through FRED&rsquo;s copies, which are
+identical to the PWT 11.0 file used in Section 6. For 2024&ndash;2025 (housing&rsquo;s national hour only), total hours are extended
+with World Bank labour-force growth. The UN World Population Prospects 2024 gives the population
+aged 20&ndash;64, as estimates to 2023 and as the medium-variant projection after.</p>
+<p><strong>From note 3.</strong> The GMP&rsquo;s monthly total return and cash yield, built on the published weight history
+(Nakanishi 2026c), and the world hour, are read unchanged from the earlier notes&rsquo; frozen files, whose checksums are listed in the Appendix.</p>
+
+<h2 id="home">4. The home in hours</h2>
+<h3>4.1 Per 1,000 hours of housing capital</h3>
+<figure><img src="img/h_fig1.png" alt="Figure 1. 1,000 world hours placed in housing or in the GMP at end-1975"><figcaption>Figure 1. 1,000 hours of world work placed in housing (16 countries, GDP-weighted) or in the GMP at the end of 1975, in world hours, with and without valuation changes. Log scale. Shaded: 2021&ndash;2025, chained with OECD indices. Author&rsquo;s calculations.</figcaption></figure>
+<div class="scroll"><table>
+<caption style="text-align:left;caption-side:top;font-size:.93rem;color:var(--muted);padding:.3rem 0">Table 2. Hours a year generated by housing and by the GMP, per 1,000 world hours of capital (author&rsquo;s calculations). Annual log returns, % a year &times; 10. Housing: Macrohistory Database to 2020, OECD-chained 2021&ndash;2025, GDP-weighted at start-of-year US-dollar GDP. Components may not add exactly because of rounding</caption>
+<thead><tr><th></th><th style="text-align:right">1976&ndash;1981</th><th style="text-align:right">1982&ndash;2000</th><th style="text-align:right">2001&ndash;2020</th><th style="text-align:right">2021&ndash;2025</th><th style="text-align:right">1976&ndash;2020</th><th style="text-align:right">1976&ndash;2025</th></tr></thead><tbody>
+<tr><td><strong>Housing, 16 countries</strong></td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td></tr>
+<tr><td>Total return (a)</td><td class="num">141.0</td><td class="num">85.9</td><td class="num">77.5</td><td class="num">81.9</td><td class="num">89.5</td><td class="num">88.8</td></tr>
+<tr><td>&mdash; net rent / cash</td><td class="num">46.7</td><td class="num">45.9</td><td class="num">41.4</td><td class="num">34.2</td><td class="num">44.0</td><td class="num">43.0</td></tr>
+<tr><td>&mdash; price</td><td class="num">94.3</td><td class="num">40.0</td><td class="num">36.0</td><td class="num">47.8</td><td class="num">45.5</td><td class="num">45.7</td></tr>
+<tr><td>&mdash;&mdash; valuation change</td><td class="num">10.8</td><td class="num">&minus;4.0</td><td class="num">9.9</td><td class="num">24.4</td><td class="num">4.1</td><td class="num">6.2</td></tr>
+<tr><td>&mdash;&mdash; price excluding valuation</td><td class="num">83.5</td><td class="num">44.1</td><td class="num">26.2</td><td class="num">23.4</td><td class="num">41.4</td><td class="num">39.6</td></tr>
+<tr><td>Needed to keep pace with the hour (c)</td><td class="num">95.4</td><td class="num">42.8</td><td class="num">42.1</td><td class="num">36.1</td><td class="num">49.5</td><td class="num">48.2</td></tr>
+<tr class="bold"><td>Net gain: (a) &minus; (c)</td><td class="num">45.6</td><td class="num">43.1</td><td class="num">35.4</td><td class="num">45.8</td><td class="num">40.0</td><td class="num">40.6</td></tr>
+<tr><td>Net gain excluding valuation</td><td class="num">34.7</td><td class="num">47.1</td><td class="num">25.5</td><td class="num">21.5</td><td class="num">35.9</td><td class="num">34.4</td></tr>
+<tr><td><strong>GMP (note 3)</strong></td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td></tr>
+<tr><td>Total return (a)</td><td class="num">89.0</td><td class="num">116.1</td><td class="num">60.0</td><td class="num">41.4</td><td class="num">87.6</td><td class="num">83.0</td></tr>
+<tr><td>&mdash; cash</td><td class="num">78.9</td><td class="num">64.5</td><td class="num">33.9</td><td class="num">29.2</td><td class="num">52.8</td><td class="num">50.4</td></tr>
+<tr><td>&mdash; price</td><td class="num">10.2</td><td class="num">51.6</td><td class="num">26.1</td><td class="num">12.3</td><td class="num">34.8</td><td class="num">32.5</td></tr>
+<tr><td>&mdash;&mdash; valuation change</td><td class="num">&minus;25.5</td><td class="num">35.7</td><td class="num">3.8</td><td class="num">&minus;10.3</td><td class="num">13.4</td><td class="num">11.0</td></tr>
+<tr><td>&mdash;&mdash; price excluding valuation</td><td class="num">35.6</td><td class="num">15.9</td><td class="num">22.3</td><td class="num">22.6</td><td class="num">21.4</td><td class="num">21.5</td></tr>
+<tr><td>Needed to keep pace with the hour (c)</td><td class="num">95.4</td><td class="num">42.8</td><td class="num">42.1</td><td class="num">36.1</td><td class="num">49.5</td><td class="num">48.2</td></tr>
+<tr class="bold"><td>Net gain: (a) &minus; (c)</td><td class="num">&minus;6.4</td><td class="num">73.3</td><td class="num">17.9</td><td class="num">5.3</td><td class="num">38.0</td><td class="num">34.8</td></tr>
+<tr><td>Net gain excluding valuation</td><td class="num">19.1</td><td class="num">37.5</td><td class="num">14.1</td><td class="num">15.7</td><td class="num">24.7</td><td class="num">23.8</td></tr>
+</tbody></table></div>
+<p>Over 1976&ndash;2020, housing generated 89.5 hours a year per 1,000 hours of housing capital, against
+87.6 for the GMP. The two totals are close. Their make-up is not. Housing paid 44.0 hours as net rent;
+the GMP paid 52.8 in cash. Valuation added 4.1 hours to housing and 13.4 to the GMP. Both
+needed 49.5 hours to keep pace with the hour. So housing gained a net 40.0 hours a year and the GMP
+38.0; excluding valuation, 35.9 and 24.7. Extended to 2025, the nets are
+40.6 and 34.8, and 34.4 and 23.8 excluding valuation.</p>
+<p>How valuation is measured matters a little. Valuation here is the GDP-weighted mean of each country&rsquo;s change in log rent
+yield. Measured instead as the change in the yield of the 16-country portfolio as a whole (same weights in both years), it is
+3.9 hours rather than 4.1; the 0.25-hour difference sits inside &ldquo;price excluding
+valuation&rdquo;, and net excluding valuation becomes 36.1 instead of 35.9.  Price excluding valuation is close to, but not
+equal to, the growth of rents: ln(1&nbsp;+&nbsp;<em>g</em>&nbsp;+&nbsp;<em>y</em>)&nbsp;&minus;&nbsp;ln(1&nbsp;+&nbsp;<em>y</em>)&nbsp;&ne;&nbsp;ln(1&nbsp;+&nbsp;<em>g</em>), where <em>g</em> is the capital gain and <em>y</em> the rent return. The mean gap over 1976&ndash;2020 is 0.24 points a year, and
+the largest is 1.8.</p>
+<p>The periods differ more for the GMP than for housing. In 1976&ndash;1981, housing gained 45.6 hours a year net
+while the GMP lost 6.4. In 1982&ndash;2000 the GMP gained 73.3 against housing&rsquo;s 43.1.
+In 2001&ndash;2020 housing led again, 35.4 to 17.9. In 2021&ndash;2025 housing gained 45.8
+and the GMP 5.3, but 24.4 of housing&rsquo;s hours were valuation: house prices outran rents. In the
+26 twenty-year windows within 1976&ndash;2020, housing beat the GMP in 13. Housing&rsquo;s net ranged from 26 to
+48 hours a year; the GMP&rsquo;s from 14 to 70.</p>
+<p>Over 1976&ndash;2020, the annual net of housing had a standard deviation of 3.3%, against 8.2% for the GMP, and the two were
+uncorrelated (&minus;0.05). Much of that smoothness belongs to the index, not to a house. House-price indices are often
+annual averages and appraisal-based, and an index of many houses has none of the risk of one house.</p>
+
+<h3>4.2 In each country&rsquo;s own hours</h3>
+<figure><img src="img/h_fig2.png" alt="Figure 2. Housing in each country's own hours, 1976-2020"><figcaption>Figure 2. Net hours a year per 1,000 hours of housing capital, in each country&rsquo;s own hours (local nominal GDP per hour worked), 1976&ndash;2020, with and without valuation change. Dotted line: country median. Author&rsquo;s calculations.</figcaption></figure>
+<div class="scroll"><table class="small">
+<caption style="text-align:left;caption-side:top;font-size:.93rem;color:var(--muted);padding:.3rem 0">Table 3. Housing in each country&rsquo;s own hours (local nominal GDP per hour worked), hours a year per 1,000 hours of housing capital, 16 countries (author&rsquo;s calculations). Columns 1&ndash;7: 1976&ndash;2020. Country rows: Table A1</caption>
+<thead><tr><th></th><th style="text-align:right">Total</th><th style="text-align:right">Net rent</th><th style="text-align:right">Valuation</th><th style="text-align:right">Price ex val.</th><th style="text-align:right">Needed</th><th style="text-align:right">Net</th><th style="text-align:right">Net ex val.</th><th style="text-align:right">Net 1951&ndash;2020</th><th style="text-align:right">Net 2021&ndash;2025</th></tr></thead><tbody>
+<tr class="bold"><td><strong>GDP-weighted</strong></td><td class="num">85.9</td><td class="num">44.0</td><td class="num">4.1</td><td class="num">37.8</td><td class="num">46.3</td><td class="num">39.6</td><td class="num">35.5</td><td class="num">35.9</td><td class="num">46.2</td></tr>
+<tr><td>Median</td><td class="num">96.7</td><td class="num">42.3</td><td class="num">9.0</td><td class="num">39.0</td><td class="num">53.2</td><td class="num">47.5</td><td class="num">29.2</td><td class="num">40.1</td><td class="num">35.5</td></tr>
+<tr><td>Minimum</td><td class="num">51.0</td><td class="num">28.7</td><td class="num">&minus;6.7</td><td class="num">17.8</td><td class="num">25.9</td><td class="num">21.5</td><td class="num">4.1</td><td class="num">18.9</td><td class="num">4.3</td></tr>
+<tr><td>Maximum</td><td class="num">143.3</td><td class="num">68.9</td><td class="num">26.7</td><td class="num">73.8</td><td class="num">90.2</td><td class="num">63.9</td><td class="num">51.4</td><td class="num">64.8</td><td class="num">67.1</td></tr>
+</tbody></table></div>
+<p>Measured in each country&rsquo;s own hours, housing gained a GDP-weighted 39.6 hours a year per 1,000 over
+1976&ndash;2020 (35.5 excluding valuation). The country median was 47.5, from 21.5 in
+Japan to 63.9 in Norway. Every country is positive. The GDP-weighted figure sits below the median partly because
+Japan and Germany, with low housing returns, carry large weights. Over 1951&ndash;2020 the GDP-weighted
+net was 35.9 and the median 40.1; over 1976&ndash;2025, 40.3 and 47.5.</p>
+<p><strong>Rents grew more slowly than the hour.</strong> In national hours, price excluding valuation &mdash; roughly the growth of
+rents &mdash; was 37.8 hours a year, against 46.3 needed to keep pace with the hour. Housing&rsquo;s surplus
+over the hour is therefore its net rent yield, not rising prices. A home is a claim on a flow of housing services whose value,
+per unit, grew more slowly than the value of an hour of work.</p>
+
+<h3>4.3 Housing beside the other claims</h3>
+<div class="scroll"><table>
+<caption style="text-align:left;caption-side:top;font-size:.93rem;color:var(--muted);padding:.3rem 0">Table 4. Net hour return of each claim, hours a year per 1,000 hours (author&rsquo;s calculations; same 16 countries and years; Macrohistory Database total returns). National-hour columns average each country&rsquo;s net at each year&rsquo;s GDP weights, over the same country-years as Table 3. Bills stand in for deposits, which typically earn less</caption>
+<thead><tr><th>Claim</th><th style="text-align:right">World, 1976&ndash;2020</th><th style="text-align:right">National, GDP-w., 1976&ndash;2020</th><th style="text-align:right">National, median, 1976&ndash;2020</th><th style="text-align:right">National, GDP-w., 1951&ndash;2020</th><th style="text-align:right">National, median, 1951&ndash;2020</th></tr></thead><tbody>
+<tr><td>Housing</td><td class="num">40.0</td><td class="num">39.6</td><td class="num">47.5</td><td class="num">35.9</td><td class="num">40.1</td></tr>
+<tr><td>Equities</td><td class="num">50.4</td><td class="num">44.4</td><td class="num">51.5</td><td class="num">36.0</td><td class="num">34.2</td></tr>
+<tr><td>GMP (note 3)</td><td class="num">38.0</td><td class="num">&ndash;</td><td class="num">&ndash;</td><td class="num">&ndash;</td><td class="num">&ndash;</td></tr>
+<tr><td>Government bonds</td><td class="num">27.9</td><td class="num">26.7</td><td class="num">27.8</td><td class="num">0.9</td><td class="num">&minus;1.2</td></tr>
+<tr><td>Bills</td><td class="num">&minus;1.6</td><td class="num">&minus;1.2</td><td class="num">&minus;4.7</td><td class="num">&minus;12.1</td><td class="num">&minus;19.5</td></tr>
+</tbody></table></div>
+<p>In world hours over 1976&ndash;2020, equities gained 50.4 hours a year per 1,000, housing 40.0, the GMP
+38.0, government bonds 27.9 and bills &minus;1.6. Over the longer 1951&ndash;2020 span in national hours,
+bills lost ground to the hour in most countries, consistent with post-war inflation and repressed rates: a deposit shrank in
+hours. Government bonds roughly kept pace on GDP-weighted average (0.9) but lost ground in the median country
+(&minus;1.2). Housing and equities gained.</p>
+
+<h3>4.4 Rent yields, and a correction to note 3</h3>
+<div class="scroll"><table>
+<caption style="text-align:left;caption-side:top;font-size:.93rem;color:var(--muted);padding:.3rem 0">Table 5. Housing net rent yield and the GMP&rsquo;s cash distribution yield, % (author&rsquo;s calculations). Rent yield: 16 countries, weighted by same-year US-dollar GDP; 2025 chained with OECD price and rent indices</caption>
+<thead><tr><th></th><th style="text-align:right">1950</th><th style="text-align:right">1976</th><th style="text-align:right">1981</th><th style="text-align:right">1990</th><th style="text-align:right">2000</th><th style="text-align:right">2010</th><th style="text-align:right">2020</th><th style="text-align:right">2025</th></tr></thead><tbody>
+<tr><td>Net rent yield, corrected weights</td><td class="num">4.35</td><td class="num">4.61</td><td class="num">4.32</td><td class="num">4.16</td><td class="num">4.47</td><td class="num">4.30</td><td class="num">3.72</td><td class="num">3.26</td></tr>
+<tr><td>GMP cash distribution yield (note 3)</td><td class="num">&ndash;</td><td class="num">7.15</td><td class="num">10.18</td><td class="num">6.69</td><td class="num">4.48</td><td class="num">3.60</td><td class="num">1.94</td><td class="num">3.23</td></tr>
+<tr><td><em>Note 3&rsquo;s calculation as reproduced here (wrong weights; printed as 5.5, 4.3, 2.7)</em></td><td class="num">&ndash;</td><td class="num"><em>5.52</em></td><td class="num">&ndash;</td><td class="num">&ndash;</td><td class="num"><em>4.28</em></td><td class="num">&ndash;</td><td class="num"><em>2.73</em></td><td class="num">&ndash;</td></tr>
+</tbody></table></div>
+<div class="box correction">
+<p style="margin:0"><strong>Correction to note 3, Section 7.</strong> Note 3 (Nakanishi 2026d, v1.4) reported the net rental
+yield on housing, weighted by GDP in US dollars across 16 countries, as 5.5% in 1976, 4.3% in 2000 and
+2.7% in 2020 (5.52, 4.28 and 2.73 in this note&rsquo;s reproduction of note 3&rsquo;s calculation). Those weights were wrong. The Macrohistory Database records nominal GDP in millions, billions or
+trillions of local currency, depending on the country, and note 3 divided it by the exchange rate as if it were all in the same
+unit. As a result, Japan, the United States, Germany, France, the United Kingdom and Italy together carried an average weight
+of 0.6% over 1976&ndash;2020, while Spain carried 22%. With each country&rsquo;s GDP rescaled to US
+dollars (Section 3), the yields are <strong>4.61%, 4.47% and 3.72%</strong>. The substantive change is in
+the trend. Note 3&rsquo;s figures had the rent yield halving between 1976 and 2020, in the same direction as the GMP&rsquo;s cash yield; note 3 said only that &ldquo;the direction is comparable&rdquo;.
+Corrected, it fell by about a fifth (4.61% to 3.72%, &minus;19%) while the GMP&rsquo;s cash yield fell
+by almost three-quarters (7.15% to 1.94%, &minus;73%). In 2020 the rent yield was above the
+GMP&rsquo;s cash yield in note 3&rsquo;s figures too; corrected, the margin is 1.78 points rather than
+0.79. No other figure in note 3 used these weights. The error has been corrected in note 3 v1.5 (Nakanishi 2026d, v1.5). The independent check reproduced
+both the printed and the corrected values.</p>
+</div>
+<p>From 1976 to 1999 the GMP&rsquo;s cash yield was above the rent yield in 92% of years. From 2010 to 2020
+the rent yield (between 3.7 and 4.5%) was above the GMP&rsquo;s cash yield (between 1.9
+and 3.6%). In 2025 the two were about equal, 3.26% and 3.23%. The rent yield moved much less
+than the GMP&rsquo;s yield, which is dominated by bond coupons that reset with interest rates.</p>
+<p>Neither side is net of tax. Following Jord&agrave; et al. (2019), a property tax of one point a year lowers housing&rsquo;s 1976&ndash;2020 net from
+40.0 to 30.0 hours. Transaction costs of 7.7% of value per round trip cost 8.0 hours a year over a
+ten-year hold and 4.0 over a twenty-year hold; with both, the net is 22.0 (22.6 over
+1976&ndash;2025). The GMP&rsquo;s figures carry no fees or withholding taxes either, but those are much smaller. Before taxes and costs, then,
+the home earned about as much as the world&rsquo;s investable capital; after a property tax and transaction costs it earned
+less: 22.0 hours against 38.0.</p>
+
+<h2 id="balance">5. The household balance sheet in hours</h2>
+<h3>5.1 What households hold</h3>
+<figure><img src="img/h_fig3.png" alt="Figure 3. Household balance sheets, 2023"><figcaption>Figure 3. Household balance sheets (households and non-profit institutions serving households), 2023: shares of gross assets, and liabilities as a % of gross assets (marks). * land not reported. Author&rsquo;s calculations from OECD Tables 720 and 9B.</figcaption></figure>
+<div class="scroll"><table class="small">
+<caption style="text-align:left;caption-side:top;font-size:.93rem;color:var(--muted);padding:.3rem 0">Table 6. Household balance sheets (households and non-profit institutions serving them), 2023, 31 countries: shares of gross assets, % (author&rsquo;s calculations from OECD Tables 720 and 9B). Years of work = net worth &divide; GDP. Country rows: Table A2</caption>
+<thead><tr><th></th><th style="text-align:right">Dwellings + land</th><th style="text-align:right">Equity &amp; fund shares (F5)</th><th style="text-align:right">Pension &amp; insurance (F6)</th><th style="text-align:right">Deposits &amp; debt sec. (F2+F3)</th><th style="text-align:right">Other</th><th style="text-align:right">Liabilities</th><th style="text-align:right">Net worth, years of work</th><th style="text-align:right">Net worth per worker, world hours</th></tr></thead><tbody>
+<tr class="bold"><td><strong>GDP-weighted</strong></td><td class="num">41.6</td><td class="num">23.3</td><td class="num">16.0</td><td class="num">14.2</td><td class="num">4.9</td><td class="num">11.7</td><td class="num">&ndash;</td><td class="num">&ndash;</td></tr>
+<tr><td>Median</td><td class="num">48.2</td><td class="num">15.6</td><td class="num">8.1</td><td class="num">15.5</td><td class="num">5.5</td><td class="num">13.0</td><td class="num">3.6</td><td class="num">17,092</td></tr>
+<tr><td>Minimum</td><td class="num">23.9</td><td class="num">6.4</td><td class="num">0.5</td><td class="num">7.2</td><td class="num">0.6</td><td class="num">5.5</td><td class="num">1.1</td><td class="num">2,659</td></tr>
+<tr><td>Maximum</td><td class="num">66.2</td><td class="num">36.8</td><td class="num">36.2</td><td class="num">33.8</td><td class="num">27.9</td><td class="num">20.6</td><td class="num">6.0</td><td class="num">52,361</td></tr>
+<tr><td>United States</td><td class="num">32.1</td><td class="num">33.7</td><td class="num">18.3</td><td class="num">10.5</td><td class="num">5.3</td><td class="num">10.8</td><td class="num">6.0</td><td class="num">52,361</td></tr>
+<tr><td>Japan</td><td class="num">35.1</td><td class="num">12.1</td><td class="num">15.8</td><td class="num">33.8</td><td class="num">3.2</td><td class="num">11.7</td><td class="num">5.1</td><td class="num">16,979</td></tr>
+</tbody></table></div>
+<p>Weighted by GDP, dwellings and land were 41.6% of gross household assets in 2023 (median 48.2%).
+Equity and fund shares were 23.3% (median 15.6%): listed shares 8.7, unlisted 1.8, other
+equity 5.6 and investment-fund shares 6.3 (the sub-items sum to 22.4 because four countries do not report all
+of them). Pension and insurance claims were 16.0% (median
+8.1%), deposits and debt securities 14.2% (median 15.5%), and other assets 4.9%.
+Liabilities were 11.7% of gross assets.</p>
+<p>The range is wide. Dwellings and land run from 66% in Spain to 28% in Denmark (24% in Romania, which reports no land).
+Japanese households hold 34% in deposits and debt securities. US, Swedish and Danish households hold about
+34, 30 and 30% in equity and fund shares. Countries that publish financial accounts
+but no dwellings (among them Switzerland, Norway, Ireland and New Zealand), and Australia, which publishes the reverse, are
+left out.</p>
+<p><strong>In hours of work.</strong> The median household net worth per worker was 3.6 years of the country&rsquo;s
+own work in 2023, or 5,851 hours. It was 6.0 years in the United States (OECD basis; Z.1 gives 5.60), 5.4 in France,
+5.1 in Japan, 4.6 in Germany and 4.0 in the United Kingdom. In a balanced panel of 26
+countries, the GDP-weighted figure rose from 3.49 years in 1995 to 6.00 in 2021 and fell back to 5.32 in 2023
+(median 3.08, 3.81 and 3.62). In world
+hours the median was 17,092 hours per worker: 52,361 in the United States, 16,979 in Japan. Japan&rsquo;s
+figure was 27,961 in 2007; it fell because of the yen, while its figure in Japanese hours rose.</p>
+
+<h3>5.2 The United States since 1952</h3>
+<figure><img src="img/h_fig4.png" alt="Figure 4. US households and non-profits, 1952 to 2026"><figcaption>Figure 4. US households and non-profits (Federal Reserve Z.1, B.101), 1952&ndash;2026&nbsp;Q2: shares of total assets (areas), liabilities (line), and net worth per worker in years of US work (right axis). Author&rsquo;s calculations.</figcaption></figure>
+<div class="scroll"><table>
+<caption style="text-align:left;caption-side:top;font-size:.93rem;color:var(--muted);padding:.3rem 0">Table 7. US households and non-profits, Federal Reserve Z.1 table B.101, % of total assets at year-end (2026: 2026 Q2; its world-hour value uses the world hour of March 2026, the last available) (author&rsquo;s calculations). On the OECD basis of Table 6, US net worth per worker is 6.0 years in 2023, against 5.60 here</caption>
+<thead><tr><th></th><th style="text-align:right">1952</th><th style="text-align:right">1970</th><th style="text-align:right">1990</th><th style="text-align:right">2000</th><th style="text-align:right">2007</th><th style="text-align:right">2019</th><th style="text-align:right">2026</th></tr></thead><tbody>
+<tr><td>Real estate</td><td class="num">23.3</td><td class="num">23.5</td><td class="num">30.1</td><td class="num">27.3</td><td class="num">30.6</td><td class="num">24.4</td><td class="num">24.8</td></tr>
+<tr><td>Pension entitlements</td><td class="num">9.4</td><td class="num">16.4</td><td class="num">18.9</td><td class="num">21.3</td><td class="num">19.5</td><td class="num">21.4</td><td class="num">16.4</td></tr>
+<tr><td>Corporate equities + mutual funds</td><td class="num">12.9</td><td class="num">15.2</td><td class="num">8.4</td><td class="num">18.8</td><td class="num">17.2</td><td class="num">22.5</td><td class="num">30.6</td></tr>
+<tr><td>Deposits, money-market funds, debt securities</td><td class="num">12.6</td><td class="num">15.3</td><td class="num">18.4</td><td class="num">12.0</td><td class="num">12.7</td><td class="num">13.3</td><td class="num">12.0</td></tr>
+<tr><td>Other (private business, durables, life insurance)</td><td class="num">41.8</td><td class="num">29.5</td><td class="num">24.2</td><td class="num">20.6</td><td class="num">20.0</td><td class="num">18.4</td><td class="num">16.2</td></tr>
+<tr><td>Liabilities, % of assets</td><td class="num">6.8</td><td class="num">11.0</td><td class="num">14.2</td><td class="num">14.3</td><td class="num">17.2</td><td class="num">12.5</td><td class="num">10.0</td></tr>
+<tr class="bold"><td>Net worth per worker, years of US work</td><td class="num">3.64</td><td class="num">3.61</td><td class="num">3.79</td><td class="num">4.34</td><td class="num">4.83</td><td class="num">5.34</td><td class="num">6.09</td></tr>
+<tr><td>&hellip; in US hours</td><td class="num">7,506</td><td class="num">6,974</td><td class="num">6,962</td><td class="num">8,186</td><td class="num">8,834</td><td class="num">9,591</td><td class="num">10,890</td></tr>
+<tr><td>&hellip; in world hours</td><td class="num">&ndash;</td><td class="num">45,047</td><td class="num">30,725</td><td class="num">42,319</td><td class="num">37,800</td><td class="num">43,391</td><td class="num">54,541</td></tr>
+</tbody></table></div>
+<p>From 1952 to 2026, real estate moved from 23% to 25% of US household assets. Pension entitlements rose
+from 9% to 16% (peak 24% in 2013). Equities and mutual funds rose from
+13% to 31%. &ldquo;Other&rdquo; fell from 42% to 16%, mostly because private
+businesses fell from 23% to 8% of assets. Liabilities rose from 7% to 10%
+of assets, with a peak of 19% in 2008.</p>
+<p>Net worth per worker went from 3.64 years of US work in 1952 to 5.60 in 2023 and 6.09 in
+2026. Over 1952&ndash;2023 it grew 0.60% a year in years of work but only 0.41% in US hours (from
+7,506 to 10,013), because annual hours per worker fell from 2,060 to 1,789
+(0.20% a year). In world hours it went from 45,047 in 1970 to 54,541 in 2026 (Z.1 basis throughout; the OECD basis of Table 6
+gives 6.0 years in 2023, see the note to Table 7).</p>
+
+<h3>5.3 The claim the balance sheet leaves out</h3>
+<div class="scroll"><table>
+<caption style="text-align:left;caption-side:top;font-size:.93rem;color:var(--muted);padding:.3rem 0">Table 8. Accrued-to-date pension entitlements, 2021 (Eurostat national accounts Table 29; author&rsquo;s calculations). Social-security (pay-as-you-go) schemes S13PS and funded schemes S1PF; PAYG % of GDP on Eurostat&rsquo;s own GDP. Net worth is households and non-profits (S1M). Country rows: Table A3</caption>
+<thead><tr><th></th><th style="text-align:right">PAYG, % of GDP</th><th style="text-align:right">Funded, % of GDP</th><th style="text-align:right">PAYG, % of household net worth</th><th style="text-align:right">Net worth, years of work (= years of GDP)</th><th style="text-align:right">&hellip; including PAYG</th></tr></thead><tbody>
+<tr class="bold"><td>Median</td><td class="num">270</td><td class="num">11</td><td class="num">78</td><td class="num">3.5</td><td class="num">6.5</td></tr>
+<tr><td>Minimum</td><td class="num">2</td><td class="num">0</td><td class="num">0</td><td class="num">1.3</td><td class="num">4.0</td></tr>
+<tr><td>Maximum</td><td class="num">452</td><td class="num">203</td><td class="num">300</td><td class="num">6.2</td><td class="num">10.7</td></tr>
+<tr><td>Germany</td><td class="num">273</td><td class="num">27</td><td class="num">59</td><td class="num">4.7</td><td class="num">7.4</td></tr>
+<tr><td>France</td><td class="num">345</td><td class="num">0</td><td class="num">58</td><td class="num">5.9</td><td class="num">9.4</td></tr>
+<tr><td>Italy</td><td class="num">430</td><td class="num">9</td><td class="num">73</td><td class="num">5.9</td><td class="num">10.2</td></tr>
+<tr><td>Netherlands</td><td class="num">209</td><td class="num">203</td><td class="num">38</td><td class="num">5.6</td><td class="num">7.6</td></tr>
+</tbody></table></div>
+<p>Social-security pension promises are not in the standard household accounts. In 2021, across 30 countries with
+Table 29 data, their accrued value was a median 270% of GDP, from 2% in Denmark to 452% in Spain.
+Funded schemes were a median 11%. Where household net worth is known (24 countries), the pay-as-you-go
+claim was a median 78% of it: 44% in Belgium, 59% in Germany, 58% in France,
+73% in Italy, 73% in Spain, 106% in Finland, 161% in Poland and 300% in Romania.
+Adding it raises median household wealth from 3.47 to 6.54 years of GDP. In most of Europe, then, the
+standard balance sheet leaves out close to half of household wealth once the pension claim is counted. These are present values under national
+assumptions; France&rsquo;s 2021 value is below its 2018 value, partly because of a change in discount rate.</p>
+
+<h3>5.4 What the balance sheet earns: a weighted average of index returns</h3>
+<div class="scroll"><table class="small">
+<caption style="text-align:left;caption-side:top;font-size:.93rem;color:var(--muted);padding:.3rem 0">Table 9. A weighted average of index returns, not a measured household return: 2023 balance-sheet shares (%) times each claim&rsquo;s net return in national hours, 1976&ndash;2020, hours a year per 1,000 (author&rsquo;s calculations). Last column: median of the 10 countries with Eurostat data; the same countries have a median of 42.4 without PAYG</caption>
+<thead><tr><th>Country</th><th style="text-align:right">Dwellings + land</th><th style="text-align:right">F5</th><th style="text-align:right">F6</th><th style="text-align:right">F2+F3</th><th style="text-align:right">Other</th><th style="text-align:right">Liab.</th><th style="text-align:right">Housing alone</th><th style="text-align:right">Gross assets</th><th style="text-align:right">Net worth</th><th style="text-align:right">PAYG (hours growth)</th><th style="text-align:right">Net worth incl. PAYG</th></tr></thead><tbody>
+<tr><td>BEL</td><td class="num">54</td><td class="num">21</td><td class="num">8</td><td class="num">15</td><td class="num">2</td><td class="num">10</td><td class="num">55.6</td><td class="num">45.8</td><td class="num">49.2</td><td class="num">1.1</td><td class="num">34.6</td></tr>
+<tr><td>DEU</td><td class="num">55</td><td class="num">13</td><td class="num">11</td><td class="num">16</td><td class="num">3</td><td class="num">10</td><td class="num">27.6</td><td class="num">23.8</td><td class="num">25.9</td><td class="num">&minus;2.9</td><td class="num">15.2</td></tr>
+<tr><td>DNK</td><td class="num">28</td><td class="num">30</td><td class="num">28</td><td class="num">10</td><td class="num">5</td><td class="num">17</td><td class="num">33.9</td><td class="num">50.2</td><td class="num">57.0</td><td class="num">0.2</td><td class="num">56.7</td></tr>
+<tr><td>ESP</td><td class="num">66</td><td class="num">14</td><td class="num">4</td><td class="num">12</td><td class="num">3</td><td class="num">8</td><td class="num">26.4</td><td class="num">20.7</td><td class="num">22.1</td><td class="num">2.0</td><td class="num">13.6</td></tr>
+<tr><td>FIN</td><td class="num">51</td><td class="num">20</td><td class="num">6</td><td class="num">12</td><td class="num">10</td><td class="num">21</td><td class="num">57.1</td><td class="num">43.3</td><td class="num">53.2</td><td class="num">&minus;1.0</td><td class="num">25.2</td></tr>
+<tr><td>FRA</td><td class="num">56</td><td class="num">13</td><td class="num">12</td><td class="num">12</td><td class="num">7</td><td class="num">12</td><td class="num">39.9</td><td class="num">32.2</td><td class="num">35.5</td><td class="num">&minus;0.4</td><td class="num">22.3</td></tr>
+<tr><td>GBR</td><td class="num">48</td><td class="num">8</td><td class="num">24</td><td class="num">16</td><td class="num">3</td><td class="num">17</td><td class="num">36.2</td><td class="num">29.4</td><td class="num">34.6</td><td class="num">1.7</td><td class="num">&ndash;</td></tr>
+<tr><td>ITA</td><td class="num">50</td><td class="num">20</td><td class="num">9</td><td class="num">16</td><td class="num">6</td><td class="num">8</td><td class="num">26.2</td><td class="num">20.2</td><td class="num">21.1</td><td class="num">0.0</td><td class="num">12.2</td></tr>
+<tr><td>JPN</td><td class="num">35</td><td class="num">12</td><td class="num">16</td><td class="num">34</td><td class="num">3</td><td class="num">12</td><td class="num">21.5</td><td class="num">12.7</td><td class="num">13.8</td><td class="num">&minus;2.2</td><td class="num">&ndash;</td></tr>
+<tr><td>NLD</td><td class="num">45</td><td class="num">12</td><td class="num">28</td><td class="num">10</td><td class="num">4</td><td class="num">17</td><td class="num">59.2</td><td class="num">52.0</td><td class="num">59.9</td><td class="num">7.6</td><td class="num">45.6</td></tr>
+<tr><td>PRT</td><td class="num">48</td><td class="num">19</td><td class="num">5</td><td class="num">23</td><td class="num">5</td><td class="num">17</td><td class="num">53.1</td><td class="num">12.2</td><td class="num">16.6</td><td class="num">7.6</td><td class="num">12.7</td></tr>
+<tr><td>SWE</td><td class="num">30</td><td class="num">30</td><td class="num">24</td><td class="num">9</td><td class="num">7</td><td class="num">18</td><td class="num">61.8</td><td class="num">57.1</td><td class="num">68.9</td><td class="num">4.6</td><td class="num">51.2</td></tr>
+<tr><td>USA</td><td class="num">32</td><td class="num">34</td><td class="num">18</td><td class="num">10</td><td class="num">5</td><td class="num">11</td><td class="num">49.9</td><td class="num">46.6</td><td class="num">50.8</td><td class="num">11.1</td><td class="num">&ndash;</td></tr>
+<tr class="bold"><td><strong>Median</strong></td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num">39.9</td><td class="num">32.2</td><td class="num">35.5</td><td class="num">1.1</td><td class="num">23.8</td></tr>
+</tbody></table></div>
+<p>Table 9 multiplies each country&rsquo;s 2023 balance-sheet shares by the net return of the matching index in national
+hours over 1976&ndash;2020 (Section 4). Dwellings and land take the Macrohistory housing return; equity and fund shares the
+equity return; deposits the bill rate; debt securities the government bond return; pension and insurance claims 60% equities
+and 40% bonds; other assets the bill rate; liabilities the bill rate plus 10 hours per 1,000. This is index arithmetic, not a
+measured household return: there are no taxes, costs, selection or leverage spreads beyond that one point.</p>
+<p>Across 13 countries the median is 35.5 hours a year per 1,000 of net worth, GDP-weighted 41.3
+(United States 50.8). The range runs from 13.8 in Japan to 68.9 in Sweden. Portugal&rsquo;s
+16.6 reflects its equity return (&minus;38.1) despite housing at 53.1. The GMP&rsquo;s net over 1976&ndash;2020 was
+38.0 in world hours (Table 2), but the units differ: national hours here, world hours there. Average rather than
+2023 shares give a median of 36.4; other assets at zero, 35.6; liabilities at the bill rate,
+36.9.</p>
+<p>Adding the pay-as-you-go claim at its wage-bill return (Section 6) lowers the European figures. Across the
+10 countries with both, the median falls from 42.4 to 23.8 hours a year per 1,000: Germany from
+25.9 to 15.2, Finland from 53.2 to 25.2.</p>
+
+<h2 id="pension">6. The pension in hours</h2>
+<h3>6.1 Why a claim on the wage bill earns the growth of hours worked</h3>
+<p>Samuelson (1958) and Aaron (1966) showed that a pay-as-you-go pension can pay each generation a return equal to the growth of
+the wage bill: the growth of pay per hour plus the growth of hours worked. Measure that claim in national hours, i.e. divide by
+GDP per hour, and the first part cancels if pay per hour grows with GDP per hour. What remains is the growth of total hours
+worked. If the labour share falls, pay per hour grows more slowly than GDP per hour, and the claim earns less than hours growth.
+This is the return the system can sustain, not the indexation rule of any one country; notional defined-contribution
+schemes credit accounts with wage-bill, average-income or GDP growth, depending on the country. Individual entitlements are usually revalued with average wages or with prices. A claim revalued
+with average pay per worker earns, in national hours, the growth of hours per worker, which was negative (Table 10). Over
+1976&ndash;2019 the labour share of the 16 Macrohistory countries, weighted by purchasing-power GDP, fell from 64.3% to
+59.8% (Penn World Table); a wage-bill claim would then have earned about 1.7 hours per 1,000 a year less than hours
+growth (1.8 with US-dollar weights) (Karabarbounis and
+Neiman 2014 document the fall). The identity holds in the stylised lives of Section 7 exactly: a 10% contribution builds a claim worth, in years of final pay,
+10% times the sum of each year&rsquo;s ratio of total hours at 65 to total hours in that year.</p>
+
+<h3>6.2 The growth of hours worked</h3>
+<figure><img src="img/h_fig5.png" alt="Figure 5. The PAYG return beside other claims, and by decade"><figcaption>Figure 5. Left: net return of each claim in national hours, 16 Macrohistory countries, GDP-weighted, 1951&ndash;2020; the PAYG return is the growth of total hours worked. Right: growth of total hours worked and of employment by decade, all countries with Penn World Table hours, GDP-weighted; hatched bars are the UN projection of the population aged 20&ndash;64, at 2023 GDP weights. Author&rsquo;s calculations.</figcaption></figure>
+<div class="scroll"><table class="small">
+<caption style="text-align:left;caption-side:top;font-size:.93rem;color:var(--muted);padding:.3rem 0">Table 10. Growth of total hours worked, GDP-weighted across countries, per 1,000 a year (log growth in % &times; 10) (author&rsquo;s calculations from Penn World Table 11.0). Employment and hours per worker do not add exactly to total hours because the country sets with each series differ slightly</caption>
+<thead><tr><th></th><th style="text-align:right">1951&ndash;1960</th><th style="text-align:right">1961&ndash;1970</th><th style="text-align:right">1971&ndash;1980</th><th style="text-align:right">1981&ndash;1990</th><th style="text-align:right">1991&ndash;2000</th><th style="text-align:right">2001&ndash;2010</th><th style="text-align:right">2011&ndash;2020</th><th style="text-align:right">2021&ndash;2023</th><th style="text-align:right">2011&ndash;2023</th><th style="text-align:right">1951&ndash;2023</th><th style="text-align:right">1976&ndash;2020</th></tr></thead><tbody>
+<tr class="bold"><td>Total hours worked: the PAYG return</td><td class="num">10.0</td><td class="num">9.3</td><td class="num">9.2</td><td class="num">11.2</td><td class="num">5.6</td><td class="num">3.8</td><td class="num">2.2</td><td class="num">28.8</td><td class="num">8.4</td><td class="num">8.2</td><td class="num">6.6</td></tr>
+<tr><td>&mdash; employment</td><td class="num">13.1</td><td class="num">13.9</td><td class="num">16.5</td><td class="num">15.3</td><td class="num">8.4</td><td class="num">8.1</td><td class="num">8.1</td><td class="num">19.2</td><td class="num">10.7</td><td class="num">12.2</td><td class="num">11.0</td></tr>
+<tr><td>&mdash; annual hours per worker (return of a claim on average pay)</td><td class="num">&minus;2.7</td><td class="num">&minus;4.3</td><td class="num">&minus;5.8</td><td class="num">&minus;2.9</td><td class="num">&minus;2.3</td><td class="num">&minus;3.7</td><td class="num">&minus;5.8</td><td class="num">9.7</td><td class="num">&minus;2.2</td><td class="num">&minus;3.4</td><td class="num">&minus;3.6</td></tr>
+<tr><td>Total hours, constant 1950 sample</td><td class="num">8.8</td><td class="num">8.9</td><td class="num">7.7</td><td class="num">9.7</td><td class="num">4.6</td><td class="num">0.6</td><td class="num">2.5</td><td class="num">31.4</td><td class="num">9.2</td><td class="num">7.2</td><td class="num">5.3</td></tr>
+<tr><td>Total hours, 16 Macrohistory countries</td><td class="num">8.4</td><td class="num">8.1</td><td class="num">4.9</td><td class="num">8.1</td><td class="num">3.9</td><td class="num">&minus;1.1</td><td class="num">3.3</td><td class="num">27.1</td><td class="num">8.8</td><td class="num">6.0</td><td class="num">4.4</td></tr>
+<tr><td><em>Memo: population 20&ndash;64, same countries</em></td><td class="num">8.4</td><td class="num">12.4</td><td class="num">14.5</td><td class="num">13.2</td><td class="num">9.3</td><td class="num">9.7</td><td class="num">5.9</td><td class="num">2.3</td><td class="num">5.1</td><td class="num">10.1</td><td class="num">10.0</td></tr>
+<tr><td>Countries (average)</td><td class="num">28</td><td class="num">31</td><td class="num">44</td><td class="num">48</td><td class="num">61</td><td class="num">98</td><td class="num">129</td><td class="num">128</td><td class="num">129</td><td class="num">66</td><td class="num">80</td></tr>
+</tbody></table></div>
+<p>Weighted by GDP across all countries with data, total hours grew 8.2 per 1,000 a year in 1951&ndash;2023. Employment
+grew 12.2; hours per worker fell by 3.4 per 1,000 a year in the countries with that series (the two do not
+add exactly to total hours because the country sets differ). By decade the growth of
+total hours was 10.0, 9.3, 9.2 and 11.2 to 1990, then 5.6
+and 3.8, and 2.2 in 2011&ndash;2020, then 28.8 in 2021&ndash;2023 as hours recovered from 2020. The country set grows over time; a constant 1950 sample gives 7.2 for 1951&ndash;2023.</p>
+<div class="scroll"><table>
+<caption style="text-align:left;caption-side:top;font-size:.93rem;color:var(--muted);padding:.3rem 0">Table 11. The PAYG return by country: growth of total hours worked, per 1,000 a year (author&rsquo;s calculations; Penn World Table 11.0; UN World Population Prospects 2024, medium variant, for the projection)</caption>
+<thead><tr><th>Country</th><th style="text-align:right">Hours, 1951&ndash;2023</th><th style="text-align:right">Hours, 1976&ndash;2020</th><th style="text-align:right">Employment, 1976&ndash;2020</th><th style="text-align:right">Hours per worker, 1976&ndash;2020</th><th style="text-align:right">Hours, 2001&ndash;2023</th><th style="text-align:right">Population 20&ndash;64, 2024&ndash;2060 (projection)</th></tr></thead><tbody>
+<tr><td>Australia</td><td class="num">15.9</td><td class="num">15.2</td><td class="num">17.5</td><td class="num">&minus;2.2</td><td class="num">14.4</td><td class="num">4.8</td></tr>
+<tr><td>Belgium</td><td class="num">1.3</td><td class="num">1.1</td><td class="num">5.8</td><td class="num">&minus;4.7</td><td class="num">9.2</td><td class="num">&minus;2.6</td></tr>
+<tr><td>Switzerland</td><td class="num">7.4</td><td class="num">5.7</td><td class="num">10.9</td><td class="num">&minus;5.2</td><td class="num">7.3</td><td class="num">&minus;3.9</td></tr>
+<tr><td>Germany</td><td class="num">&minus;2.6</td><td class="num">&minus;2.9</td><td class="num">4.2</td><td class="num">&minus;7.1</td><td class="num">1.9</td><td class="num">&minus;7.0</td></tr>
+<tr><td>Denmark</td><td class="num">1.2</td><td class="num">0.2</td><td class="num">4.3</td><td class="num">&minus;4.2</td><td class="num">3.9</td><td class="num">&minus;1.3</td></tr>
+<tr><td>Spain</td><td class="num">4.0</td><td class="num">2.0</td><td class="num">7.4</td><td class="num">&minus;5.4</td><td class="num">6.8</td><td class="num">&minus;9.7</td></tr>
+<tr><td>Finland</td><td class="num">&minus;0.6</td><td class="num">&minus;1.0</td><td class="num">2.4</td><td class="num">&minus;3.4</td><td class="num">3.9</td><td class="num">&minus;3.7</td></tr>
+<tr><td>France</td><td class="num">&minus;0.2</td><td class="num">&minus;0.4</td><td class="num">6.1</td><td class="num">&minus;6.5</td><td class="num">5.5</td><td class="num">&minus;0.9</td></tr>
+<tr><td>United Kingdom</td><td class="num">1.2</td><td class="num">1.7</td><td class="num">5.9</td><td class="num">&minus;4.2</td><td class="num">7.5</td><td class="num">1.0</td></tr>
+<tr><td>Italy</td><td class="num">1.3</td><td class="num">0.0</td><td class="num">4.8</td><td class="num">&minus;4.8</td><td class="num">2.8</td><td class="num">&minus;11.3</td></tr>
+<tr><td>Japan</td><td class="num">5.1</td><td class="num">&minus;2.2</td><td class="num">3.0</td><td class="num">&minus;5.2</td><td class="num">&minus;3.1</td><td class="num">&minus;10.0</td></tr>
+<tr><td>Netherlands</td><td class="num">8.4</td><td class="num">7.6</td><td class="num">11.6</td><td class="num">&minus;4.0</td><td class="num">8.7</td><td class="num">&minus;1.6</td></tr>
+<tr><td>Norway</td><td class="num">3.8</td><td class="num">6.4</td><td class="num">10.8</td><td class="num">&minus;4.4</td><td class="num">9.7</td><td class="num">&minus;1.5</td></tr>
+<tr><td>Portugal</td><td class="num">5.9</td><td class="num">7.6</td><td class="num">6.4</td><td class="num">1.1</td><td class="num">&minus;0.4</td><td class="num">&minus;6.9</td></tr>
+<tr><td>Sweden</td><td class="num">3.3</td><td class="num">4.6</td><td class="num">4.6</td><td class="num">&minus;0.1</td><td class="num">8.0</td><td class="num">0.2</td></tr>
+<tr><td>United States</td><td class="num">11.8</td><td class="num">11.1</td><td class="num">11.9</td><td class="num">&minus;0.9</td><td class="num">5.8</td><td class="num">1.6</td></tr>
+</tbody></table></div>
+<p>Over 1976&ndash;2020, total hours grew 6.6 per 1,000 a year across all countries, 4.4 across the 16
+Macrohistory countries, and a median 1.1 across the 13 countries of Table 9. Hours fell in Germany
+(&minus;2.9), Japan (&minus;2.2) and Finland (&minus;1.0) and were about flat in France (&minus;0.4) and Italy
+(0.0). In the United States
+they grew 11.1.</p>
+
+<h3>6.3 The pension beside the home and the portfolio</h3>
+<p>The like-for-like comparison is in national hours on the same countries. Across the 16 Macrohistory countries over
+1951&ndash;2020, GDP-weighted, the wage-bill claim earned 5.1 hours a year per 1,000, against 35.9 for
+housing, 36.0 for equities, 0.9 for government bonds and &minus;12.1 for bills (Figure 5, left). Over
+1976&ndash;2020 it was 4.4 against 39.6 for housing. In world hours over 1976&ndash;2020, the
+growth of hours across all countries (6.6) can be set beside housing (40.0) and the GMP
+(38.0) only in aggregate, and the country sets differ. Over the longer span the wage-bill claim beat bills, which lost to
+inflation, and bonds, which roughly kept pace, and fell far short of the home and equities.</p>
+
+<h3>6.4 Projection</h3>
+<p>The UN medium-variant projection of the population aged 20&ndash;64, weighted by 2023 GDP, grows 1.2 per 1,000 a year in
+2024&ndash;2030; its growth is then &minus;0.6 in 2031&ndash;2040, &minus;4.0 in 2041&ndash;2050 and &minus;5.6 in 2051&ndash;2060. The
+world&rsquo;s headcount aged 20&ndash;64 still grows (5.0 over 2024&ndash;2060), because growth moves to countries with
+small GDP weights. Across the 16 Macrohistory countries it shrinks by 1.4 per 1,000 a year over 2024&ndash;2060. Over 1976&ndash;2020 the population aged 20&ndash;64 across all
+countries grew 13.9 per 1,000 a year at 2023 GDP weights (10.0 at each year&rsquo;s weights, Table 10). This is a projection, not data, and it is a population, not hours worked: participation and
+working time can move either way. But a claim on the wage bill, whose return in hours is the growth of hours worked, faces on these projections a
+negative return in most of the countries where such claims are large.</p>
+
+<h2 id="life">7. A life</h2>
+<h3>7.1 Design</h3>
+<p>The life-cycle exercise follows 476 stylised workers: one for each of the 16 Macrohistory countries and each cohort that
+starts work at 25 in a year from 1950 to 1980 and retires at 65, between 1990 and 2020 (496 possible lives; Germany
+before 1961 and Japan before 1959 lack the data; Table A1&rsquo;s long-period column also needs national hours and the change in rent yield, so it starts later). Time steps are annual and flows come at the end of each year.</p>
+<ul>
+<li><strong>Pay</strong> is the national hour with hours per worker held fixed; before 1960 it is chained back with the
+database&rsquo;s GDP per head. It is not measured earnings: where hours per worker fell, as in France, Japan and Sweden, actual
+annual pay grew more slowly. Because pay here is output per hour at fixed hours, not earnings, a home at 4 times pay or a 35% budget is a larger multiple of
+actual earnings than it looks: at the average labour share of 62% (1951&ndash;2019, Penn World Table), about
+6.5 years and 57% of earnings.</li>
+<li><strong>Budget.</strong> Each year 35% of pay goes to housing and saving; the rest is consumed and is the same for every
+rule.</li>
+<li><strong>The home</strong> costs 4 times pay in the cohort&rsquo;s first full year of pay (the year after it starts
+work at 25, age 26),
+and its price then follows the database&rsquo;s nominal house price index. Gross rent is the net rent yield plus running costs of
+2.0% of the price.</li>
+<li><strong>R (rent and invest)</strong> pays gross rent and saves the rest of the budget in a domestic 60/40 portfolio of the
+database&rsquo;s equity and bond returns. In the GMP variant the account holds the domestic 60/40 until 1975 and the GMP,
+in US dollars converted to local currency at the database&rsquo;s year-end exchange rate, from 1976.</li>
+<li><strong>O (own)</strong> rents and saves as R until 35, then buys if the account holds a 20% deposit plus
+3.85% buying costs (otherwise it waits). The mortgage is 80% of the price, a 25-year annuity at the
+long rate plus 1.0 point, fixed at purchase. O then pays the mortgage and running costs and saves the rest. Wealth
+at 65 is the home less any remaining loan plus the account.</li>
+<li><strong>Overdraft.</strong> Under both R and O the account may go below zero; a negative balance is charged the bill rate plus
+1.0 point.</li>
+<li><strong>The pension.</strong> On top of the budget, 10% of pay goes either into a pay-as-you-go claim whose value
+grows with the national wage bill (nominal GDP, i.e. the wage bill at a constant labour share), into a claim revalued with average
+pay per worker, or into the same 60/40 account.</li>
+<li><strong>Valuation.</strong> O is re-run with the rent&ndash;price ratio frozen at its purchase-year level; the difference is
+the part of O&rsquo;s wealth that came from valuation.</li>
+</ul>
+<p>Wealth is reported in years of own final pay. The model checks itself: with all returns set to zero, R&rsquo;s wealth equals the
+sum of its contributions; the funded claim equals 10% of summed pay; the pay-as-you-go claim equals the hours-growth formula
+of Section 6.1; and every decomposition adds up to machine precision.</p>
+<p>Neighbouring cohorts share 39 of their 40 years, so the 476 lives contain far fewer independent histories than their
+number suggests: in effect 16 countries and a few distinct periods. Shares of lives are descriptions of this history, not
+probabilities.</p>
+<div class="box correction">
+<p style="margin:0"><strong>The design was corrected once, after the first results were seen.</strong> The design fixed before
+any result priced the same standard home for every cohort at 4 years of pay in 2000, and did not let the account go below zero.
+That home cost far more than 4 years of pay in the 1950s (Table 15), and most early renters could not pay the rent from their first
+working year. The baseline was therefore changed to a home costing 4 years of pay in each cohort&rsquo;s first working year, and
+negative balances were allowed at the bill rate plus one point. The original design is kept as a robustness row (Table 16): its
+median wealth at 65 is 3.8 (R) and 4.2 (O) years of final pay, 303 renters go negative, and
+158 owners never buy. Because the baseline was chosen with the results in view, Section 7 is the least protected part
+of this note against the author&rsquo;s choices.</p>
+</div>
+
+<h3>7.2 Results</h3>
+<figure><img src="img/h_fig6.png" alt="Figure 6. Wealth at 65, own vs rent, by cohort"><figcaption>Figure 6. Wealth at 65 in years of own final pay, renting and investing (R) against buying at 35 (O), by the year the cohort starts work: median across 16 countries, interquartile band, and minimum and maximum (dotted). Author&rsquo;s calculations.</figcaption></figure>
+<div class="scroll"><table>
+<caption style="text-align:left;caption-side:top;font-size:.93rem;color:var(--muted);padding:.3rem 0">Table 12. Wealth at 65 in years of own final pay, 476 lives (16 countries &times; cohorts starting work 1950&ndash;1980) (author&rsquo;s calculations). Last column: the 300 lives whose account never went below zero</caption>
+<thead><tr><th></th><th style="text-align:right">Median</th><th style="text-align:right">Interquartile range</th><th style="text-align:right">Min to max</th><th style="text-align:right">GDP-weighted mean</th><th style="text-align:right">Median, never negative</th></tr></thead><tbody>
+<tr><td>R: rent and invest</td><td class="num">12.06</td><td class="num">8.04&ndash;18.10</td><td class="num">&minus;12.87 to 33.84</td><td class="num">12.64</td><td class="num">14.05</td></tr>
+<tr><td>O: buy at 35</td><td class="num">12.79</td><td class="num">7.92&ndash;17.70</td><td class="num">&minus;12.87 to 33.29</td><td class="num">12.84</td><td class="num">15.59</td></tr>
+<tr><td>O, net of selling cost</td><td class="num">12.64</td><td class="num">7.85&ndash;17.57</td><td class="num">&minus;12.87 to 33.14</td><td class="num">12.73</td><td class="num">15.51</td></tr>
+<tr class="bold"><td><strong>O &minus; R</strong></td><td class="num">0.00</td><td class="num">&minus;2.95&ndash;3.34</td><td class="num">&minus;17.18 to 11.52</td><td class="num">0.20</td><td class="num">1.52</td></tr>
+<tr class="bold"><td><strong>O &divide; R</strong></td><td class="num">1.00</td><td class="num">0.78&ndash;1.29</td><td class="num">0.19 to 3.45</td><td class="num">1.02</td><td class="num">1.10</td></tr>
+<tr><td>PAYG claim indexed to the wage bill, 10% of pay</td><td class="num">4.28</td><td class="num">4.00&ndash;4.73</td><td class="num">3.22 to 5.96</td><td class="num">4.61</td><td class="num">4.35</td></tr>
+<tr><td>Funded claim, 10% of pay in the 60/40</td><td class="num">11.09</td><td class="num">7.86&ndash;14.25</td><td class="num">1.98 to 28.43</td><td class="num">10.67</td><td class="num">10.73</td></tr>
+<tr class="bold"><td><strong>Funded &divide; PAYG</strong></td><td class="num">2.44</td><td class="num">1.86&ndash;3.17</td><td class="num">0.38 to 7.56</td><td class="num">2.31</td><td class="num">2.41</td></tr>
+<tr><td>Share of O&rsquo;s wealth from valuation, %</td><td class="num">2.1</td><td class="num">&minus;1.5&ndash;8.2</td><td class="num">&minus;73.8 to 86.6</td><td class="num">1.4</td><td class="num">1.7</td></tr>
+<tr><td>Buying age</td><td class="num">35</td><td class="num">35&ndash;40</td><td class="num">35 to 64</td><td class="num">37</td><td class="num">35</td></tr>
+<tr><td>R in world hours &divide; fixed annual hours per worker</td><td class="num">57.1</td><td class="num">32.7&ndash;82.0</td><td class="num">&minus;73.6 to 211.1</td><td class="num">56.2</td><td class="num">62.8</td></tr>
+<tr><td>O in world hours &divide; fixed annual hours per worker</td><td class="num">57.2</td><td class="num">31.9&ndash;84.2</td><td class="num">&minus;73.6 to 177.1</td><td class="num">57.6</td><td class="num">66.2</td></tr>
+</tbody></table></div>
+<p>The median renter ends with 12.06 years of final pay and the median owner with 12.79 (12.64 after selling
+costs). The median ratio of O to R is 1.00, with an interquartile range of 0.78&ndash;1.29; the median
+difference is 0.00 years of final pay (interquartile range &minus;2.95 to 3.34; mean &minus;0.08). The median ratio of exactly 1.00 and difference of exactly 0.00 arise because the
+17 lives that never buy have O = R and sit at the middle of the distribution. Among the 459 buyers the median
+difference is 0.08 (interquartile range &minus;3.10 to 3.48; Table 13), and the owner wins in
+51%. The difference is the safer headline: where the renter&rsquo;s wealth is near or below zero the ratio loses
+its meaning. The owner
+comes out ahead in 236 of 476 lives (50%). Among the 300 lives whose account never went
+below zero, the median ratio is 1.10, the median difference 1.52 and the owner wins in 59%. The
+median buyer buys at 35; 17 lives never buy. In world hours, one hour of own final pay buys a median
+4.6 world hours; wealth in world hours divided by the fixed annual hours per worker is a median 57.1 for R and 57.2 for O.</p>
+<div class="scroll"><table>
+<caption style="text-align:left;caption-side:top;font-size:.93rem;color:var(--muted);padding:.3rem 0">Table 13. Why owning and renting come out close: O &minus; R for the 459 lives that buy, years of own final pay (author&rsquo;s calculations). Costs are shown as positive numbers to be subtracted. Means add up exactly; medians do not</caption>
+<thead><tr><th>Item</th><th style="text-align:right">Median</th><th style="text-align:right">25th pct.</th><th style="text-align:right">75th pct.</th><th style="text-align:right">Mean</th><th style="text-align:right">Median, never negative</th></tr></thead><tbody>
+<tr><td>Home price gain</td><td class="num">2.20</td><td class="num">1.43</td><td class="num">3.49</td><td class="num">2.50</td><td class="num">2.38</td></tr>
+<tr><td>Imputed rent saved (gross)</td><td class="num">3.16</td><td class="num">2.26</td><td class="num">4.12</td><td class="num">3.23</td><td class="num">3.34</td></tr>
+<tr><td>Running costs paid by the owner (&minus;)</td><td class="num">0.94</td><td class="num">0.65</td><td class="num">1.41</td><td class="num">1.05</td><td class="num">1.04</td></tr>
+<tr><td><em>Net rent saved</em></td><td class="num">2.13</td><td class="num">1.55</td><td class="num">2.70</td><td class="num">2.17</td><td class="num">2.17</td></tr>
+<tr><td>Mortgage interest (&minus;)</td><td class="num">1.10</td><td class="num">0.49</td><td class="num">1.79</td><td class="num">1.20</td><td class="num">0.95</td></tr>
+<tr><td>Buying cost (&minus;)</td><td class="num">0.03</td><td class="num">0.02</td><td class="num">0.05</td><td class="num">0.03</td><td class="num">0.02</td></tr>
+<tr><td>Forgone 60/40 return on the deposit and extra outlays, and the difference in overdraft interest (&minus;)</td><td class="num">2.76</td><td class="num">0.15</td><td class="num">6.53</td><td class="num">3.52</td><td class="num">2.15</td></tr>
+<tr class="bold"><td><strong>O &minus; R</strong></td><td class="num">0.08</td><td class="num">&minus;3.10</td><td class="num">3.48</td><td class="num">&minus;0.08</td><td class="num">1.52</td></tr>
+</tbody></table></div>
+<p><strong>Why the two come out close.</strong> The means add up exactly. On average across the 459 buyers, the home&rsquo;s
+price gain (2.50 years of final pay) plus the rent saved net of running costs (2.17), less mortgage interest
+(1.20), buying costs (0.03) and the 60/40 return forgone on the deposit and the extra outlays (3.52), gives
+&minus;0.08: 2.50 + 2.17 &minus; 1.20 &minus; 0.03 &minus; 3.52 = &minus;0.08. The last term
+also contains the difference in overdraft interest between O and R. The medians in Table 13 show the typical size of each item
+but do not add up. A home, bought with a mortgage, is a leveraged claim on
+housing; renting and investing is a claim on the 60/40. Over the 1950&ndash;2020 working lives their returns were close, so the result turns on the
+cost of the debt and on how well the 60/40 did.</p>
+<p><strong>By cohort.</strong> The median ratio of O to R was 1.27 for cohorts starting in the 1950s, 1.02 for the 1960s,
+0.87 for the 1970s and 0.76 for the 1980 cohort. Table 14 measures where the decline comes from. Two changes each remove most of
+it: variable-rate mortgages remove 56% (the ratio falls only from 1.17 to 0.95), and bills as
+the saving vehicle remove all of it (the ratio stays between 1.43 and 1.50). The decline therefore needs
+both: fixed-rate debt, which inflation eroded for early buyers and which locked later buyers into high rates, and the comparison
+with a strong 60/40 portfolio after 1980, which later renters held for most of their working lives. The two overlap and cannot be
+added.
+The US 1970 cohort is an example: it bought in 1982, at 37, at a mortgage rate of 14.0%,
+paid 2.34 years of final pay in interest, overdrew to &minus;0.52 years of pay, and ended with 4.75 against the
+renter&rsquo;s 9.60.</p>
+<div class="scroll"><table>
+<caption style="text-align:left;caption-side:top;font-size:.93rem;color:var(--muted);padding:.3rem 0">Table 14. Owning against renting by decade of the cohort&rsquo;s start, under three variants: medians of O &divide; R and O &minus; R in years of own final pay (author&rsquo;s calculations). &ldquo;1980s&rdquo; is the 1980 cohort only</caption>
+<thead><tr><th>Cohort</th><th style="text-align:right">Baseline: O &divide; R</th><th style="text-align:right">O &minus; R</th><th style="text-align:right">Variable-rate mortgage: O &divide; R</th><th style="text-align:right">O &minus; R</th><th style="text-align:right">Bills vehicle: O &divide; R</th><th style="text-align:right">O &minus; R</th></tr></thead><tbody>
+<tr><td>1950s</td><td class="num">1.27</td><td class="num">2.67</td><td class="num">1.17</td><td class="num">2.03</td><td class="num">1.43</td><td class="num">2.56</td></tr>
+<tr><td>1960s</td><td class="num">1.02</td><td class="num">0.28</td><td class="num">1.04</td><td class="num">0.41</td><td class="num">1.50</td><td class="num">3.08</td></tr>
+<tr><td>1970s</td><td class="num">0.87</td><td class="num">&minus;1.47</td><td class="num">0.98</td><td class="num">&minus;0.26</td><td class="num">1.49</td><td class="num">2.41</td></tr>
+<tr><td>1980s</td><td class="num">0.76</td><td class="num">&minus;3.32</td><td class="num">0.95</td><td class="num">&minus;0.91</td><td class="num">1.46</td><td class="num">1.58</td></tr>
+</tbody></table></div>
+<p><strong>Valuation is a small part.</strong> Holding the rent&ndash;price ratio at its purchase-year level, valuation accounts for a
+median 2.1% of the owner&rsquo;s wealth at 65 (interquartile range &minus;1.5 to 8.2%). The owner&rsquo;s
+gain over a life came from net rent and from rent growth, not from a rising price per unit of rent.</p>
+<p><strong>Lives that overdraw.</strong> In all, 176 lives go below zero at some point: 128 under R and 176
+under O, and every R case is also an O case. The median lowest balance among them is &minus;0.26 years of pay. By country (Table A4), the
+number of lives that overdraw under O is Finland 31, Norway 29, Sweden 24, the Netherlands 16, France 14, Australia 13, and 11 or fewer elsewhere. In all, 12 lives end below zero; all of them never buy, so O and R are identical for them.
+The French cohorts of 1950&ndash;1957 reach as low as &minus;12.9 years of pay: in the database, French house
+prices rose much faster than pay between 1951 and 1965, so a home worth 4 years of pay in 1951 was worth about
+15 by 1965, with a net rent yield that put rent above a full year&rsquo;s pay. The others are cohorts in Finland (1950, 1978) and Norway (1975, 1979). In
+Finland, Norway and Sweden the database&rsquo;s rent yields are high relative to prices, so most lives there overdraw. The
+database&rsquo;s post-war rent levels in these countries may be imperfectly measured. An overdraft costs the bill rate plus one point, which is usually below the
+mortgage rate, so these lives borrow cheaply and unsecured; that flatters both R and O where overdrafts are large.</p>
+
+<h3>7.3 The pension over a life</h3>
+<figure><img src="img/h_fig7.png" alt="Figure 7. Funded over PAYG at 65"><figcaption>Figure 7. 10% of pay for 40 years: the funded claim (domestic 60/40) divided by the pay-as-you-go claim indexed to the wage bill at 65, by cohort; thin lines are countries. Log scale. Author&rsquo;s calculations.</figcaption></figure>
+<p>A contribution of 10% of pay for 40 years builds a pay-as-you-go claim worth a median 4.28 years of final pay if it
+is indexed to the wage bill and 3.75 if it is indexed to average pay per worker, and a funded claim worth 11.09
+(a median 2.95 times the average-pay claim). The average-pay figure depends on the framing: contributions here scale
+with pay at fixed hours while the claim is revalued with actual hours per worker; if contributions also fell with hours per worker,
+the claim would be exactly 10% &times; 40 = 4.00 years of final pay. The funded claim is a median 2.44 times the pay-as-you-go claim (interquartile range
+1.86&ndash;3.17) and is larger in 95% of lives. That advantage is entirely the 60/40&rsquo;s return
+over the growth of the wage bill. With the GMP as the vehicle from 1976 the ratio is 1.88; with bills it is
+0.91, and the funded claim wins in only 27% of lives. The pay-as-you-go claim is valued here at its
+indexation return, not at any country&rsquo;s real benefit rules, and there is no survival risk.</p>
+
+<h3>7.4 The price of a home in years of pay</h3>
+<div class="scroll"><table>
+<caption style="text-align:left;caption-side:top;font-size:.93rem;color:var(--muted);padding:.3rem 0">Table 15. Price of a home that cost 4 years of pay in 2000, in years of pay (Macrohistory Database nominal house prices &divide; national GDP per hour; author&rsquo;s calculations)</caption>
+<thead><tr><th></th><th style="text-align:right">1950</th><th style="text-align:right">1960</th><th style="text-align:right">1970</th><th style="text-align:right">1980</th><th style="text-align:right">1990</th><th style="text-align:right">2000</th><th style="text-align:right">2010</th><th style="text-align:right">2020</th></tr></thead><tbody>
+<tr class="bold"><td>Median</td><td class="num">6.5</td><td class="num">6.0</td><td class="num">5.3</td><td class="num">4.8</td><td class="num">4.5</td><td class="num">4.0</td><td class="num">5.0</td><td class="num">5.0</td></tr>
+<tr><td>25th percentile</td><td class="num">4.9</td><td class="num">4.7</td><td class="num">4.6</td><td class="num">3.4</td><td class="num">3.8</td><td class="num">4.0</td><td class="num">4.0</td><td class="num">4.4</td></tr>
+<tr><td>75th percentile</td><td class="num">8.4</td><td class="num">8.7</td><td class="num">6.2</td><td class="num">5.2</td><td class="num">5.5</td><td class="num">4.0</td><td class="num">5.8</td><td class="num">6.0</td></tr>
+<tr><td>Countries</td><td class="num">15</td><td class="num">15</td><td class="num">16</td><td class="num">16</td><td class="num">16</td><td class="num">16</td><td class="num">16</td><td class="num">16</td></tr>
+</tbody></table></div>
+<p>The same home &mdash; an index of roughly constant quality &mdash; cost a median 6.5 years of pay in 1950,
+5.3 in 1970, 4.0 in 2000 and 5.0 in 2020. From 1950 to 2020 the median price in years of pay fell by
+0.36% a year, in line with Section 4&rsquo;s finding that rents grew more slowly than the national hour. The fall was not
+steady: price in years of pay rose by about a quarter between 2000 and 2020.</p>
+
+<h2 id="robustness">8. Robustness</h2>
+<p>Table A5 lists the housing variants. The tax and cost rows follow Jord&agrave; et al. (2019). Equal country weights raise housing&rsquo;s 1976&ndash;2020 net to 48.2; leaving out the United States lowers it to
+35.3. Annual-average timing for the world hour gives 41.1. Weights are start-of-year; same-year weights give
+42.6 with World Bank GDP at annual-average exchange rates, and 45.3 with the database&rsquo;s end-of-year
+rates, which build the year&rsquo;s currency move into its own weight. Interpolating the national hour to December-to-December timing gives a national median of 48.2 over 1976&ndash;2019,
+against 47.5 for the baseline on the same window. The national hour built from GDP per head instead of GDP per hour gives a median of
+46.8; the two series&rsquo; annual growth rates correlate at 0.90, with GDP per hour growing 0.24
+points a year faster. OECD rent growth in place of the database&rsquo;s gives 41.7 (37.5 excluding valuation)
+and a national median of 45.8. None of these reverses the finding that, before taxes and costs, housing earned at least as much as the GMP; equal country weights
+(48.2 against 38.0) put housing clearly ahead.</p>
+<div class="scroll"><table class="small">
+<caption style="text-align:left;caption-side:top;font-size:.93rem;color:var(--muted);padding:.3rem 0">Table 16. A life: one change at a time from the baseline, medians across lives (author&rsquo;s calculations). * Lives that never buy have O &divide; R = 1, so rows with many non-buyers show 1.00. PAYG: indexed to the wage bill</caption>
+<thead><tr><th>Variant</th><th style="text-align:right">R</th><th style="text-align:right">O</th><th style="text-align:right">O&#8239;&divide;&#8239;R*</th><th style="text-align:right">O wins, %</th><th style="text-align:right">Val. share, %</th><th style="text-align:right">Funded &divide; PAYG</th><th style="text-align:right">Funded wins, %</th><th style="text-align:right">O ever negative</th><th style="text-align:right">Never buy</th></tr></thead><tbody>
+<tr class="bold"><td>Baseline</td><td class="num">12.06</td><td class="num">12.79</td><td class="num">1.00</td><td class="num">50</td><td class="num">2.1</td><td class="num">2.44</td><td class="num">95</td><td class="num">176</td><td class="num">17</td></tr>
+<tr><td>Home 3&times; pay</td><td class="num">19.00</td><td class="num">19.64</td><td class="num">1.04</td><td class="num">58</td><td class="num">0.8</td><td class="num">2.44</td><td class="num">95</td><td class="num">37</td><td class="num">6</td></tr>
+<tr><td>Home 6&times; pay</td><td class="num">0.88</td><td class="num">0.94</td><td class="num">1.00</td><td class="num">21</td><td class="num">5.0</td><td class="num">2.44</td><td class="num">95</td><td class="num">415</td><td class="num">239</td></tr>
+<tr><td>Running costs 1.5%</td><td class="num">14.09</td><td class="num">15.14</td><td class="num">1.03</td><td class="num">53</td><td class="num">2.1</td><td class="num">2.44</td><td class="num">95</td><td class="num">141</td><td class="num">12</td></tr>
+<tr><td>Running costs 3%</td><td class="num">8.81</td><td class="num">8.26</td><td class="num">0.96</td><td class="num">39</td><td class="num">2.4</td><td class="num">2.44</td><td class="num">95</td><td class="num">258</td><td class="num">40</td></tr>
+<tr><td>Budget 25% of pay</td><td class="num">2.08</td><td class="num">2.23</td><td class="num">1.00</td><td class="num">29</td><td class="num">7.8</td><td class="num">2.44</td><td class="num">95</td><td class="num">391</td><td class="num">182</td></tr>
+<tr><td>Budget 45% of pay</td><td class="num">23.30</td><td class="num">24.39</td><td class="num">1.04</td><td class="num">57</td><td class="num">0.9</td><td class="num">2.44</td><td class="num">95</td><td class="num">40</td><td class="num">6</td></tr>
+<tr><td>GMP vehicle (from 1976)</td><td class="num">9.33</td><td class="num">10.88</td><td class="num">1.16</td><td class="num">63</td><td class="num">3.0</td><td class="num">1.88</td><td class="num">97</td><td class="num">176</td><td class="num">19</td></tr>
+<tr><td>Bills vehicle</td><td class="num">5.19</td><td class="num">8.02</td><td class="num">1.48</td><td class="num">80</td><td class="num">4.9</td><td class="num">0.91</td><td class="num">27</td><td class="num">200</td><td class="num">22</td></tr>
+<tr><td>Variable-rate mortgage</td><td class="num">12.06</td><td class="num">13.36</td><td class="num">1.02</td><td class="num">53</td><td class="num">2.1</td><td class="num">2.44</td><td class="num">95</td><td class="num">182</td><td class="num">17</td></tr>
+<tr><td>Home 4&times; pay in 2000 (original design)</td><td class="num">3.77</td><td class="num">4.23</td><td class="num">1.00</td><td class="num">30</td><td class="num">11.6</td><td class="num">2.44</td><td class="num">95</td><td class="num">346</td><td class="num">158</td></tr>
+</tbody></table></div>
+<p>For the life, the home&rsquo;s price, running costs and budget move the level of wealth a great deal, and the ratio of O to R
+little. The vehicle and the mortgage type matter more (Table 14): with the GMP, O beats R in 63% of lives (median ratio 1.16); with
+bills, in 80% (1.48). Across the full grid of 162 variants on the baseline anchor, the share of
+lives in which O beats R runs from 2% to 95% (median 58%), the median ratio from 0.95 to
+1.53, and the median valuation share from &minus;15% to 12%. Under the original 2000 anchor, O beats R in a
+median 30% of variants&rsquo; lives and the valuation share is about 11%, larger mainly because buyers there buy
+later (median age 41) and more of them bought into the post-2000 rise. The funded-to-pay-as-you-go ratio does not depend
+on the housing choices at all.</p>
+
+<h2 id="meaning">9. What it means, and what it does not</h2>
+<p><strong>What it means.</strong> In hours of work, the home and the investable portfolio were both claims on capital, and both
+earned, before taxes and costs, 3.5 to 4.1% a year more than the growth of the hour (1976&ndash;2025, world
+hours); after a property tax and transaction costs, the home earned less than the portfolio. They earned it differently: the home through rents that kept rising once valuation is set aside (price excluding valuation
+39.6 hours a year against the GMP&rsquo;s 21.5), the portfolio with more help from falling yields (valuation
+11.0 against 6.2). A household that owned its home and a household that rented and invested ended a working life in
+much the same place, and which one came out ahead depended on the cost of its mortgage and on how well the 60/40 did. The large
+difference is between those claims and a pension claim indexed to the wage bill. That claim keeps pace with work by design, and
+beyond that it earns only the growth of the amount of work done. That growth was under 1% a year, was negative in Germany, Japan and Finland and about zero in France and Italy over 1976&ndash;2020, and
+the UN projection of the population aged 20&ndash;64 turns negative on GDP-weighted average after 2030. A claim revalued with average
+pay per worker did worse still.</p>
+<p><strong>What it does not mean.</strong> It is not advice to buy, rent or opt out of a pension. A state pension also insures against
+living long, against inflation and against market losses, none of which is valued here. The comparisons are of indices:</p>
+<ul>
+<li><strong>An index is not a house.</strong> There is no selection, no idiosyncratic risk, and no depreciation beyond the
+database&rsquo;s cost deduction. The 16 countries are survivors, all now rich; their housing and equity returns are likely higher than those of a random
+sample of countries over the same years.</li>
+<li><strong>No taxes.</strong> No income, property, transfer or capital-gains tax, and no tax relief on mortgages or pensions, which
+in many countries favour both owning and funded saving. Imputed rent on an owner&rsquo;s home is untaxed in most countries, which
+favours owning.</li>
+<li><strong>Index arithmetic.</strong> The balance-sheet return of Section 5.4 is a weighted average of index returns, not a
+measured household return.</li>
+<li><strong>Units.</strong> The wage-bill return equals hours growth only if pay per hour keeps pace with GDP per hour; the
+falling labour share cost about 1.7 per 1,000 a year over 1976&ndash;2019 (Section 6.1). National
+and world hours answer different questions; Sections 4 and 6 compare like with like where they can.</li>
+<li><strong>Present values.</strong> The Table 29 entitlements depend on national discount rates, which differ by country; no
+common-rate version is available.</li>
+<li><strong>The life design</strong> was corrected after the first results were seen (Section 7.1); the database&rsquo;s early
+rent levels in France and the Nordic countries drive the overdrafts; overdrafts are cheaper than mortgages.</li>
+<li><strong>Data ends.</strong> The database ends in 2020; 2021&ndash;2025 uses OECD indices and rents of sitting tenants; the
+world hour after mid-2025 and the Penn World Table after 2023 are not yet data.</li>
+</ul>
+
+<h2 id="disclaimer">10. Disclaimer</h2>
+<p>This note is general information and a research record addressed to no particular reader. It does not recommend any security,
+fund, property, pension choice or transaction, does not suggest whether any person should buy or rent a home, and is not
+individualised advice. The author is not a regulated investment adviser or licensed financial services provider and does not
+respond to individual requests for advice. Historical and simulated figures do not indicate future results; the stylised lives
+are hypothetical and are not the results of any actual household. No representation is made as to the accuracy or completeness
+of the information, and the author accepts no liability for any loss arising from its use. All tables are the author&rsquo;s own
+calculations from public data; no figures from other publications are reproduced. Nothing here is legal, tax or pension
+advice.</p>
+<p>The author resides in Japan. This note provides general information to an unspecified audience and does not constitute
+investment advisory business under the Financial Instruments and Exchange Act of Japan.</p>
+
+<h2 id="revisions">Revision history</h2>
+<p><strong>v1.0 (21 October 2026).</strong> First version. Contains a correction to note 3, Section 7 (Section 4.4 above).</p>
+
+<h2 id="references">References</h2>
+<p>Aaron, H. (1966). &ldquo;The Social Insurance Paradox.&rdquo; <em>Canadian Journal of Economics and Political Science</em>, 32(3), 371&ndash;374.</p>
+<p>Bank for International Settlements. <em>Bilateral exchange rates</em> (monthly averages). Accessed October 2026.</p>
+<p>Board of Governors of the Federal Reserve System. <em>Financial Accounts of the United States &ndash; Z.1</em>, release of 11 September 2026, table B.101 (Balance Sheet of Households and Nonprofit Organizations).</p>
+<p>Eurostat. Pension entitlements in national accounts (supplementary Table 29): datasets nasa_10_pens1 and nasa_10_pens2; GDP (nama_10_gdp). Accessed October 2026.</p>
+<p>Eurostat and European Central Bank (2020). <em>Technical Compilation Guide for Pension Data in National Accounts</em>, 2020 edition. Eurostat Manuals and Guidelines. Luxembourg: Publications Office of the European Union.</p>
+<p>Federal Reserve Bank of St. Louis. <em>FRED</em>: CUUR0000SEHA (CPI, rent of primary residence), GDP, HOANBS (nonfarm business hours). Accessed October 2026.</p>
+<p>Feenstra, R. C., Inklaar, R. and Timmer, M. P. (2015). &ldquo;The Next Generation of the Penn World Table.&rdquo; <em>American Economic Review</em>, 105(10), 3150&ndash;3182. Penn World Table version 11.0, doi:10.34894/FABVLR.</p>
+<p>Jord&agrave;, &Ograve;., Knoll, K., Kuvshinov, D., Schularick, M. and Taylor, A. M. (2019). &ldquo;The Rate of Return on Everything, 1870&ndash;2015.&rdquo; <em>Quarterly Journal of Economics</em>, 134(3), 1225&ndash;1298.</p>
+<p>Jord&agrave;, &Ograve;., Schularick, M. and Taylor, A. M. (2017). &ldquo;Macrofinancial History and the New Business Cycle Facts.&rdquo; In M. Eichenbaum and J. A. Parker (eds.), <em>NBER Macroeconomics Annual 2016</em>, vol. 31. University of Chicago Press. Jord&agrave;&ndash;Schularick&ndash;Taylor Macrohistory Database, release 6.</p>
+<p>Karabarbounis, L. and Neiman, B. (2014). &ldquo;The Global Decline of the Labor Share.&rdquo; <em>Quarterly Journal of Economics</em>, 129(1), 61&ndash;103.</p>
+<p>Knoll, K., Schularick, M. and Steger, T. (2017). &ldquo;No Price Like Home: Global House Prices, 1870&ndash;2012.&rdquo; <em>American Economic Review</em>, 107(2), 331&ndash;353.</p>
+<p>Nakanishi, K. (2026a). &ldquo;Owning the Market as It Is: A Half-Century Look at the Global Market Portfolio.&rdquo; Research note, SSRN. doi:10.2139/ssrn.7394599.</p>
+<p>Nakanishi, K. (2026b). &ldquo;Measuring Assets in Hours of the World&rsquo;s Work: A Labour-Time Numeraire from Public Data.&rdquo; Research note, SSRN. doi:10.2139/ssrn.7445203.</p>
+<p>Nakanishi, K. (2026c). <em>Global Market Portfolio Weight History, 1976&ndash;2026</em>, v1.0.0. Zenodo. doi:10.5281/zenodo.22151403 (all versions: doi:10.5281/zenodo.22151402).</p>
+<p>Nakanishi, K. (2026d). &ldquo;What the World&rsquo;s Capital Earns and Pays.&rdquo; Research note, draft v1.5, 21 October 2026, SSRN. doi:10.2139/ssrn.7515699.</p>
+<p>OECD. Analytical house price indicators (DF_HOUSE_PRICES); Financial balance sheets, non-consolidated, Table 720 (DF_T720R_A); Non-financial assets by sector, Table 9B (DF_TABLE9B). OECD Data Explorer, accessed October 2026.</p>
+<p>Samuelson, P. A. (1958). &ldquo;An Exact Consumption-Loan Model of Interest with or without the Social Contrivance of Money.&rdquo; <em>Journal of Political Economy</em>, 66(6), 467&ndash;482.</p>
+<p>United Nations, Department of Economic and Social Affairs, Population Division (2024). <em>World Population Prospects 2024</em>. Population by five-year age group, medium variant.</p>
+<p>World Bank. <em>World Development Indicators</em>: GDP in current local currency (NY.GDP.MKTP.CN) and current US dollars (NY.GDP.MKTP.CD). Accessed October 2026.</p>
+
+<h2 id="country-tables">Appendix A: country tables</h2>
+<div class="scroll"><table class="small">
+<caption style="text-align:left;caption-side:top;font-size:.93rem;color:var(--muted);padding:.3rem 0">Table A1. Housing in each country&rsquo;s own hours (local nominal GDP per hour worked), hours a year per 1,000 hours of housing capital (author&rsquo;s calculations). Columns 1&ndash;7: 1976&ndash;2020. Germany&rsquo;s 1951&ndash;2020 column starts in 1963 and Japan&rsquo;s in 1960</caption>
+<thead><tr><th></th><th style="text-align:right">Total</th><th style="text-align:right">Net rent</th><th style="text-align:right">Valuation</th><th style="text-align:right">Price ex val.</th><th style="text-align:right">Needed</th><th style="text-align:right">Net</th><th style="text-align:right">Net ex val.</th><th style="text-align:right">Net 1951&ndash;2020</th><th style="text-align:right">Net 2021&ndash;2025</th></tr></thead><tbody>
+<tr><td>Australia</td><td class="num">103.7</td><td class="num">36.7</td><td class="num">19.7</td><td class="num">47.4</td><td class="num">58.7</td><td class="num">45.0</td><td class="num">25.4</td><td class="num">40.3</td><td class="num">35.8</td></tr>
+<tr><td>Belgium</td><td class="num">98.0</td><td class="num">52.2</td><td class="num">17.1</td><td class="num">28.8</td><td class="num">42.4</td><td class="num">55.6</td><td class="num">38.5</td><td class="num">52.9</td><td class="num">33.2</td></tr>
+<tr><td>Switzerland</td><td class="num">76.7</td><td class="num">46.0</td><td class="num">9.0</td><td class="num">21.7</td><td class="num">25.9</td><td class="num">50.8</td><td class="num">41.8</td><td class="num">34.7</td><td class="num">51.8</td></tr>
+<tr><td>Germany</td><td class="num">68.6</td><td class="num">41.7</td><td class="num">1.0</td><td class="num">25.9</td><td class="num">41.1</td><td class="num">27.6</td><td class="num">26.6</td><td class="num">26.7</td><td class="num">4.3</td></tr>
+<tr><td>Denmark</td><td class="num">85.0</td><td class="num">39.8</td><td class="num">8.3</td><td class="num">36.9</td><td class="num">51.0</td><td class="num">33.9</td><td class="num">25.7</td><td class="num">41.4</td><td class="num">43.3</td></tr>
+<tr><td>Spain</td><td class="num">98.8</td><td class="num">28.7</td><td class="num">22.2</td><td class="num">47.9</td><td class="num">72.5</td><td class="num">26.4</td><td class="num">4.1</td><td class="num">20.2</td><td class="num">35.2</td></tr>
+<tr><td>Finland</td><td class="num">115.0</td><td class="num">68.9</td><td class="num">9.0</td><td class="num">37.1</td><td class="num">58.0</td><td class="num">57.1</td><td class="num">48.1</td><td class="num">64.8</td><td class="num">24.1</td></tr>
+<tr><td>France</td><td class="num">91.3</td><td class="num">39.1</td><td class="num">15.3</td><td class="num">36.8</td><td class="num">51.4</td><td class="num">39.9</td><td class="num">24.6</td><td class="num">56.3</td><td class="num">15.2</td></tr>
+<tr><td>United Kingdom</td><td class="num">100.4</td><td class="num">33.8</td><td class="num">8.5</td><td class="num">58.1</td><td class="num">64.2</td><td class="num">36.2</td><td class="num">27.6</td><td class="num">32.4</td><td class="num">17.1</td></tr>
+<tr><td>Italy</td><td class="num">94.6</td><td class="num">36.7</td><td class="num">&minus;3.9</td><td class="num">61.8</td><td class="num">68.4</td><td class="num">26.2</td><td class="num">30.1</td><td class="num">18.9</td><td class="num">39.5</td></tr>
+<tr><td>Japan</td><td class="num">51.0</td><td class="num">40.0</td><td class="num">&minus;6.7</td><td class="num">17.8</td><td class="num">29.5</td><td class="num">21.5</td><td class="num">28.2</td><td class="num">32.3</td><td class="num">56.3</td></tr>
+<tr><td>Netherlands</td><td class="num">95.1</td><td class="num">49.8</td><td class="num">7.8</td><td class="num">37.5</td><td class="num">35.9</td><td class="num">59.2</td><td class="num">51.4</td><td class="num">57.2</td><td class="num">56.4</td></tr>
+<tr><td>Norway</td><td class="num">125.2</td><td class="num">56.0</td><td class="num">18.5</td><td class="num">50.7</td><td class="num">61.3</td><td class="num">63.9</td><td class="num">45.4</td><td class="num">53.7</td><td class="num">4.7</td></tr>
+<tr><td>Portugal</td><td class="num">143.3</td><td class="num">42.9</td><td class="num">26.7</td><td class="num">73.8</td><td class="num">90.2</td><td class="num">53.1</td><td class="num">26.5</td><td class="num">35.4</td><td class="num">67.1</td></tr>
+<tr><td>Sweden</td><td class="num">116.8</td><td class="num">59.4</td><td class="num">16.4</td><td class="num">41.0</td><td class="num">55.0</td><td class="num">61.8</td><td class="num">45.4</td><td class="num">54.7</td><td class="num">6.2</td></tr>
+<tr><td>United States</td><td class="num">95.3</td><td class="num">50.6</td><td class="num">4.4</td><td class="num">40.4</td><td class="num">45.4</td><td class="num">49.9</td><td class="num">45.6</td><td class="num">40.0</td><td class="num">62.7</td></tr>
+<tr class="bold"><td><strong>GDP-weighted</strong></td><td class="num">85.9</td><td class="num">44.0</td><td class="num">4.1</td><td class="num">37.8</td><td class="num">46.3</td><td class="num">39.6</td><td class="num">35.5</td><td class="num">35.9</td><td class="num">46.2</td></tr>
+<tr class="bold"><td><strong>Median</strong></td><td class="num">96.7</td><td class="num">42.3</td><td class="num">9.0</td><td class="num">39.0</td><td class="num">53.2</td><td class="num">47.5</td><td class="num">29.2</td><td class="num">40.1</td><td class="num">35.5</td></tr>
+</tbody></table></div>
+<div class="scroll"><table class="small">
+<caption style="text-align:left;caption-side:top;font-size:.93rem;color:var(--muted);padding:.3rem 0">Table A2. Household balance sheets (households and non-profit institutions serving them), 2023: shares of gross assets, % (author&rsquo;s calculations from OECD Tables 720 and 9B). Years of work = net worth &divide; GDP = net worth per worker in hours of national work &divide; annual hours per worker. * land not reported, so the housing share is understated</caption>
+<thead><tr><th>Country</th><th style="text-align:right">Dwellings + land</th><th style="text-align:right">Equity &amp; fund shares (F5)</th><th style="text-align:right">Pension &amp; insurance (F6)</th><th style="text-align:right">Deposits &amp; debt sec. (F2+F3)</th><th style="text-align:right">Other</th><th style="text-align:right">Liabilities</th><th style="text-align:right">Net worth, years of work</th><th style="text-align:right">Net worth per worker, world hours</th></tr></thead><tbody>
+<tr><td>ESP</td><td class="num">66.2</td><td class="num">14.5</td><td class="num">4.0</td><td class="num">12.2</td><td class="num">3.0</td><td class="num">8.3</td><td class="num">5.5</td><td class="num">22,670</td></tr>
+<tr><td>MEX</td><td class="num">63.7</td><td class="num">11.6</td><td class="num">13.3</td><td class="num">7.2</td><td class="num">4.2</td><td class="num">6.4</td><td class="num">2.9</td><td class="num">4,703</td></tr>
+<tr><td>SVK</td><td class="num">63.1</td><td class="num">6.4</td><td class="num">6.3</td><td class="num">16.9</td><td class="num">7.3</td><td class="num">16.9</td><td class="num">2.3</td><td class="num">6,543</td></tr>
+<tr><td>KOR</td><td class="num">61.7</td><td class="num">7.5</td><td class="num">9.8</td><td class="num">17.3</td><td class="num">3.7</td><td class="num">15.5</td><td class="num">5.2</td><td class="num">17,902</td></tr>
+<tr><td>BGR</td><td class="num">61.1</td><td class="num">15.1</td><td class="num">4.8</td><td class="num">14.9</td><td class="num">4.1</td><td class="num">9.1</td><td class="num">2.8</td><td class="num">4,888</td></tr>
+<tr><td>HUN</td><td class="num">59.1</td><td class="num">16.6</td><td class="num">2.1</td><td class="num">12.7</td><td class="num">9.5</td><td class="num">5.5</td><td class="num">3.6</td><td class="num">8,356</td></tr>
+<tr><td>LUX</td><td class="num">57.9</td><td class="num">13.8</td><td class="num">5.3</td><td class="num">17.5</td><td class="num">5.5</td><td class="num">16.0</td><td class="num">3.4</td><td class="num">30,957</td></tr>
+<tr><td>SVN</td><td class="num">57.8</td><td class="num">10.7</td><td class="num">3.5</td><td class="num">15.0</td><td class="num">13.1</td><td class="num">6.9</td><td class="num">3.7</td><td class="num">12,396</td></tr>
+<tr><td>AUT</td><td class="num">57.5</td><td class="num">15.6</td><td class="num">5.8</td><td class="num">15.5</td><td class="num">5.6</td><td class="num">9.2</td><td class="num">4.4</td><td class="num">25,917</td></tr>
+<tr><td>FRA</td><td class="num">55.8</td><td class="num">12.8</td><td class="num">12.2</td><td class="num">12.3</td><td class="num">6.9</td><td class="num">12.2</td><td class="num">5.4</td><td class="num">28,454</td></tr>
+<tr><td>DEU</td><td class="num">55.5</td><td class="num">13.3</td><td class="num">11.4</td><td class="num">16.5</td><td class="num">3.4</td><td class="num">10.0</td><td class="num">4.6</td><td class="num">23,948</td></tr>
+<tr><td>BEL</td><td class="num">54.4</td><td class="num">20.9</td><td class="num">8.1</td><td class="num">14.8</td><td class="num">1.8</td><td class="num">10.0</td><td class="num">5.3</td><td class="num">35,945</td></tr>
+<tr><td>CZE</td><td class="num">51.4</td><td class="num">19.9</td><td class="num">3.5</td><td class="num">19.2</td><td class="num">6.0</td><td class="num">10.4</td><td class="num">2.9</td><td class="num">9,767</td></tr>
+<tr><td>FIN</td><td class="num">51.3</td><td class="num">19.9</td><td class="num">6.1</td><td class="num">12.3</td><td class="num">10.5</td><td class="num">20.6</td><td class="num">3.1</td><td class="num">17,337</td></tr>
+<tr><td>ITA</td><td class="num">49.7</td><td class="num">19.6</td><td class="num">8.8</td><td class="num">16.2</td><td class="num">5.7</td><td class="num">8.4</td><td class="num">5.3</td><td class="num">24,763</td></tr>
+<tr><td>GBR</td><td class="num">48.2</td><td class="num">8.3</td><td class="num">24.1</td><td class="num">16.5</td><td class="num">2.9</td><td class="num">16.9</td><td class="num">4.0</td><td class="num">21,609</td></tr>
+<tr><td>LTU</td><td class="num">48.1</td><td class="num">15.6</td><td class="num">5.3</td><td class="num">16.5</td><td class="num">14.5</td><td class="num">12.7</td><td class="num">2.0</td><td class="num">5,558</td></tr>
+<tr><td>PRT</td><td class="num">48.0</td><td class="num">18.9</td><td class="num">5.2</td><td class="num">22.7</td><td class="num">5.1</td><td class="num">17.2</td><td class="num">3.4</td><td class="num">10,107</td></tr>
+<tr><td>POL</td><td class="num">47.2</td><td class="num">11.2</td><td class="num">6.2</td><td class="num">25.9</td><td class="num">9.6</td><td class="num">13.0</td><td class="num">1.6</td><td class="num">4,078</td></tr>
+<tr><td>CAN</td><td class="num">45.4</td><td class="num">24.0</td><td class="num">15.7</td><td class="num">12.6</td><td class="num">2.2</td><td class="num">16.4</td><td class="num">5.3</td><td class="num">30,285</td></tr>
+<tr><td>NLD</td><td class="num">45.4</td><td class="num">12.2</td><td class="num">28.2</td><td class="num">9.9</td><td class="num">4.3</td><td class="num">17.2</td><td class="num">4.8</td><td class="num">28,117</td></tr>
+<tr><td>HRV</td><td class="num">45.1</td><td class="num">15.3</td><td class="num">11.4</td><td class="num">20.9</td><td class="num">7.2</td><td class="num">11.5</td><td class="num">2.5</td><td class="num">6,404</td></tr>
+<tr><td>EST</td><td class="num">44.5</td><td class="num">36.8</td><td class="num">0.5</td><td class="num">13.8</td><td class="num">4.3</td><td class="num">15.2</td><td class="num">2.3</td><td class="num">7,246</td></tr>
+<tr><td>GRC*</td><td class="num">41.5</td><td class="num">18.9</td><td class="num">2.9</td><td class="num">28.6</td><td class="num">8.1</td><td class="num">17.7</td><td class="num">2.4</td><td class="num">6,175</td></tr>
+<tr><td>JPN</td><td class="num">35.1</td><td class="num">12.1</td><td class="num">15.8</td><td class="num">33.8</td><td class="num">3.2</td><td class="num">11.7</td><td class="num">5.1</td><td class="num">16,979</td></tr>
+<tr><td>USA</td><td class="num">32.1</td><td class="num">33.7</td><td class="num">18.3</td><td class="num">10.5</td><td class="num">5.3</td><td class="num">10.8</td><td class="num">6.0</td><td class="num">52,361</td></tr>
+<tr><td>CHL*</td><td class="num">32.0</td><td class="num">22.6</td><td class="num">32.9</td><td class="num">11.9</td><td class="num">0.6</td><td class="num">19.5</td><td class="num">2.0</td><td class="num">4,140</td></tr>
+<tr><td>ISR*</td><td class="num">30.7</td><td class="num">10.4</td><td class="num">36.2</td><td class="num">17.1</td><td class="num">5.7</td><td class="num">14.9</td><td class="num">3.0</td><td class="num">17,092</td></tr>
+<tr><td>SWE</td><td class="num">30.1</td><td class="num">29.9</td><td class="num">24.0</td><td class="num">9.1</td><td class="num">6.8</td><td class="num">17.5</td><td class="num">4.2</td><td class="num">24,387</td></tr>
+<tr><td>DNK</td><td class="num">27.9</td><td class="num">30.0</td><td class="num">27.5</td><td class="num">9.5</td><td class="num">5.1</td><td class="num">17.2</td><td class="num">4.5</td><td class="num">30,133</td></tr>
+<tr><td>ROU*</td><td class="num">23.9</td><td class="num">19.4</td><td class="num">7.3</td><td class="num">21.6</td><td class="num">27.9</td><td class="num">14.2</td><td class="num">1.1</td><td class="num">2,659</td></tr>
+<tr class="bold"><td><strong>GDP-weighted</strong></td><td class="num">41.6</td><td class="num">23.3</td><td class="num">16.0</td><td class="num">14.2</td><td class="num">4.9</td><td class="num">11.7</td><td class="num">&ndash;</td><td class="num">&ndash;</td></tr>
+<tr class="bold"><td><strong>Median</strong></td><td class="num">48.2</td><td class="num">15.6</td><td class="num">8.1</td><td class="num">15.5</td><td class="num">5.5</td><td class="num">13.0</td><td class="num">3.6</td><td class="num">17,092</td></tr>
+</tbody></table></div>
+<div class="scroll"><table class="small">
+<caption style="text-align:left;caption-side:top;font-size:.93rem;color:var(--muted);padding:.3rem 0">Table A3. Accrued-to-date pension entitlements, 2021 (Eurostat national accounts Table 29; author&rsquo;s calculations). Social-security (pay-as-you-go) schemes S13PS and funded schemes S1PF</caption>
+<thead><tr><th>Country</th><th style="text-align:right">PAYG, % of GDP</th><th style="text-align:right">Funded, % of GDP</th><th style="text-align:right">PAYG, % of household net worth</th><th style="text-align:right">Net worth, years of work (= years of GDP)</th><th style="text-align:right">&hellip; including PAYG</th></tr></thead><tbody>
+<tr><td>ESP</td><td class="num">452</td><td class="num">5</td><td class="num">73</td><td class="num">6.2</td><td class="num">10.7</td></tr>
+<tr><td>ITA</td><td class="num">430</td><td class="num">9</td><td class="num">73</td><td class="num">5.9</td><td class="num">10.2</td></tr>
+<tr><td>GRC</td><td class="num">403</td><td class="num">2</td><td class="num">159</td><td class="num">2.5</td><td class="num">6.6</td></tr>
+<tr><td>SVN</td><td class="num">389</td><td class="num">9</td><td class="num">110</td><td class="num">3.6</td><td class="num">7.4</td></tr>
+<tr><td>AUT</td><td class="num">382</td><td class="num">12</td><td class="num">81</td><td class="num">4.7</td><td class="num">8.5</td></tr>
+<tr><td>ROU</td><td class="num">378</td><td class="num">7</td><td class="num">300</td><td class="num">1.3</td><td class="num">5.0</td></tr>
+<tr><td>FRA</td><td class="num">345</td><td class="num">0</td><td class="num">58</td><td class="num">5.9</td><td class="num">9.4</td></tr>
+<tr><td>FIN</td><td class="num">333</td><td class="num">4</td><td class="num">106</td><td class="num">3.1</td><td class="num">6.5</td></tr>
+<tr><td>HUN</td><td class="num">322</td><td class="num">0</td><td class="num">98</td><td class="num">3.4</td><td class="num">6.7</td></tr>
+<tr><td>HRV</td><td class="num">319</td><td class="num">31</td><td class="num">118</td><td class="num">2.7</td><td class="num">5.9</td></tr>
+<tr><td>EST</td><td class="num">303</td><td class="num">0</td><td class="num">125</td><td class="num">2.4</td><td class="num">5.5</td></tr>
+<tr><td>LUX</td><td class="num">291</td><td class="num">7</td><td class="num">75</td><td class="num">3.9</td><td class="num">6.8</td></tr>
+<tr><td>PRT</td><td class="num">278</td><td class="num">11</td><td class="num">74</td><td class="num">3.7</td><td class="num">6.5</td></tr>
+<tr><td>LTU</td><td class="num">274</td><td class="num">10</td><td class="num">129</td><td class="num">2.1</td><td class="num">4.9</td></tr>
+<tr><td>DEU</td><td class="num">273</td><td class="num">27</td><td class="num">59</td><td class="num">4.7</td><td class="num">7.4</td></tr>
+<tr><td>POL</td><td class="num">268</td><td class="num">8</td><td class="num">161</td><td class="num">1.7</td><td class="num">4.4</td></tr>
+<tr><td>CZE</td><td class="num">261</td><td class="num">9</td><td class="num">84</td><td class="num">3.0</td><td class="num">5.5</td></tr>
+<tr><td>BEL</td><td class="num">259</td><td class="num">27</td><td class="num">44</td><td class="num">5.9</td><td class="num">8.5</td></tr>
+<tr><td>CYP</td><td class="num">251</td><td class="num">15</td><td class="num">&ndash;</td><td class="num">&ndash;</td><td class="num">&ndash;</td></tr>
+<tr><td>NOR</td><td class="num">242</td><td class="num">41</td><td class="num">&ndash;</td><td class="num">&ndash;</td><td class="num">&ndash;</td></tr>
+<tr><td>CHE</td><td class="num">235</td><td class="num">145</td><td class="num">&ndash;</td><td class="num">&ndash;</td><td class="num">&ndash;</td></tr>
+<tr><td>LVA</td><td class="num">230</td><td class="num">20</td><td class="num">136</td><td class="num">1.7</td><td class="num">4.0</td></tr>
+<tr><td>NLD</td><td class="num">209</td><td class="num">203</td><td class="num">38</td><td class="num">5.6</td><td class="num">7.6</td></tr>
+<tr><td>MLT</td><td class="num">208</td><td class="num">0</td><td class="num">&ndash;</td><td class="num">&ndash;</td><td class="num">&ndash;</td></tr>
+<tr><td>BGR</td><td class="num">196</td><td class="num">14</td><td class="num">65</td><td class="num">3.0</td><td class="num">5.0</td></tr>
+<tr><td>SVK</td><td class="num">194</td><td class="num">11</td><td class="num">75</td><td class="num">2.6</td><td class="num">4.5</td></tr>
+<tr><td>SWE</td><td class="num">187</td><td class="num">110</td><td class="num">38</td><td class="num">5.0</td><td class="num">6.9</td></tr>
+<tr><td>IRL</td><td class="num">105</td><td class="num">27</td><td class="num">&ndash;</td><td class="num">&ndash;</td><td class="num">&ndash;</td></tr>
+<tr><td>ISL</td><td class="num">97</td><td class="num">201</td><td class="num">&ndash;</td><td class="num">&ndash;</td><td class="num">&ndash;</td></tr>
+<tr><td>DNK</td><td class="num">2</td><td class="num">70</td><td class="num">0</td><td class="num">5.0</td><td class="num">5.0</td></tr>
+</tbody></table></div>
+<div class="scroll"><table class="small">
+<caption style="text-align:left;caption-side:top;font-size:.93rem;color:var(--muted);padding:.3rem 0">Table A4. A life by country, medians across cohorts, years of own final pay (author&rsquo;s calculations)</caption>
+<thead><tr><th>Country</th><th style="text-align:right">Lives</th><th style="text-align:right">R</th><th style="text-align:right">O</th><th style="text-align:right">O &divide; R</th><th style="text-align:right">O beats R, %</th><th style="text-align:right">PAYG</th><th style="text-align:right">Funded</th><th style="text-align:right">Funded &divide; PAYG</th><th style="text-align:right">Buying age</th><th style="text-align:right">O ever negative</th></tr></thead><tbody>
+<tr><td>Australia</td><td class="num">31</td><td class="num">8.71</td><td class="num">11.80</td><td class="num">1.10</td><td class="num">58</td><td class="num">5.61</td><td class="num">11.65</td><td class="num">2.05</td><td class="num">35</td><td class="num">13</td></tr>
+<tr><td>Belgium</td><td class="num">31</td><td class="num">11.04</td><td class="num">14.38</td><td class="num">1.52</td><td class="num">94</td><td class="num">4.14</td><td class="num">12.00</td><td class="num">2.93</td><td class="num">38</td><td class="num">1</td></tr>
+<tr><td>Switzerland</td><td class="num">31</td><td class="num">13.77</td><td class="num">15.69</td><td class="num">1.10</td><td class="num">81</td><td class="num">4.56</td><td class="num">11.36</td><td class="num">2.46</td><td class="num">35</td><td class="num">2</td></tr>
+<tr><td>Germany</td><td class="num">20</td><td class="num">20.16</td><td class="num">16.01</td><td class="num">0.80</td><td class="num">0</td><td class="num">3.81</td><td class="num">10.05</td><td class="num">2.60</td><td class="num">35</td><td class="num">1</td></tr>
+<tr><td>Denmark</td><td class="num">31</td><td class="num">22.98</td><td class="num">16.49</td><td class="num">0.63</td><td class="num">0</td><td class="num">4.01</td><td class="num">15.12</td><td class="num">3.79</td><td class="num">35</td><td class="num">11</td></tr>
+<tr><td>Spain</td><td class="num">31</td><td class="num">18.75</td><td class="num">17.51</td><td class="num">0.97</td><td class="num">48</td><td class="num">4.67</td><td class="num">11.70</td><td class="num">2.33</td><td class="num">35</td><td class="num">3</td></tr>
+<tr><td>Finland</td><td class="num">31</td><td class="num">10.73</td><td class="num">10.13</td><td class="num">1.02</td><td class="num">55</td><td class="num">3.92</td><td class="num">18.04</td><td class="num">4.49</td><td class="num">44</td><td class="num">31</td></tr>
+<tr><td>France</td><td class="num">31</td><td class="num">17.38</td><td class="num">10.48</td><td class="num">0.89</td><td class="num">13</td><td class="num">4.04</td><td class="num">11.62</td><td class="num">2.92</td><td class="num">35</td><td class="num">14</td></tr>
+<tr><td>United Kingdom</td><td class="num">31</td><td class="num">13.28</td><td class="num">14.79</td><td class="num">1.04</td><td class="num">58</td><td class="num">4.19</td><td class="num">9.91</td><td class="num">2.34</td><td class="num">35</td><td class="num">5</td></tr>
+<tr><td>Italy</td><td class="num">31</td><td class="num">16.99</td><td class="num">14.16</td><td class="num">0.96</td><td class="num">48</td><td class="num">4.13</td><td class="num">8.86</td><td class="num">2.11</td><td class="num">35</td><td class="num">6</td></tr>
+<tr><td>Japan</td><td class="num">22</td><td class="num">8.33</td><td class="num">7.29</td><td class="num">0.90</td><td class="num">9</td><td class="num">3.71</td><td class="num">5.61</td><td class="num">1.48</td><td class="num">35</td><td class="num">1</td></tr>
+<tr><td>Netherlands</td><td class="num">31</td><td class="num">11.76</td><td class="num">10.84</td><td class="num">1.07</td><td class="num">55</td><td class="num">4.74</td><td class="num">16.43</td><td class="num">3.43</td><td class="num">37</td><td class="num">16</td></tr>
+<tr><td>Norway</td><td class="num">31</td><td class="num">7.51</td><td class="num">8.82</td><td class="num">1.34</td><td class="num">74</td><td class="num">4.41</td><td class="num">10.01</td><td class="num">2.29</td><td class="num">42</td><td class="num">29</td></tr>
+<tr><td>Portugal</td><td class="num">31</td><td class="num">9.03</td><td class="num">9.25</td><td class="num">1.27</td><td class="num">65</td><td class="num">5.18</td><td class="num">5.90</td><td class="num">1.07</td><td class="num">35</td><td class="num">9</td></tr>
+<tr><td>Sweden</td><td class="num">31</td><td class="num">16.68</td><td class="num">15.25</td><td class="num">1.02</td><td class="num">52</td><td class="num">4.24</td><td class="num">22.91</td><td class="num">5.09</td><td class="num">40</td><td class="num">24</td></tr>
+<tr><td>United States</td><td class="num">31</td><td class="num">12.39</td><td class="num">15.21</td><td class="num">1.17</td><td class="num">55</td><td class="num">5.17</td><td class="num">12.62</td><td class="num">2.43</td><td class="num">35</td><td class="num">10</td></tr>
+</tbody></table></div>
+<div class="scroll"><table>
+<caption style="text-align:left;caption-side:top;font-size:.93rem;color:var(--muted);padding:.3rem 0">Table A5. Housing: robustness, net hours a year per 1,000 hours (author&rsquo;s calculations). World hours 1976&ndash;2020 unless stated. National-hour and GMP comparisons are in Tables 2, 3 and A1. &ldquo;Dec-to-Dec interpolated hour&rdquo;: the national hour interpolated to December values instead of calendar-year averages. Tax and cost parameters from Jord&agrave; et al. (2019)</caption>
+<thead><tr><th>Case</th><th style="text-align:right">Net</th><th style="text-align:right">Net excluding valuation</th></tr></thead><tbody>
+<tr class="bold"><td>Baseline: world hours, GDP weights</td><td class="num">40.0</td><td class="num">35.9</td></tr>
+<tr><td>Property tax 1 pt a year</td><td class="num">30.0</td><td class="num">25.9</td></tr>
+<tr><td>Transaction costs 7.7% round trip, 10-year hold</td><td class="num">32.0</td><td class="num">27.9</td></tr>
+<tr><td>Transaction costs 7.7% round trip, 20-year hold</td><td class="num">36.0</td><td class="num">31.9</td></tr>
+<tr><td>Property tax 1 pt + costs over 10 years</td><td class="num">22.0</td><td class="num">17.9</td></tr>
+<tr><td>Equal weights</td><td class="num">48.2</td><td class="num">37.3</td></tr>
+<tr><td>Ex-USA (GDP weights)</td><td class="num">35.3</td><td class="num">31.2</td></tr>
+<tr><td>World hour on annual-average timing</td><td class="num">41.1</td><td class="num">36.9</td></tr>
+<tr><td>National hours, Dec-to-Dec interpolated hour, median, 1976&ndash;2019</td><td class="num">48.2</td><td class="num">31.5</td></tr>
+<tr><td>Baseline national hour, median, same window 1976&ndash;2019</td><td class="num">47.5</td><td class="num">29.8</td></tr>
+<tr><td>National hours from GDP per head (Macrohistory Database), median</td><td class="num">46.8</td><td class="num">33.1</td></tr>
+<tr><td>OECD rent growth for the database&rsquo;s implied rent growth, world, 1976&ndash;2020</td><td class="num">41.7</td><td class="num">37.5</td></tr>
+<tr><td>OECD rent growth for the database&rsquo;s implied rent growth, world, 1976&ndash;2025</td><td class="num">42.3</td><td class="num">36.1</td></tr>
+<tr><td>OECD rent growth, national-hour country median, 1976&ndash;2020</td><td class="num">45.8</td><td class="num">28.7</td></tr>
+<tr><td>Equal weights, 1976&ndash;2025</td><td class="num">46.2</td><td class="num">34.5</td></tr>
+<tr><td>Ex-USA, 1976&ndash;2025</td><td class="num">33.0</td><td class="num">27.6</td></tr>
+<tr><td>Property tax 1 pt + 7.7% costs over 10 years, 1976&ndash;2025</td><td class="num">22.6</td><td class="num">16.4</td></tr>
+</tbody></table></div>
+
+<h2 id="appendix">Appendix B: reproduction</h2>
+<div class="scroll"><table>
+<caption style="text-align:left;caption-side:top;font-size:.93rem;color:var(--muted);padding:.3rem 0"></caption>
+<thead><tr><th>File</th><th>Content</th></tr></thead><tbody>
+<tr><td><code>code/fetch_*.py</code></td><td>Download and clean the public inputs (<code>data/SOURCES.md</code> lists URLs, dates and terms)</td></tr>
+<tr><td><code>code/build_housing.py</code>, <code>build_housing_ext.py</code></td><td>Section 4: housing in world and national hours, 1951&ndash;2020 and the OECD extension to 2025; the note-3 correction; Tables 2&ndash;5, A1, A5; Figures 1&ndash;2</td></tr>
+<tr><td><code>code/build_balance.py</code></td><td>Sections 5&ndash;6: balance sheets, Z.1, Eurostat Table 29, hours growth, projections; Tables 6&ndash;11, A2, A3; Figures 3&ndash;4</td></tr>
+<tr><td><code>code/build_life.py</code></td><td>Section 7: the stylised lives, decompositions and robustness grid; Tables 12&ndash;16, A4; Figures 6&ndash;7</td></tr>
+<tr><td><code>code/build_extras.py</code></td><td>Two measurement variants of the housing headline (portfolio-yield valuation, same-year weights); <code>output/housing/extras.json</code></td></tr>
+<tr><td><code>code/build_paper.py</code></td><td>All tables and every number in the text, generated from <code>output/</code>; Figure 5</td></tr>
+<tr><td><code>output/*/build_log.json</code></td><td>Input checksums, identity checks, headline values</td></tr>
+<tr><td><code>check/</code></td><td>Independent checks of Sections 4&ndash;7, written before reading the builders</td></tr>
+</tbody></table></div>
+<p>Run: <code>code/fetch_*.py</code> &rarr; <code>build_housing.py</code> &rarr; <code>build_housing_ext.py</code> &rarr;
+<code>build_extras.py</code> &rarr; <code>build_balance.py</code> &rarr; <code>build_life.py</code> &rarr; <code>build_paper.py</code>. Inputs (58 files,
+SHA-256, recorded at run time in the build logs):</p>
+<pre><code class="hash">9e54068e0fc755f87dcdcf7a3dd9eeff7e1230f027457f9dbaefa7b7bde137a2  AVHWPEAUA065NRUG.csv
+b2c23f195cf4294f175e70ad598fca6e2ae8259db9940908a4f25cbb1dbd3184  AVHWPEBEA065NRUG.csv
+cbf527a0cb121b77b8460c0dc0bc2e6d22b7dbe62beaacc6954acfa64fd3ac5d  AVHWPECHA065NRUG.csv
+06eb807c06240d6e06522eed825c7fb25723e41f42053efc6fb86a17556dd003  AVHWPEDEA065NRUG.csv
+764fc879b90c9ecdc25bb19ea4f46a257dc174396487a3a2baf916bc4ef6c549  AVHWPEDKA065NRUG.csv
+55826ff1a00d1335ae8da9487766b47765a806c1696a14553d1364285314e239  AVHWPEESA065NRUG.csv
+b0e4f02671c57fad401b17f738cf46ea61c1743e141e1d322913103885a5c98b  AVHWPEFIA065NRUG.csv
+436358fd8657cd9fa46c0525114892e57d86870106acb9fae610be557e71ba09  AVHWPEFRA065NRUG.csv
+35db60e5be6c66d1872f9dc39a4f68bf1e4ab309177934e115104f2d95fa65fc  AVHWPEGBA065NRUG.csv
+ff969e60cf8ecd952f819af43c91be9c5ce8bb2d391467f76cf0ae64a4bb7613  AVHWPEITA065NRUG.csv
+3671fc737e65fd7950e5ceaef0cb19bec1d6c4b377346334f788c2fe9fbdbf58  AVHWPEJPA065NRUG.csv
+22f16a4d81ee474468bede77e4f0d0970dfd1130392f405bd341e1e884a50674  AVHWPENLA065NRUG.csv
+d662b4e106d0c8016e5d6062737d0265e0d6fda9ef2bcf52d4e206c73ff46954  AVHWPENOA065NRUG.csv
+7ec2a76ce54e37f5618c3cbcce806c4d7b9b437c18cab7fccf80d8bdf73ef03d  AVHWPEPTA065NRUG.csv
+2647e99228205ebafaaed3d2b4cb7384520bdca96304fefc49d33bde6900cf80  AVHWPESEA065NRUG.csv
+973e041b40e049fb5c40c02f53d80783d03c17e69a12cab4afa8b8dd1d0e8d8f  AVHWPEUSA065NRUG.csv
+a81406e2ac0f56c42231f5c73e78dc4ef6f14e8e09e012e8942bee03ca210aea  EMPENGAUA148NRUG.csv
+39b78d2edd0ea0052f5d00964deb5a9621fcf8222a7273842fb08baaae114bd5  EMPENGBEA148NRUG.csv
+9d0ec4c02c53752268f69ef1075073f92dedd5701a4713c6b37c72eb55d4004e  EMPENGCHA148NRUG.csv
+cfe07fa9b1684d9a3b068b2fd3a007b352636d8578e07bc440c4c5c08b694fca  EMPENGDEA148NRUG.csv
+08461a40536c4f0473e9c574defbbd11447bcd9aca120587b8788ea6ce5610d5  EMPENGDKA148NRUG.csv
+b0ddf42f6fd6a78704c3785d03f213cb596bc7e41a8f5962bfeea90f015e3752  EMPENGESA148NRUG.csv
+1ef45c91ba847cfd40752937a582006d7e99e817628c6b1a1af046931de76b6c  EMPENGFIA148NRUG.csv
+5f8d328828e3bde661ab99b8e0295204f6ad1c55995f5a1fe3408ab645c4eb5e  EMPENGFRA148NRUG.csv
+aeecae49d8ff9495dea161cb1c3642d340540bbc90f257b1301f3fc8eacf96c4  EMPENGGBA148NRUG.csv
+899eefd6ddb7176c6b9abdd0c32df99395ace5d73a95aa5fc5c2dfc0f0805e4f  EMPENGITA148NRUG.csv
+b623eac0b24d088bf9ffa49a727a1d59db3fb449bab6c31b442b85aaea61276b  EMPENGJPA148NRUG.csv
+70912cacc6231ad73a3f0bdb193d3c30f15a234d718866f2a4ca202caffaa038  EMPENGNLA148NRUG.csv
+c0b06d78839f056d34882918c2a498f4884ff6376a53b865202c33b33e9f4a62  EMPENGNOA148NRUG.csv
+c627d9bfdf656a7a34fe911045dcfc0ad3805a8d5c20c8173ac8b325e9547f19  EMPENGPTA148NRUG.csv
+0327ae9ec6fbebccfbd6ef6133cd541169289e87f3ff0c89c18409770f6d844f  EMPENGSEA148NRUG.csv
+1941dcf33667d08a63ae432687003c8f3ccb858304acdad0e4a75d208601cfab  EMPENGUSA148NRUG.csv
+3655ba09a9873fbc02cb21103beca668943cbd0edb037261e1a36ef9f76951ff  composite_numeraire/data/GDP.csv
+1ee79362ef2b227610eb67d9f9eed0207666a206b7150cfa89047fb38b7630ee  composite_numeraire/data/HOANBS.csv
+9174846bd226d04e497db31c10a4f0e29984a2c17ecf4edb9f1818086d23494f  composite_numeraire/data/bis_xru.csv
+337b37071281a128340331068a39abae870868ab49c4032b56e17b89871deed1  composite_numeraire/data/wb_gdp.json
+c4a77eb3a20812e7ef0da3176f71e89c625318e7f56dd28c8381e6230f51a5b6  composite_numeraire/data/wb_lf.json
+771e525220a5e69b4026e4cfd5012e242c7881d7bd44ee38afba2d5fcd84763b  composite_numeraire/data/wb_ngdp_lcu.json
+893baf577a76f297aa46dad27b2c530c6defcbc69b5dd3efe772774fe3f9eed9  composite_numeraire/output/world_q_gdp_per_hour_level_usd.csv
+9e77d22d4d71802a3e8c6af447b9a5cc79b738ef3b145a77a43d9d655ca4d790  composite_numeraire/output/world_yardsticks_usd.csv
+5008fbf33d85807290d9d18ef2ccf77c26c83584c2ecb359b2b9b0d4632aa708  gmp_bt_b61/four_series_returns_corrected.csv
+ff5d4b49adb5f10c17d6f1896a1f7afbea3953b5764644bd82bf40b4170863a8  gmp_household/data/clean/eurostat_gdp_current_meur.csv
+3008f582844fa52260f29279c2a3756d1f413e12fed95f7b5cad73c3acd713d5  gmp_household/data/clean/eurostat_pension_entitlements_F63.csv
+6cf9611395234b8b667e790af32b757679bdc5bf3c210420a630f8e2f4fbe133  gmp_household/data/clean/oecd_hh_financial_bs.csv
+23bb68c7146f65c4447863028911562db88558d32b9dd910fb22d302496f5ac4  gmp_household/data/clean/oecd_hh_nonfinancial_bs.csv
+cb3c440f2e0d1e1cb284c9ca9a6f4d340f94350c9c1c1a593122633ea44b1951  gmp_household/data/clean/oecd_house_prices.csv
+917a7632a5ab40342f234913adf4d9cebaa982e2bc2f8e17eacde18aa443d76f  gmp_household/data/clean/pwt110_hours.csv
+f8559e339c3e10ee91de8763b0bc0f9c7724a7303e7df091b7eb6be7094a4bfa  gmp_household/data/clean/unwpp2024_population_workingage.csv
+65b792ed71a3fd4f79dcf9701972d771217cc7bb81a9bd3b2d10a1eb757a1e02  gmp_household/data/clean/us_z1_b101_households.csv
+132b59943f3e3edb41e2453c067a8fc05c4a66b57d92149de9c47db644d4c134  gmp_household/data/clean/worldbank_gdp.csv
+7b337e94f39dfe304bc459e433f8ce0624496c812707ae0c924888f5142b3ab3  gmp_household/data/raw/pwt/pwt110.xlsx
+f5d1f8d1268f582bb25ddf518a94a79417dc2db4d9ca7941bb89c9f1ed1ea2db  gmp_household/output/balance/table_payg_return_by_decade_world.csv
+a0d7d1f3d58f9dd8d7e4b498dd7e4a5972c760087c0f3ea79e7394fe9c5c6108  gmp_household/output/housing/ext_inputs/CUUR0000SEHA.csv
+8563a19c92c2bb2828d701cd0439591ee1be71528c273333be80df2734d82e87  gmp_household/output/housing/table_claims_by_country_national_hours.csv
+16a07d1170cd5ae20d61f3736ee9b5a776e0d7c5585b412daed64acde7297501  gmp_household/output/housing/table_decades_housing_vs_gmp.csv
+b70e4b9446bdee7bae204baa187baf096b2f2c84cde8fd37c48901f3b1918984  gmp_household/output/housing/table_hour_return_by_claim.csv
+c1bb91fe56ea50d4f27af5c0fc897d481e89ae38ce41eaecab62134c9354981d  gmp_income/data/JSTdatasetR6.xlsx
+e552afeef9a3270caa378d7d0668d1ba1a667b21b19c29bbffa1e4b9e4621b49  gmp_income/output_v2/gmp_components_monthly.csv</code></pre>
+
+
+<footer class="site">
+  <h2>Disclaimer</h2>
+  <p>This publication is independent, non-commercial research provided for informational and educational purposes only. It does not constitute investment advice, an offer, or a solicitation to buy or sell any security or financial product, and it is not personalized to any reader's circumstances. The author is not a registered investment adviser in any jurisdiction and does not provide individual advice. All investing involves risk, including loss of principal. Past performance and backtested results do not guarantee future results. Backtested results are hypothetical, do not reflect actual trading, and are net of no fees or costs unless stated otherwise.</p>
+  <h2>Third-party marks</h2>
+  <p>This research is not affiliated with, endorsed by, or sponsored by the OECD, Eurostat, the Federal Reserve, the United Nations, the World Bank, the BIS, the Groningen Growth and Development Centre, the Macrohistory Database team, or any index provider or data vendor mentioned. All trademarks are the property of their respective owners.</p>
+  <p>The Capital Census is an independent, non-commercial research project. It is not affiliated with any index provider or government statistical agency. &lsquo;Global Market Portfolio&rsquo; and &lsquo;world hour&rsquo; are used as generic terms; &lsquo;CC-GMP&rsquo;, &lsquo;CC-WH&rsquo; and &lsquo;The Capital Census&rsquo; are the author&rsquo;s names for this project and its series.</p>
+  <h2>Corrections policy</h2>
+  <p>Corrections are made openly. Superseded figures remain visible in the revision history. We do not delete published results, including results unfavorable to our own prior claims.</p>
+  <p style="margin-top:1.5rem">The Capital Census &middot; Keisuke Nakanishi &middot; Independent Researcher &middot; <a href="https://orcid.org/0009-0000-3780-9450">ORCID 0009-0000-3780-9450</a></p>
+</footer>
+
+</body>
+</html>

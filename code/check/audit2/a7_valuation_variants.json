@@ -1,0 +1,22 @@
+{
+ "JST_start_of_year": {
+  "net": 40.01,
+  "val_mean": 4.13,
+  "val_port": 3.88
+ },
+ "JST_same_year": {
+  "net": 45.35,
+  "val_mean": 4.43,
+  "val_port": 4.2
+ },
+ "WB_start_of_year": {
+  "net": 39.55,
+  "val_mean": 4.06,
+  "val_port": 3.82
+ },
+ "WB_same_year": {
+  "net": 42.6,
+  "val_mean": 4.33,
+  "val_port": 4.09
+ }
+}

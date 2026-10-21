@@ -1,0 +1,971 @@
+{
+ "inputs_sha256": {
+  "gmp_household/data/clean/oecd_hh_financial_bs.csv": "6cf9611395234b8b667e790af32b757679bdc5bf3c210420a630f8e2f4fbe133",
+  "gmp_household/data/clean/oecd_hh_nonfinancial_bs.csv": "23bb68c7146f65c4447863028911562db88558d32b9dd910fb22d302496f5ac4",
+  "gmp_household/data/clean/us_z1_b101_households.csv": "65b792ed71a3fd4f79dcf9701972d771217cc7bb81a9bd3b2d10a1eb757a1e02",
+  "gmp_household/data/clean/eurostat_pension_entitlements_F63.csv": "3008f582844fa52260f29279c2a3756d1f413e12fed95f7b5cad73c3acd713d5",
+  "gmp_household/data/clean/eurostat_gdp_current_meur.csv": "ff5d4b49adb5f10c17d6f1896a1f7afbea3953b5764644bd82bf40b4170863a8",
+  "gmp_household/data/clean/pwt110_hours.csv": "917a7632a5ab40342f234913adf4d9cebaa982e2bc2f8e17eacde18aa443d76f",
+  "gmp_household/data/clean/worldbank_gdp.csv": "132b59943f3e3edb41e2453c067a8fc05c4a66b57d92149de9c47db644d4c134",
+  "gmp_household/data/clean/unwpp2024_population_workingage.csv": "f8559e339c3e10ee91de8763b0bc0f9c7724a7303e7df091b7eb6be7094a4bfa",
+  "gmp_household/output/housing/table_claims_by_country_national_hours.csv": "8563a19c92c2bb2828d701cd0439591ee1be71528c273333be80df2734d82e87",
+  "gmp_household/output/housing/table_hour_return_by_claim.csv": "b70e4b9446bdee7bae204baa187baf096b2f2c84cde8fd37c48901f3b1918984",
+  "gmp_household/output/housing/table_decades_housing_vs_gmp.csv": "16a07d1170cd5ae20d61f3736ee9b5a776e0d7c5585b412daed64acde7297501",
+  "composite_numeraire/output/world_yardsticks_usd.csv": "9e77d22d4d71802a3e8c6af447b9a5cc79b738ef3b145a77a43d9d655ca4d790",
+  "composite_numeraire/output/world_q_gdp_per_hour_level_usd.csv": "893baf577a76f297aa46dad27b2c530c6defcbc69b5dd3efe772774fe3f9eed9",
+  "composite_numeraire/data/bis_xru.csv": "9174846bd226d04e497db31c10a4f0e29984a2c17ecf4edb9f1818086d23494f",
+  "composite_numeraire/data/GDP.csv": "3655ba09a9873fbc02cb21103beca668943cbd0edb037261e1a36ef9f76951ff",
+  "composite_numeraire/data/HOANBS.csv": "1ee79362ef2b227610eb67d9f9eed0207666a206b7150cfa89047fb38b7630ee"
+ },
+ "pwt_hours_identity_maxrel": 2.1352193601215224e-16,
+ "fx_dec_vs_wb_annual_log_ratio": {
+  "median_abs_1995_2024": 0.041,
+  "max_abs_1995_2024": 0.953,
+  "max_abs_2015_2024": 0.432,
+  "largest_1995_2024": {
+   "TUR 2021": 0.432,
+   "KOR 1997": 0.459,
+   "RUS 1998": 0.729,
+   "BGR 1996": 0.953
+  }
+ },
+ "fin_rows_without_year_dropped": 83,
+ "nonfin_rows_without_year_dropped": 18,
+ "N1N_vs_N11N+N12N+N13N_relgap_over_1pct": {
+  "NLD 2024": 1.337
+ },
+ "check_BF90_eq_fin_assets_minus_liab_maxrel": 0.00010721561059290233,
+ "check_shares_sum_to_100_maxabs": 4.263256414560601e-14,
+ "check_years_of_avh_equals_nw_to_gdp_maxabs": 2.6645352591003757e-15,
+ "oecd_countries_per_year": {
+  "2015": 32,
+  "2016": 32,
+  "2017": 33,
+  "2018": 33,
+  "2019": 33,
+  "2020": 32,
+  "2021": 32,
+  "2022": 32,
+  "2023": 31,
+  "2024": 20,
+  "2025": 7
+ },
+ "latest_common_year": 2023,
+ "financial_but_no_dwellings": [
+  "BRA",
+  "CHE",
+  "COL",
+  "EU27_2020",
+  "IND",
+  "IRL",
+  "ISL",
+  "NOR",
+  "NZL",
+  "TUR"
+ ],
+ "dwellings_but_no_financial": [
+  "AUS"
+ ],
+ "latest_shares_gdp_weighted": {
+  "dwellings_land": 41.6,
+  "F6_pension_insurance": 16.0,
+  "F5_equity_funds": 23.3,
+  "F5_listed": 8.7,
+  "F5_unlisted": 1.8,
+  "F5_other_equity": 5.6,
+  "F5_fund_shares": 6.3,
+  "F2F3_deposits_debt_sec": 14.2,
+  "other": 4.9,
+  "sum_check": 100.0,
+  "liab_F4_pct_gross": 11.0,
+  "liab_total_pct_gross": 11.7
+ },
+ "latest_shares_median": {
+  "dwellings_land": 48.25,
+  "F6_pension_insurance": 8.08,
+  "F5_equity_funds": 15.55,
+  "F5_listed": 1.62,
+  "F5_unlisted": 4.89,
+  "F5_other_equity": 5.38,
+  "F5_fund_shares": 3.58,
+  "F2F3_deposits_debt_sec": 15.49,
+  "other": 5.52,
+  "sum_check": 100.0,
+  "liab_F4_pct_gross": 10.8,
+  "liab_total_pct_gross": 12.96,
+  "nw_to_gdp": 3.56,
+  "nw_per_worker_national_hours": 5850.58,
+  "nw_per_worker_years_of_avh": 3.56,
+  "nw_per_worker_world_hours": 17092.35
+ },
+ "balanced_panel_countries": [
+  "AUT",
+  "BEL",
+  "BGR",
+  "CAN",
+  "CZE",
+  "DEU",
+  "DNK",
+  "ESP",
+  "EST",
+  "FIN",
+  "FRA",
+  "GBR",
+  "GRC",
+  "HRV",
+  "HUN",
+  "ITA",
+  "LTU",
+  "LUX",
+  "NLD",
+  "POL",
+  "PRT",
+  "ROU",
+  "SVK",
+  "SVN",
+  "SWE",
+  "USA"
+ ],
+ "z1_last_period": "2026:Q2",
+ "z1_check_nw_eq_assets_minus_liab_maxabs_bn": 0.00100000000458067,
+ "z1_check_assets_eq_nonfin_plus_fin_maxabs_bn": 2.8421709430404007e-11,
+ "z1_check_shares_sum_maxabs": 2.842170943040401e-14,
+ "us_gdp_quarters_in_last_year": 2,
+ "us_gdp_fred_vs_wb_maxrel_1960_2025": 0.0007263322570278952,
+ "us_headline": {
+  "1952": {
+   "real_estate_pct": 23.3,
+   "pension_pct": 9.4,
+   "equities_mf_pct": 12.9,
+   "deposits_debt_pct": 12.6,
+   "other_pct": 41.8,
+   "liab_pct": 6.8,
+   "nw_years_of_work": 3.64,
+   "nw_per_worker_us_hours": 7506.0,
+   "nw_per_worker_world_hours": null
+  },
+  "1970": {
+   "real_estate_pct": 23.5,
+   "pension_pct": 16.4,
+   "equities_mf_pct": 15.2,
+   "deposits_debt_pct": 15.3,
+   "other_pct": 29.5,
+   "liab_pct": 11.0,
+   "nw_years_of_work": 3.61,
+   "nw_per_worker_us_hours": 6974.0,
+   "nw_per_worker_world_hours": 45047.0
+  },
+  "1990": {
+   "real_estate_pct": 30.1,
+   "pension_pct": 18.9,
+   "equities_mf_pct": 8.4,
+   "deposits_debt_pct": 18.4,
+   "other_pct": 24.2,
+   "liab_pct": 14.2,
+   "nw_years_of_work": 3.79,
+   "nw_per_worker_us_hours": 6962.0,
+   "nw_per_worker_world_hours": 30725.0
+  },
+  "2000": {
+   "real_estate_pct": 27.3,
+   "pension_pct": 21.3,
+   "equities_mf_pct": 18.8,
+   "deposits_debt_pct": 12.0,
+   "other_pct": 20.6,
+   "liab_pct": 14.3,
+   "nw_years_of_work": 4.34,
+   "nw_per_worker_us_hours": 8186.0,
+   "nw_per_worker_world_hours": 42319.0
+  },
+  "2007": {
+   "real_estate_pct": 30.6,
+   "pension_pct": 19.5,
+   "equities_mf_pct": 17.2,
+   "deposits_debt_pct": 12.7,
+   "other_pct": 20.0,
+   "liab_pct": 17.2,
+   "nw_years_of_work": 4.83,
+   "nw_per_worker_us_hours": 8834.0,
+   "nw_per_worker_world_hours": 37800.0
+  },
+  "2019": {
+   "real_estate_pct": 24.4,
+   "pension_pct": 21.4,
+   "equities_mf_pct": 22.5,
+   "deposits_debt_pct": 13.3,
+   "other_pct": 18.4,
+   "liab_pct": 12.5,
+   "nw_years_of_work": 5.34,
+   "nw_per_worker_us_hours": 9591.0,
+   "nw_per_worker_world_hours": 43391.0
+  },
+  "2023": {
+   "real_estate_pct": 27.8,
+   "pension_pct": 17.4,
+   "equities_mf_pct": 23.6,
+   "deposits_debt_pct": 13.4,
+   "other_pct": 17.9,
+   "liab_pct": 11.5,
+   "nw_years_of_work": 5.6,
+   "nw_per_worker_us_hours": 10013.0,
+   "nw_per_worker_world_hours": 48847.0
+  },
+  "2026": {
+   "real_estate_pct": 24.8,
+   "pension_pct": 16.4,
+   "equities_mf_pct": 30.6,
+   "deposits_debt_pct": 12.0,
+   "other_pct": 16.2,
+   "liab_pct": 10.0,
+   "nw_years_of_work": 6.09,
+   "nw_per_worker_us_hours": 10890.0,
+   "nw_per_worker_world_hours": 54541.0
+  }
+ },
+ "us_nw_years_growth_1952_last_pct_per_yr": 0.69,
+ "us_nw_hours_growth_1952_2023_pct_per_yr": 0.41,
+ "oecd_vs_z1_usa_2023_nw_ratio": 1.072,
+ "payg_pct_gdp_basis": "Eurostat F63_LE (MIO_EUR) / Eurostat nama_10_gdp B1GQ (MIO_EUR); World Bank LCU GDP where Eurostat GDP is missing",
+ "check_S1P_pct_gdp_calc_vs_eurostat_median_abs_pt": 0.3108070785448831,
+ "payg_2021": {
+  "countries_with_pct_gdp": 30,
+  "countries_with_pct_nw": 24,
+  "S13PS_pct_gdp_median": 270.0,
+  "S13PS_pct_gdp_range": [
+   2.0,
+   452.0
+  ],
+  "S13PS_pct_nw_median": 78.0,
+  "S13PS_pct_nw_range": [
+   0.0,
+   300.0
+  ],
+  "funded_S1PF_pct_gdp_median": 11.0,
+  "nw_to_gdp_median": 3.47,
+  "nw_incl_payg_to_gdp_median": 6.54,
+  "missing_nw": [
+   "CHE",
+   "CYP",
+   "IRL",
+   "ISL",
+   "MLT",
+   "NOR"
+  ]
+ },
+ "sample_1950_countries": [
+  "ARG",
+  "AUS",
+  "AUT",
+  "BEL",
+  "BRA",
+  "CAN",
+  "CHE",
+  "COL",
+  "DEU",
+  "DNK",
+  "ESP",
+  "FIN",
+  "FRA",
+  "GBR",
+  "IRL",
+  "ITA",
+  "JPN",
+  "MEX",
+  "NOR",
+  "PER",
+  "PRT",
+  "SWE",
+  "USA",
+  "VEN"
+ ],
+ "payg_note": "PAYG world_1976_2020 is the GDP-weighted average of national total-hours growth (all PWT countries with hours), i.e. the PAYG return in national hours of a GDP-weighted set of countries; it equals a world-hour return only if wage shares and the mix of national hours are stable.",
+ "synthesis": {
+  "countries": [
+   "BEL",
+   "DEU",
+   "DNK",
+   "ESP",
+   "FIN",
+   "FRA",
+   "GBR",
+   "ITA",
+   "JPN",
+   "NLD",
+   "PRT",
+   "SWE",
+   "USA"
+  ],
+  "year_shares": 2023,
+  "return_nw_gdpw": 41.3,
+  "return_nw_median": 35.5,
+  "return_nw_range": [
+   13.8,
+   68.9
+  ],
+  "return_gross_median": 32.2,
+  "home_alone_median": 39.9,
+  "home_alone_gdpw": 42.4,
+  "payg_median": 1.1,
+  "return_nw_avg_shares_median": 36.4,
+  "return_nw_other_zero_median": 35.6,
+  "return_nw_liab_at_bills_median": 36.9,
+  "incl_payg": {
+   "BEL": {
+    "return_net_worth": 49.2,
+    "payg_pct_nw_2021": 43.6,
+    "return_net_worth_incl_payg": 34.6
+   },
+   "DEU": {
+    "return_net_worth": 25.9,
+    "payg_pct_nw_2021": 58.7,
+    "return_net_worth_incl_payg": 15.2
+   },
+   "DNK": {
+    "return_net_worth": 57.0,
+    "payg_pct_nw_2021": 0.4,
+    "return_net_worth_incl_payg": 56.7
+   },
+   "ESP": {
+    "return_net_worth": 22.1,
+    "payg_pct_nw_2021": 72.9,
+    "return_net_worth_incl_payg": 13.6
+   },
+   "FIN": {
+    "return_net_worth": 53.2,
+    "payg_pct_nw_2021": 106.4,
+    "return_net_worth_incl_payg": 25.2
+   },
+   "FRA": {
+    "return_net_worth": 35.5,
+    "payg_pct_nw_2021": 58.4,
+    "return_net_worth_incl_payg": 22.3
+   },
+   "ITA": {
+    "return_net_worth": 21.1,
+    "payg_pct_nw_2021": 73.1,
+    "return_net_worth_incl_payg": 12.2
+   },
+   "NLD": {
+    "return_net_worth": 59.9,
+    "payg_pct_nw_2021": 37.7,
+    "return_net_worth_incl_payg": 45.6
+   },
+   "PRT": {
+    "return_net_worth": 16.6,
+    "payg_pct_nw_2021": 74.3,
+    "return_net_worth_incl_payg": 12.7
+   },
+   "SWE": {
+    "return_net_worth": 68.9,
+    "payg_pct_nw_2021": 37.8,
+    "return_net_worth_incl_payg": 51.2
+   }
+  },
+  "gmp_world_hours_sec4_1976_2020": 38.0,
+  "mapping": "dwellings+land -> JST housing; F5 -> JST equities; F2 deposits -> JST bills; F3 debt securities -> JST long gov bonds; F6 -> 0.6 equities + 0.4 gov bonds; other assets -> bills; liabilities -> bills + 10 per 1,000 h; PAYG (S13PS) -> growth of total hours (PWT 11); all per-country national-hour means 1976-2020 (section 4)"
+ },
+ "payg_decades_world": {
+  "1951-1960": {
+   "hours_all": 10.0,
+   "emp_all": 13.1,
+   "avh_all": -2.7,
+   "hours_1950_sample": 8.8,
+   "emp_1950_sample": 12.0,
+   "hours_jst16": 8.4,
+   "emp_jst16": 11.6,
+   "pop2064_same_countries": 8.4,
+   "pop2064_world_headcount": 16.0,
+   "n_countries_mean": 28.0,
+   "avh_drag": -3.1
+  },
+  "1961-1970": {
+   "hours_all": 9.3,
+   "emp_all": 13.9,
+   "avh_all": -4.3,
+   "hours_1950_sample": 8.9,
+   "emp_1950_sample": 13.4,
+   "hours_jst16": 8.1,
+   "emp_jst16": 12.7,
+   "pop2064_same_countries": 12.4,
+   "pop2064_world_headcount": 16.0,
+   "n_countries_mean": 31.0,
+   "avh_drag": -4.6
+  },
+  "1971-1980": {
+   "hours_all": 9.2,
+   "emp_all": 16.5,
+   "avh_all": -5.8,
+   "hours_1950_sample": 7.7,
+   "emp_1950_sample": 13.8,
+   "hours_jst16": 4.9,
+   "emp_jst16": 11.5,
+   "pop2064_same_countries": 14.5,
+   "pop2064_world_headcount": 21.7,
+   "n_countries_mean": 44.0,
+   "avh_drag": -7.3
+  },
+  "1981-1990": {
+   "hours_all": 11.2,
+   "emp_all": 15.3,
+   "avh_all": -2.9,
+   "hours_1950_sample": 9.7,
+   "emp_1950_sample": 12.7,
+   "hours_jst16": 8.1,
+   "emp_jst16": 11.3,
+   "pop2064_same_countries": 13.2,
+   "pop2064_world_headcount": 23.3,
+   "n_countries_mean": 48.0,
+   "avh_drag": -4.1
+  },
+  "1991-2000": {
+   "hours_all": 5.6,
+   "emp_all": 8.4,
+   "avh_all": -2.3,
+   "hours_1950_sample": 4.6,
+   "emp_1950_sample": 7.2,
+   "hours_jst16": 3.9,
+   "emp_jst16": 6.4,
+   "pop2064_same_countries": 9.3,
+   "pop2064_world_headcount": 19.0,
+   "n_countries_mean": 61.0,
+   "avh_drag": -2.8
+  },
+  "2001-2010": {
+   "hours_all": 3.8,
+   "emp_all": 8.1,
+   "avh_all": -3.7,
+   "hours_1950_sample": 0.6,
+   "emp_1950_sample": 5.0,
+   "hours_jst16": -1.1,
+   "emp_jst16": 3.3,
+   "pop2064_same_countries": 9.7,
+   "pop2064_world_headcount": 18.3,
+   "n_countries_mean": 98.0,
+   "avh_drag": -4.3
+  },
+  "2011-2020": {
+   "hours_all": 2.2,
+   "emp_all": 8.1,
+   "avh_all": -5.8,
+   "hours_1950_sample": 2.5,
+   "emp_1950_sample": 7.4,
+   "hours_jst16": 3.3,
+   "emp_jst16": 7.5,
+   "pop2064_same_countries": 5.9,
+   "pop2064_world_headcount": 12.5,
+   "n_countries_mean": 129.0,
+   "avh_drag": -5.9
+  },
+  "2021-2023": {
+   "hours_all": 28.8,
+   "emp_all": 19.2,
+   "avh_all": 9.7,
+   "hours_1950_sample": 31.4,
+   "emp_1950_sample": 22.1,
+   "hours_jst16": 27.1,
+   "emp_jst16": 19.2,
+   "pop2064_same_countries": 2.3,
+   "pop2064_world_headcount": 9.3,
+   "n_countries_mean": 128.0,
+   "avh_drag": 9.6
+  },
+  "2011-2023": {
+   "hours_all": 8.4,
+   "emp_all": 10.7,
+   "avh_all": -2.2,
+   "hours_1950_sample": 9.2,
+   "emp_1950_sample": 10.8,
+   "hours_jst16": 8.8,
+   "emp_jst16": 10.2,
+   "pop2064_same_countries": 5.1,
+   "pop2064_world_headcount": 11.8,
+   "n_countries_mean": 129.0,
+   "avh_drag": -2.3
+  },
+  "1951-2023": {
+   "hours_all": 8.2,
+   "emp_all": 12.2,
+   "avh_all": -3.4,
+   "hours_1950_sample": 7.2,
+   "emp_1950_sample": 10.7,
+   "hours_jst16": 6.0,
+   "emp_jst16": 9.6,
+   "pop2064_same_countries": 10.1,
+   "pop2064_world_headcount": 17.8,
+   "n_countries_mean": 66.0,
+   "avh_drag": -4.0
+  },
+  "1976-2020": {
+   "hours_all": 6.6,
+   "emp_all": 11.0,
+   "avh_all": -3.6,
+   "hours_1950_sample": 5.3,
+   "emp_1950_sample": 9.0,
+   "hours_jst16": 4.4,
+   "emp_jst16": 7.9,
+   "pop2064_same_countries": 10.0,
+   "pop2064_world_headcount": 18.7,
+   "n_countries_mean": 80.0,
+   "avh_drag": -4.4
+  },
+  "1951-2020": {
+   "hours_all": 7.3,
+   "emp_all": 11.9,
+   "avh_all": -3.9,
+   "hours_1950_sample": 6.1,
+   "emp_1950_sample": 10.2,
+   "hours_jst16": 5.1,
+   "emp_jst16": 9.2,
+   "pop2064_same_countries": 10.5,
+   "pop2064_world_headcount": 18.1,
+   "n_countries_mean": 63.0,
+   "avh_drag": -4.6
+  },
+  "1976-2023": {
+   "hours_all": 8.0,
+   "emp_all": 11.5,
+   "avh_all": -2.7,
+   "hours_1950_sample": 7.0,
+   "emp_1950_sample": 9.8,
+   "hours_jst16": 5.9,
+   "emp_jst16": 8.6,
+   "pop2064_same_countries": 9.5,
+   "pop2064_world_headcount": 18.1,
+   "n_countries_mean": 83.0,
+   "avh_drag": -3.5
+  }
+ },
+ "pop2064_projection": {
+  "2024-2030 (projection)": {
+   "pop2064_gdp_weighted_2023w": 1.2,
+   "pop2064_world_headcount": 9.1,
+   "pop2064_jst16_gdpw": -0.5
+  },
+  "2031-2040 (projection)": {
+   "pop2064_gdp_weighted_2023w": -0.6,
+   "pop2064_world_headcount": 7.1,
+   "pop2064_jst16_gdpw": -1.0
+  },
+  "2041-2050 (projection)": {
+   "pop2064_gdp_weighted_2023w": -4.0,
+   "pop2064_world_headcount": 3.5,
+   "pop2064_jst16_gdpw": -2.1
+  },
+  "2051-2060 (projection)": {
+   "pop2064_gdp_weighted_2023w": -5.6,
+   "pop2064_world_headcount": 1.6,
+   "pop2064_jst16_gdpw": -1.7
+  },
+  "2024-2060 (projection)": {
+   "pop2064_gdp_weighted_2023w": -2.5,
+   "pop2064_world_headcount": 5.0,
+   "pop2064_jst16_gdpw": -1.4
+  },
+  "1951-2023 (history, 2023 weights)": {
+   "pop2064_gdp_weighted_2023w": 14.0,
+   "pop2064_world_headcount": 17.8,
+   "pop2064_jst16_gdpw": 8.6
+  },
+  "1976-2020 (history, 2023 weights)": {
+   "pop2064_gdp_weighted_2023w": 13.9,
+   "pop2064_world_headcount": 18.7,
+   "pop2064_jst16_gdpw": 8.2
+  },
+  "2001-2023 (history, 2023 weights)": {
+   "pop2064_gdp_weighted_2023w": 8.9,
+   "pop2064_world_headcount": 14.6,
+   "pop2064_jst16_gdpw": 4.9
+  }
+ },
+ "claims_with_payg": {
+  "PAYG (growth of total hours), all PWT countries with hours": {
+   "world_1976_2020": 6.6,
+   "national_gdpw_1951_2020": 7.3,
+   "national_gdpw_jst16_1976_2020": NaN,
+   "national_median_jst16_1951_2020": NaN
+  },
+  "PAYG (growth of total hours), same 16 JST countries": {
+   "world_1976_2020": NaN,
+   "national_gdpw_1951_2020": 5.1,
+   "national_gdpw_jst16_1976_2020": 4.4,
+   "national_median_jst16_1951_2020": 2.5
+  },
+  "Home (JST housing)": {
+   "world_1976_2020": 40.0,
+   "national_gdpw_1951_2020": 35.9,
+   "national_gdpw_jst16_1976_2020": 39.6,
+   "national_median_jst16_1951_2020": 40.1
+  },
+  "GMP (note 3)": {
+   "world_1976_2020": 38.0,
+   "national_gdpw_1951_2020": NaN,
+   "national_gdpw_jst16_1976_2020": NaN,
+   "national_median_jst16_1951_2020": NaN
+  },
+  "Government bonds": {
+   "world_1976_2020": 27.9,
+   "national_gdpw_1951_2020": 0.9,
+   "national_gdpw_jst16_1976_2020": 26.7,
+   "national_median_jst16_1951_2020": -1.2
+  },
+  "Deposits / bills": {
+   "world_1976_2020": -1.6,
+   "national_gdpw_1951_2020": -12.1,
+   "national_gdpw_jst16_1976_2020": -1.2,
+   "national_median_jst16_1951_2020": -19.5
+  },
+  "Equities": {
+   "world_1976_2020": 50.4,
+   "national_gdpw_1951_2020": 36.0,
+   "national_gdpw_jst16_1976_2020": 44.4,
+   "national_median_jst16_1951_2020": 34.2
+  }
+ },
+ "latest_cross_section": {
+  "ESP": {
+   "dwellings_land": 66.2,
+   "F6_pension_insurance": 4.0,
+   "F5_equity_funds": 14.5,
+   "F2F3_deposits_debt_sec": 12.2,
+   "other": 3.1,
+   "liab_total_pct_gross": 8.3,
+   "nw_to_gdp": 5.5,
+   "nw_per_worker_national_hours": 9052.9,
+   "nw_per_worker_world_hours": 22670.1
+  },
+  "MEX": {
+   "dwellings_land": 63.7,
+   "F6_pension_insurance": 13.3,
+   "F5_equity_funds": 11.6,
+   "F2F3_deposits_debt_sec": 7.2,
+   "other": 4.2,
+   "liab_total_pct_gross": 6.4,
+   "nw_to_gdp": 2.9,
+   "nw_per_worker_national_hours": 4682.2,
+   "nw_per_worker_world_hours": 4703.3
+  },
+  "SVK": {
+   "dwellings_land": 63.1,
+   "F6_pension_insurance": 6.3,
+   "F5_equity_funds": 6.4,
+   "F2F3_deposits_debt_sec": 16.9,
+   "other": 7.3,
+   "liab_total_pct_gross": 16.9,
+   "nw_to_gdp": 2.3,
+   "nw_per_worker_national_hours": 3711.5,
+   "nw_per_worker_world_hours": 6542.8
+  },
+  "KOR": {
+   "dwellings_land": 61.7,
+   "F6_pension_insurance": 9.7,
+   "F5_equity_funds": 7.5,
+   "F2F3_deposits_debt_sec": 17.3,
+   "other": 3.7,
+   "liab_total_pct_gross": 15.5,
+   "nw_to_gdp": 5.2,
+   "nw_per_worker_national_hours": 10025.8,
+   "nw_per_worker_world_hours": 17901.8
+  },
+  "BGR": {
+   "dwellings_land": 61.1,
+   "F6_pension_insurance": 4.8,
+   "F5_equity_funds": 15.1,
+   "F2F3_deposits_debt_sec": 14.9,
+   "other": 4.1,
+   "liab_total_pct_gross": 9.1,
+   "nw_to_gdp": 2.8,
+   "nw_per_worker_national_hours": 4644.8,
+   "nw_per_worker_world_hours": 4888.1
+  },
+  "HUN": {
+   "dwellings_land": 59.1,
+   "F6_pension_insurance": 2.1,
+   "F5_equity_funds": 16.7,
+   "F2F3_deposits_debt_sec": 12.7,
+   "other": 9.5,
+   "liab_total_pct_gross": 5.5,
+   "nw_to_gdp": 3.6,
+   "nw_per_worker_national_hours": 5941.9,
+   "nw_per_worker_world_hours": 8355.9
+  },
+  "LUX": {
+   "dwellings_land": 57.9,
+   "F6_pension_insurance": 5.3,
+   "F5_equity_funds": 13.8,
+   "F2F3_deposits_debt_sec": 17.5,
+   "other": 5.5,
+   "liab_total_pct_gross": 16.0,
+   "nw_to_gdp": 3.4,
+   "nw_per_worker_national_hours": 4873.0,
+   "nw_per_worker_world_hours": 30957.4
+  },
+  "SVN": {
+   "dwellings_land": 57.8,
+   "F6_pension_insurance": 3.5,
+   "F5_equity_funds": 10.7,
+   "F2F3_deposits_debt_sec": 15.0,
+   "other": 13.1,
+   "liab_total_pct_gross": 6.9,
+   "nw_to_gdp": 3.7,
+   "nw_per_worker_national_hours": 5850.6,
+   "nw_per_worker_world_hours": 12395.8
+  },
+  "AUT": {
+   "dwellings_land": 57.5,
+   "F6_pension_insurance": 5.8,
+   "F5_equity_funds": 15.5,
+   "F2F3_deposits_debt_sec": 15.5,
+   "other": 5.6,
+   "liab_total_pct_gross": 9.2,
+   "nw_to_gdp": 4.4,
+   "nw_per_worker_national_hours": 6391.8,
+   "nw_per_worker_world_hours": 25917.4
+  },
+  "FRA": {
+   "dwellings_land": 55.8,
+   "F6_pension_insurance": 12.2,
+   "F5_equity_funds": 12.8,
+   "F2F3_deposits_debt_sec": 12.3,
+   "other": 6.9,
+   "liab_total_pct_gross": 12.2,
+   "nw_to_gdp": 5.4,
+   "nw_per_worker_national_hours": 7990.8,
+   "nw_per_worker_world_hours": 28453.7
+  },
+  "DEU": {
+   "dwellings_land": 55.4,
+   "F6_pension_insurance": 11.4,
+   "F5_equity_funds": 13.3,
+   "F2F3_deposits_debt_sec": 16.5,
+   "other": 3.4,
+   "liab_total_pct_gross": 10.0,
+   "nw_to_gdp": 4.6,
+   "nw_per_worker_national_hours": 6087.8,
+   "nw_per_worker_world_hours": 23948.3
+  },
+  "BEL": {
+   "dwellings_land": 54.4,
+   "F6_pension_insurance": 8.1,
+   "F5_equity_funds": 20.9,
+   "F2F3_deposits_debt_sec": 14.8,
+   "other": 1.8,
+   "liab_total_pct_gross": 10.0,
+   "nw_to_gdp": 5.3,
+   "nw_per_worker_national_hours": 8405.1,
+   "nw_per_worker_world_hours": 35944.8
+  },
+  "CZE": {
+   "dwellings_land": 51.4,
+   "F6_pension_insurance": 3.5,
+   "F5_equity_funds": 19.9,
+   "F2F3_deposits_debt_sec": 19.2,
+   "other": 6.0,
+   "liab_total_pct_gross": 10.4,
+   "nw_to_gdp": 2.9,
+   "nw_per_worker_national_hours": 5199.9,
+   "nw_per_worker_world_hours": 9767.5
+  },
+  "FIN": {
+   "dwellings_land": 51.3,
+   "F6_pension_insurance": 6.1,
+   "F5_equity_funds": 19.9,
+   "F2F3_deposits_debt_sec": 12.3,
+   "other": 10.5,
+   "liab_total_pct_gross": 20.6,
+   "nw_to_gdp": 3.1,
+   "nw_per_worker_national_hours": 4607.9,
+   "nw_per_worker_world_hours": 17337.2
+  },
+  "ITA": {
+   "dwellings_land": 49.7,
+   "F6_pension_insurance": 8.8,
+   "F5_equity_funds": 19.6,
+   "F2F3_deposits_debt_sec": 16.2,
+   "other": 5.7,
+   "liab_total_pct_gross": 8.4,
+   "nw_to_gdp": 5.3,
+   "nw_per_worker_national_hours": 9008.1,
+   "nw_per_worker_world_hours": 24763.3
+  },
+  "GBR": {
+   "dwellings_land": 48.3,
+   "F6_pension_insurance": 24.1,
+   "F5_equity_funds": 8.3,
+   "F2F3_deposits_debt_sec": 16.5,
+   "other": 2.9,
+   "liab_total_pct_gross": 16.9,
+   "nw_to_gdp": 4.0,
+   "nw_per_worker_national_hours": 6041.0,
+   "nw_per_worker_world_hours": 21608.8
+  },
+  "LTU": {
+   "dwellings_land": 48.1,
+   "F6_pension_insurance": 5.3,
+   "F5_equity_funds": 15.6,
+   "F2F3_deposits_debt_sec": 16.5,
+   "other": 14.5,
+   "liab_total_pct_gross": 12.7,
+   "nw_to_gdp": 2.0,
+   "nw_per_worker_national_hours": 3237.1,
+   "nw_per_worker_world_hours": 5558.5
+  },
+  "PRT": {
+   "dwellings_land": 48.0,
+   "F6_pension_insurance": 5.2,
+   "F5_equity_funds": 18.9,
+   "F2F3_deposits_debt_sec": 22.7,
+   "other": 5.1,
+   "liab_total_pct_gross": 17.2,
+   "nw_to_gdp": 3.4,
+   "nw_per_worker_national_hours": 5828.7,
+   "nw_per_worker_world_hours": 10106.5
+  },
+  "POL": {
+   "dwellings_land": 47.2,
+   "F6_pension_insurance": 6.2,
+   "F5_equity_funds": 11.1,
+   "F2F3_deposits_debt_sec": 25.9,
+   "other": 9.6,
+   "liab_total_pct_gross": 13.0,
+   "nw_to_gdp": 1.6,
+   "nw_per_worker_national_hours": 2938.7,
+   "nw_per_worker_world_hours": 4077.7
+  },
+  "CAN": {
+   "dwellings_land": 45.4,
+   "F6_pension_insurance": 15.7,
+   "F5_equity_funds": 24.0,
+   "F2F3_deposits_debt_sec": 12.6,
+   "other": 2.2,
+   "liab_total_pct_gross": 16.4,
+   "nw_to_gdp": 5.3,
+   "nw_per_worker_national_hours": 9125.8,
+   "nw_per_worker_world_hours": 30284.8
+  },
+  "NLD": {
+   "dwellings_land": 45.4,
+   "F6_pension_insurance": 28.2,
+   "F5_equity_funds": 12.2,
+   "F2F3_deposits_debt_sec": 9.9,
+   "other": 4.3,
+   "liab_total_pct_gross": 17.2,
+   "nw_to_gdp": 4.8,
+   "nw_per_worker_national_hours": 6961.0,
+   "nw_per_worker_world_hours": 28116.9
+  },
+  "HRV": {
+   "dwellings_land": 45.1,
+   "F6_pension_insurance": 11.4,
+   "F5_equity_funds": 15.3,
+   "F2F3_deposits_debt_sec": 20.9,
+   "other": 7.2,
+   "liab_total_pct_gross": 11.5,
+   "nw_to_gdp": 2.4,
+   "nw_per_worker_national_hours": 4833.7,
+   "nw_per_worker_world_hours": 6403.9
+  },
+  "EST": {
+   "dwellings_land": 44.5,
+   "F6_pension_insurance": 0.5,
+   "F5_equity_funds": 36.8,
+   "F2F3_deposits_debt_sec": 13.8,
+   "other": 4.3,
+   "liab_total_pct_gross": 15.2,
+   "nw_to_gdp": 2.3,
+   "nw_per_worker_national_hours": 3657.5,
+   "nw_per_worker_world_hours": 7246.2
+  },
+  "GRC": {
+   "dwellings_land": 41.5,
+   "F6_pension_insurance": 2.9,
+   "F5_equity_funds": 18.9,
+   "F2F3_deposits_debt_sec": 28.7,
+   "other": 8.1,
+   "liab_total_pct_gross": 17.7,
+   "nw_to_gdp": 2.4,
+   "nw_per_worker_national_hours": 4476.0,
+   "nw_per_worker_world_hours": 6175.1
+  },
+  "JPN": {
+   "dwellings_land": 35.1,
+   "F6_pension_insurance": 15.9,
+   "F5_equity_funds": 12.0,
+   "F2F3_deposits_debt_sec": 33.8,
+   "other": 3.2,
+   "liab_total_pct_gross": 11.7,
+   "nw_to_gdp": 5.1,
+   "nw_per_worker_national_hours": 8495.0,
+   "nw_per_worker_world_hours": 16979.5
+  },
+  "USA": {
+   "dwellings_land": 32.1,
+   "F6_pension_insurance": 18.3,
+   "F5_equity_funds": 33.7,
+   "F2F3_deposits_debt_sec": 10.5,
+   "other": 5.3,
+   "liab_total_pct_gross": 10.8,
+   "nw_to_gdp": 6.0,
+   "nw_per_worker_national_hours": 10733.5,
+   "nw_per_worker_world_hours": 52360.6
+  },
+  "CHL": {
+   "dwellings_land": 32.0,
+   "F6_pension_insurance": 32.9,
+   "F5_equity_funds": 22.7,
+   "F2F3_deposits_debt_sec": 11.9,
+   "other": 0.6,
+   "liab_total_pct_gross": 19.5,
+   "nw_to_gdp": 2.0,
+   "nw_per_worker_national_hours": 3934.7,
+   "nw_per_worker_world_hours": 4140.0
+  },
+  "ISR": {
+   "dwellings_land": 30.7,
+   "F6_pension_insurance": 36.2,
+   "F5_equity_funds": 10.4,
+   "F2F3_deposits_debt_sec": 17.1,
+   "other": 5.7,
+   "liab_total_pct_gross": 14.9,
+   "nw_to_gdp": 3.0,
+   "nw_per_worker_national_hours": 5612.1,
+   "nw_per_worker_world_hours": 17092.4
+  },
+  "SWE": {
+   "dwellings_land": 30.1,
+   "F6_pension_insurance": 24.0,
+   "F5_equity_funds": 29.9,
+   "F2F3_deposits_debt_sec": 9.1,
+   "other": 6.8,
+   "liab_total_pct_gross": 17.5,
+   "nw_to_gdp": 4.2,
+   "nw_per_worker_national_hours": 6043.3,
+   "nw_per_worker_world_hours": 24386.7
+  },
+  "DNK": {
+   "dwellings_land": 27.9,
+   "F6_pension_insurance": 27.5,
+   "F5_equity_funds": 30.0,
+   "F2F3_deposits_debt_sec": 9.5,
+   "other": 5.1,
+   "liab_total_pct_gross": 17.2,
+   "nw_to_gdp": 4.5,
+   "nw_per_worker_national_hours": 6212.8,
+   "nw_per_worker_world_hours": 30133.0
+  },
+  "ROU": {
+   "dwellings_land": 23.9,
+   "F6_pension_insurance": 7.3,
+   "F5_equity_funds": 19.4,
+   "F2F3_deposits_debt_sec": 21.6,
+   "other": 27.9,
+   "liab_total_pct_gross": 14.3,
+   "nw_to_gdp": 1.1,
+   "nw_per_worker_national_hours": 2037.6,
+   "nw_per_worker_world_hours": 2659.3
+  }
+ },
+ "world_hour_last_month": [
+  "2026-03",
+  21.319487405091074
+ ]
+}
