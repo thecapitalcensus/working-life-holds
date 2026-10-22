@@ -2,7 +2,7 @@
 
 Code and derived data for the fourth Capital Census research note:
 
-> Nakanishi, K. (2026). *What a Working Life Holds: The Home, the Pension and the Portfolio in Hours of the World's Work.* Research note, v1.0, 21 October 2026. SSRN 7646578 (https://ssrn.com/abstract=7646578; DOI 10.2139/ssrn.7646578 on approval). Site version: https://thecapitalcensus.github.io/household.html
+> Nakanishi, K. (2026). *What a Working Life Holds: The Home, the Pension and the Portfolio in Hours of the World's Work.* Research note, v1.0, 21 October 2026. SSRN 7646578, doi:10.2139/ssrn.7646578. Site version: https://thecapitalcensus.github.io/household.html
 
 The note takes the *world hour* (nominal GDP per hour worked across 43 countries) to the household. A household holds
 four kinds of claim: a home, a pension, a portfolio and some deposits. The note asks how many hours of work each claim
@@ -125,7 +125,7 @@ population series built only from public data CC BY 4.0; copies of public data u
 
 ```
 Nakanishi, K. (2026). What a Working Life Holds: The Home, the Pension and the Portfolio in Hours of the
-World's Work. Research note, v1.0, 21 October 2026. SSRN 7646578 (https://ssrn.com/abstract=7646578; DOI 10.2139/ssrn.7646578 on approval).
+World's Work. Research note, v1.0, 21 October 2026. SSRN 7646578, doi:10.2139/ssrn.7646578.
 Code and data: https://github.com/thecapitalcensus/working-life-holds
 ```
 

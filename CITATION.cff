@@ -2,6 +2,7 @@ cff-version: 1.2.0
 message: "If you use this code or data, please cite the research note and this repository."
 type: software
 title: "What a Working Life Holds — code and derived data"
+doi: "10.2139/ssrn.7646578"
 version: "1.0"
 date-released: "2026-10-21"
 authors:
@@ -30,4 +31,4 @@ preferred-citation:
   year: 2026
   institution:
     name: "The Capital Census"
-  notes: "Research note, v1.0, 21 October 2026. SSRN 7646578 (https://ssrn.com/abstract=7646578; DOI 10.2139/ssrn.7646578 on approval)."
+  notes: "Research note, v1.0, 21 October 2026. SSRN 7646578, doi:10.2139/ssrn.7646578."
